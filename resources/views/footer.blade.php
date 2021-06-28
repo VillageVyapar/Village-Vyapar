@@ -28,7 +28,7 @@
                         <li><a href="#">FaceBook</a></li>
                         <li><a href="#">Whatsapp</a></li>
                         <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitters</a></li>
+                        <li><a href="#">Twitter</a></li>
                     </ul>
                 </div>
               </div>
