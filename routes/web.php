@@ -5,6 +5,16 @@ use App\Http\Controllers\dashboardcontroller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\reviewController;
 use App\Http\Controllers\Ajaxcontroller;
+
+
+// admin
+use  App\Http\Controllers\adminlogincontroller;
+use  App\Http\Controllers\productlistcontroller;
+use  App\Http\Controllers\categorycontroller;
+use  App\Http\Controllers\subcategorycontroller;
+use  App\Http\Controllers\admincustomercontroller;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,3 +75,23 @@ Route::get('download','dashboardcontroller@pdf');
 
 
 /*  ***************        Admin  Panel  Route       ************************ */
+
+
+Route::get('/dashboard', function () {
+    return view('admindashboard');
+});
+Route::get('/dashboard',[adminlogincontroller::class,'dashboard']);
+
+route::view('/adminlogin','admin/adminlogin');
+
+Route::post("adminlogin",[adminlogincontroller::class,'adminlogin']);
+Route::get("logout",[adminlogincontroller::class,'adminlogout']);
+Route::get("productdetail",[productlistcontroller::class,'show_product']);
+Route::get("categorydetail",[categorycontroller::class,'show_category']);
+Route::get("subcategorydetail",[subcategorycontroller::class,'show_subcategory']);
+Route::get('admineditcategory/{cid}', function () {
+    return view('/admineditcategory');
+});
+Route::get("/admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
+Route::get("/adminprofile",[adminlogincontroller::class,'adminviewprofile']);
+Route::get("customer",[admincustomercontroller::class,'view_customer']);
