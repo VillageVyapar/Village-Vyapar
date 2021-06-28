@@ -210,20 +210,21 @@
                    
                    <h4>Add a review</h4>
                    <div class="aa-your-rating">
-                     <p>Your Rating</p>
-                     <a href="#"><span class="fa fa-star-o"></span></a>
-                     <a href="#"><span class="fa fa-star-o"></span></a>
-                     <a href="#"><span class="fa fa-star-o"></span></a>
-                     <a href="#"><span class="fa fa-star-o"></span></a>
-                     <a href="#"><span class="fa fa-star-o"></span></a>
+                     
                    </div>
                    <!-- review form -->
-                   <form action="" method='get' class="aa-review-form">
+                   <!-- <form action="" class="aa-review-form">
                       <div class="form-group">
                         <label for="message">Your Review</label>
-                        <textarea class="form-control" rows="3" id="message"></textarea>
+                        <textarea class="form-control" rows="3" name='review' id="message"></textarea>
                       </div>
-                      <a href="{{url('newReview')}}"><button type="submit" class="btn btn-default aa-review-submit">Submit</button></a>
+                      <a href="newReview"><input type="submit" class="btn btn-default aa-review-submit" value='submit'/></a>
+                   </form> -->
+
+                   <form method='post' action='/newReview' >
+                   <label for="message">Your Review</label>
+                   <textarea class="form-control" rows="3" name='review' id="message"></textarea>
+                   <input type="submit" class="btn btn-default aa-review-submit" value='submit'/>
                    </form>
                  </div>
                 </div>

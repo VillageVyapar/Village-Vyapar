@@ -10,7 +10,7 @@ class reviewController extends Controller
 {
     //
     public function addReview(Request $req){
-        dd($req);
+        dd($req->review);
         
         $feedback = new customer;
         $feedback->c_id=$req->c_id;

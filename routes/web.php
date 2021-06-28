@@ -39,6 +39,7 @@ Route::get('wishlist','wishlistcontroller@set_wishlist');
 Route::get('newReview','reviewController@addReview');
 
 
+
 /*  ***************        Customer Panel  Route       ************************ */
 
 
