@@ -77,6 +77,9 @@
 
   <!-- product category -->
   @foreach($products as $p)
+  <?php $pid=$p['p_id'];
+        $cid=$p['c_id'];
+  ?>
   <section id="aa-product-details">
     <div class="container">
       <div class="row">
@@ -193,13 +196,7 @@
                           </div>
                           <div class="media-body">
                             <h4 class="media-heading"><strong>{{$fb['c_name']}}</strong> - <span>{{$fb['f_date']}}</span></h4>
-                            <div class="aa-product-rating">
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star-o"></span>
-                            </div>
+                            
                             <p>{{$fb['desc']}}</p>
                           </div>
                         </div>
@@ -208,24 +205,27 @@
                       
                    </ul>
                    
-                   <h4>Add a review</h4>
-                   <div class="aa-your-rating">
-                     
-                   </div>
-                   <!-- review form -->
-                   <!-- <form action="" class="aa-review-form">
-                      <div class="form-group">
-                        <label for="message">Your Review</label>
-                        <textarea class="form-control" rows="3" name='review' id="message"></textarea>
-                      </div>
-                      <a href="newReview"><input type="submit" class="btn btn-default aa-review-submit" value='submit'/></a>
-                   </form> -->
+              
+              
+                <?php
+                
+                if(Session::has('useremail'))
+                {
+                  echo "
 
-                   <form method='post' action='/newReview' >
-                   <label for="message">Your Review</label>
-                   <textarea class="form-control" rows="3" name='review' id="message"></textarea>
-                   <input type="submit" class="btn btn-default aa-review-submit" value='submit'/>
-                   </form>
+                  <h4>Add a review</h4>
+                  <form method='get' class='aa-review-form' action='/newReview'>
+                 
+                  <div class='form-group'>
+                  <label for='message'>Your Review</label>
+                  <input type='text' style='display:none' name='pid' value='$pid'/>
+                  <input type='text' style='display:none' name='cid' value='$cid'/>
+                  <textarea class='form-control' rows='3' name='review' id='message'></textarea>
+                  <input type='submit' class='btn btn-default aa-review-submit' value='submit'/>
+                  </div>
+                  </form> ";
+                }
+                ?>               
                  </div>
                 </div>
                

@@ -8,61 +8,58 @@
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/1.jpg" alt="Men slide img" />
+                <img data-seq src="img/slider/fi-pickle.jpeg" alt="Men slide img" />
               </div>
               <div class="seq-title">
-               <span data-seq>Save Up to 75% Off</span>                
-                <h2 data-seq>Men Collection</h2>                
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                              
+                <h2 data-seq>Village Pickles</h2>                
+                <p data-seq>Here All Types of pickles are available.</p>
+                <a data-seq href="{{url('product',1)}}" class="aa-shop-now-btn aa-secondary-btn">CHECK Now</a>
               </div>
             </li>
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/2.jpg" alt="Wristwatch slide img" />
+                <img data-seq src="img/slider/pottery759.jpeg" alt="Wristwatch slide img" />
               </div>
               <div class="seq-title">
-                <span data-seq>Save Up to 40% Off</span>                
-                <h2 data-seq>Wristwatch Collection</h2>                
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                               
+                <h2 data-seq>All Types of Pottery </h2>                
+                <p data-seq>Here All Types of pottery available with diffrent different patterns.</p>
+                <a data-seq href="{{url('products',9)}}" class="aa-shop-now-btn aa-secondary-btn">CHECK NOW</a>
               </div>
             </li>
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/3.jpg" alt="Women Jeans slide img" />
+                <img data-seq src="img/slider/Milk.jpg" alt="Women Jeans slide img" />
               </div>
               <div class="seq-title">
-                <span data-seq>Save Up to 75% Off</span>                
-                <h2 data-seq>Jeans Collection</h2>                
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+              <h2 data-seq>All Diary Products </h2>                
+                <p data-seq>Here All Types of Diary products available like Milk,Ghee etc.</p>
+                <a data-seq href="{{url('product',5)}}" class="aa-shop-now-btn aa-secondary-btn">CHECK NOW</a>
               </div>
             </li>
             <!-- single slide item -->           
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/4.jpg" alt="Shoes slide img" />
+                <img data-seq src="img/slider/farming tools.jpg" alt="Shoes slide img" />
               </div>
               <div class="seq-title">
-                <span data-seq>Save Up to 75% Off</span>                
-                <h2 data-seq>Exclusive Shoes</h2>                
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+              <h2 data-seq>All Farming Tools </h2>                
+                <p data-seq>Here All Types of Farming tools available with diffrent different purpose.</p>
+                <a data-seq href="{{url('product',21)}}" class="aa-shop-now-btn aa-secondary-btn">CHECK NOW</a>
               </div>
             </li>
             <!-- single slide item -->  
              <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/5.jpg" alt="Male Female slide img" />
+                <img data-seq src="img/slider/handicraft.jpeg" alt="Male Female slide img" />
               </div>
               <div class="seq-title">
-                <span data-seq>Save Up to 50% Off</span>                
-                <h2 data-seq>Best Collection</h2>                
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+              <h2 data-seq>Decorative Handicraft </h2>                
+                <p data-seq>Here All Types of Handicraft available with diffrent different patterns.</p>
+                <a data-seq href="{{url('products',3)}}" class="aa-shop-now-btn aa-secondary-btn">CHECK NOW</a>
               </div>
             </li>                   
           </ul>
@@ -145,12 +142,15 @@
   </section>  -->
   <!-- / Promo section -->
   <!-- Products section -->
- &nbsp;
-  <section>
+ &nbsp;&nbsp;&nbsp;
+ 
+<section style='margin-top:00px;'>
  <center>
   <div style='width:80%;padding:25px;'>
 	<img src='\vlgpic.jpg' style='margin:25px;float:left;width:400px;'/>
+  
 	<h2>Welcome to My Village Vyapar</h2>
+  <hr style='border:1px solid red;'>
 	<h4 style='text-align:left;word-spacing:5px;'>
 	All MyVillageShop products support health and True Wellness and are made with 
 	loving care. Each product is one link in a chain of connectedness between Mother Nature,
@@ -282,7 +282,6 @@
                             @if($p['p_id']<=20)
                               <span class="aa-badge aa-sale" href="#">New!</span>
                             @endif
-                          
                             </li>
                           @endif
                         @endforeach
@@ -360,7 +359,7 @@
                           @endif
                         @endforeach                       
                       </ul>
-                      <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                      
                     </div>
                     <!-- / electronic product category -->
                   </div>

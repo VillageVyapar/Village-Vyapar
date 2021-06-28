@@ -23,7 +23,7 @@ class productcontroller extends Controller
     }
     function priceAjax($price,$sid)
     {
-          $product=product::where('p_price','<',$price)->where('subcat_id',$sid)->get();
+          $product=product::where('p_price','<=',$price)->where('subcat_id',$sid)->get();
         // foreach ($product as $p)
         // {
         //    $msg="{{$p}}";

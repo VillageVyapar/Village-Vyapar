@@ -6,6 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class feedback extends Model
 {
-    //
-    public $timestamp=false;
+    public $timestamps = false;
 }
