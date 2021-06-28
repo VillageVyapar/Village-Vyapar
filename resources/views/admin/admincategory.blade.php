@@ -2,7 +2,7 @@
 session_start();
 if(!Session::has('adminemail'))
 {
-  echo "<script>location.href='/adminlogin'</script>";
+  echo "<script>location.href='adminlogin'</script>";
 }
 ?>
 @include('admin/includes/sidebar_navbar')
@@ -44,7 +44,7 @@ if(!Session::has('adminemail'))
                                                 
                                                      <td style='width:200px;'>{{$r['cat_name']}}</td>
                                                     <td><img src="category_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
-                                                    <td class="center">+++-++---------*
+                                                    <td class="center">
                                                         <a href="{{ url('category_detail',$r['cat_id']) }}"><button type="button" class="btn btn-primary">View</button></a>
                                                         <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button" class="btn btn-success">Edit</button></a>
                                                         <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>

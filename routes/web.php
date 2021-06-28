@@ -77,12 +77,12 @@ Route::get('download','dashboardcontroller@pdf');
 /*  ***************        Admin  Panel  Route       ************************ */
 
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('admindashboard');
 });
-Route::get('/dashboard',[adminlogincontroller::class,'dashboard']);
+Route::get('dashboard',[adminlogincontroller::class,'dashboard']);
 
-route::view('/adminlogin','admin/adminlogin');
+route::view('adminlogin','admin/adminlogin');
 
 Route::post("adminlogin",[adminlogincontroller::class,'adminlogin']);
 Route::get("logout",[adminlogincontroller::class,'adminlogout']);
@@ -90,8 +90,8 @@ Route::get("productdetail",[productlistcontroller::class,'show_product']);
 Route::get("categorydetail",[categorycontroller::class,'show_category']);
 Route::get("subcategorydetail",[subcategorycontroller::class,'show_subcategory']);
 Route::get('admineditcategory/{cid}', function () {
-    return view('/admineditcategory');
+    return view('admineditcategory');
 });
-Route::get("/admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
-Route::get("/adminprofile",[adminlogincontroller::class,'adminviewprofile']);
+Route::get("admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
+Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("customer",[admincustomercontroller::class,'view_customer']);
