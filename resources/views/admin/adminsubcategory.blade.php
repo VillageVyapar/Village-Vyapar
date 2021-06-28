@@ -51,8 +51,8 @@ if(!Session::has('adminemail'))
                                                 </tr>
                                                 @else
                                                 <tr class="even gradeC">
-                                                <td><img src="product_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
-                                                    <td>{{$r['cat_name']}}</td>
+                                                <!-- <td><img src="product_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
+                                                    <td>{{$r['cat_name']}}</td> -->
                                                     <td class="center">
                                                         <a href="{{ url('category_details',$pc['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                                         <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
