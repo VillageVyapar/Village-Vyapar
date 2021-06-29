@@ -2,7 +2,7 @@
 session_start();
 if(!Session::has('adminemail'))
 {
-  echo "<script>location.href='/adminlogin'</script>";
+  echo "<script>location.href='adminlogin'</script>";
 }
 ?>
 @include('admin/includes/sidebar_navbar')
