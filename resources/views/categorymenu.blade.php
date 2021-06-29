@@ -159,17 +159,13 @@ if (_isNS('google.translate.Element')){return}(function(){var c=_setupNS('google
               
               <div class="aa-cartbox">
               @if(Session::has('useremail') )
+              
                 <a class="aa-cart-link" href="{{ url('customer_dashboard')}}">
                   <span class="fa fa-user"></span>
                   <span class="aa-cart-title">Customer <br>Dashboard</span>
                 </a>
                 @endif
-                @if(Session::has('adminemail') )
-                <a class="aa-cart-link" href="{{ url('adminlogin')}}">
-                  <span class="fa fa-user"></span>
-                  <span class="aa-cart-title">Admin <br>Dashboard</span>
-                </a>
-                @endif
+                
                <!-- <div class="aa-cartbox-summary">
                   <ul>
                     <li>
