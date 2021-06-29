@@ -47,7 +47,7 @@ Route::get('productAjaxprice/{pid}/{sid}','productcontroller@priceAjax');
 
 Route::get('wishlist','wishlistcontroller@set_wishlist');
 Route::get('newReview','reviewController@addReview');
-
+Route::get('delwishlist/{pid}/{cid}','wishlistcontroller@del_wishlist');
 
 
 /*  ***************        Customer Panel  Route       ************************ */

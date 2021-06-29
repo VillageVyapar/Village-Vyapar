@@ -19,6 +19,14 @@ class wishlistcontroller extends Controller
             
        // dd($wishlist);
         return view('wishlist_view',['categories'=>$c,'subcategories'=>$sc,'wishlist'=>$wishlist]);
-        
+    }
+    function del_wishlist($pid,$cid)
+    {
+    
+        $c= category::all();
+        $sc= subcategory::all();
+        $qry=wishlist::where('c_id',$cid)->where('p_id',$pid)->delete();
+        //dd($pid.$cid);
+        return redirect()->back();
     }
 }
