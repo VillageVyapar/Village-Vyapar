@@ -13,7 +13,7 @@ class categorycontroller extends Controller
         $email=$req->session()->get('adminemail');
         $user2=admin::where('a_email','like',$email)->get();
 
-        $results = category::all();
+        $results = category::paginate(5);
         $catid=$req->input('cat_id');
         $catname=$req->input('cat_name');
         return view('admin.admincategory',['results'=>$results,'aname'=>$user2]);

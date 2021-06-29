@@ -6,30 +6,31 @@ if(!Session::has('adminemail'))
 }
 ?>
 @include('admin/includes/sidebar_navbar')
+<div class="container-fluid">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Manage
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
+              Add Category 
+              
+            </button>
+           
+           <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
+              Add Menu 
+            </button> -->
+    </h6>
+   </div>
 
+   <div class="card shadow mb-4">    
+        <div class="card-body">
 
-<div id="page-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header"> Your Category
-                            <a href='#'><button type="button" class="btn btn-primary">Insert </button></a><br><br>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Your Village Categories  Here !
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
+<div class="table-responsive">
+<div style='height:100px;width:100px;text-align:top'> <p>Pages : {{$results->links()}}</p></div>
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  
+    <thead>
+      <tr>
+      
+                   <tr>
                                                     
                                                     <th>Cat_Name </th>
                                                     <th>Cat_Image</th>
@@ -39,7 +40,7 @@ if(!Session::has('adminemail'))
                                             </thead>
                                             <tbody>
                                             @foreach($results as $r)
-                                                @if($r['cat_id']>=1)
+                                              
                                                 <tr class="odd gradeX">
                                                 
                                                      <td style='width:200px;'>{{$r['cat_name']}}</td>
@@ -50,17 +51,6 @@ if(!Session::has('adminemail'))
                                                         <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </td>
                                                 </tr>
-                                                @else
-                                                <tr class="even gradeC">
-                                                <td><img src="product_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
-                                                    <td>{{$r['cat_name']}}</td>
-                                                    <td class="center">
-                                                        <a href="{{ url('category_details',$pc['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
-                                                        <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                                        <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
-                                                    </td>
-                                                </tr>
-                                                @endif
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -73,21 +63,13 @@ if(!Session::has('adminemail'))
                             <!-- /.panel -->
                         </div>
                         <!-- /.col-lg-12 -->
-                    </div>
+               
                     <!-- /.row -->
                     
                                   
                         <!-- /.col-lg-6 -->
                         
-                        <!-- /.col-lg-6 -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-
-        </div>
+                    
         <!-- /#wrapper -->
 
         <!-- jQuery -->

@@ -5,9 +5,7 @@ if(!Session::has('adminemail'))
   echo "<script>location.href='adminlogin'</script>";
 }
 ?>
-@include('admin/includes/sidebar_navbar')
-
-
+@include('admin/includes/sidebar_navbar');
 
 <div id="page-wrapper">
                 <div class="container-fluid">
@@ -15,19 +13,21 @@ if(!Session::has('adminemail'))
                         <div class="col-lg-12">
                             <h1 class="page-header"> Your Products
                             <a href='#'><button type="button" class="btn btn-primary">Insert </button></a><br><br>
+                            
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
+                    
                     <div class="row">
+                    
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Your Villages Products Here !
-                                </div>
+                                
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
+                                   
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
