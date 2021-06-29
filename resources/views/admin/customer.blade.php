@@ -7,8 +7,6 @@ if(!Session::has('adminemail'))
 ?>
 @include('admin/includes/sidebar_navbar')
 
-
-
 <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">

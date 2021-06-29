@@ -215,7 +215,6 @@
                 if(Session::has('useremail'))
                 {
                   echo "
-
                   <h4>Add a review</h4>
                   <form method='get' class='aa-review-form' action='/newReview'>
                  
