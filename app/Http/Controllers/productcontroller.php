@@ -12,14 +12,16 @@ use Illuminate\Http\Request;
 class productcontroller extends Controller
 {
     //
-    function show_product($id)
+    function show_product($id,Request $res)
     {
         $c=category::all();
         $sc=subcategory::all();
         $pro=product::join('customers','customers.c_id','products.c_id')->where('subcat_id',$id)->paginate(9);
         $scname=subcategory::join('categories','categories.cat_id','subcategories.cat_id')->where('subcat_id',$id)->get();
-
-        return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname]);
+        
+        $email=$res->session()->get('useremail');
+        $cust=customer::where('email',$email)->get();
+        return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
     }
     function priceAjax($price,$sid)
     {
