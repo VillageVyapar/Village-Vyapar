@@ -137,9 +137,17 @@ function set(str)
                     </figcaption>
                   </figure>                         
                   <div class="aa-product-hvr-content">
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                  
+                  <?php
+                  $pid=$p['p_id'];
+                  if(Session::has('useremail'))
+                  {
+                    echo "<a href='addWish/$pid' data-toggle='tooltip' data-placement='top' title='Add to Wishlist'><span class='fa fa-heart-o'></span></a>";
+                  }
+                  ?>
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal-{{$p['p_id']}}"><span class="fa fa-search"></span></a>                            
+                  
                   </div>
                   <!-- product badge -->
                   @if($p['p_id']>=60)

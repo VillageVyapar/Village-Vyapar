@@ -1,6 +1,8 @@
 @include('categorymenu'); 
+
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-      </script>
+      <!-- </script> -->
+      
 <script>
 
  function show()
@@ -149,6 +151,7 @@
                   <input type='password' disabled style='border:none;' id='pass2' value='{{$p['phone_no']}}' />
                   
                   <a class="aa-add-to-cart-btn" href="#">Chat Now</a>
+                  
                   </div>
                     <!-- <div class="aa-prod-view-bottom">
                       <a class="aa-add-to-cart-btn" href="#">Add To Cart</a>

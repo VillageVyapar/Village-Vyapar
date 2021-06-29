@@ -5,6 +5,7 @@ use App\Http\Controllers\dashboardcontroller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\reviewController;
 use App\Http\Controllers\Ajaxcontroller;
+use App\Http\Controllers\wishlistcontroller;
 
 
 // admin
@@ -48,6 +49,7 @@ Route::get('productAjaxprice/{pid}/{sid}','productcontroller@priceAjax');
 Route::get('wishlist','wishlistcontroller@set_wishlist');
 Route::get('newReview','reviewController@addReview');
 
+Route::get('products/addWish/{pid}','wishlistcontroller@addWishlist');
 
 
 /*  ***************        Customer Panel  Route       ************************ */
@@ -95,3 +97,4 @@ Route::get('admineditcategory/{cid}', function () {
 Route::get("admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
 Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("customer",[admincustomercontroller::class,'view_customer']);
+
