@@ -159,6 +159,7 @@
 
         </div>
     </div>
+ <style>   
     body{
     margin-top:20px;
     color: #1a202c;
@@ -212,3 +213,4 @@
 .shadow-none {
     box-shadow: none!important;
 }
+</style>
