@@ -24,8 +24,8 @@ class adminlogincontroller extends Controller
             return view('admin.admindashboard',['results'=>$user,'aname'=>$user2]);
             }
          else {
-             echo "<script > alert('Invalid login credential.')</script>";
-             return view('admin.adminlogin',['aname'=>$user2]);
+             echo "<script> alert('Invalid login credential.')</script>";
+             return view('admin.adminlogin');
          }
     }
     function dashboard(Request $req)   
