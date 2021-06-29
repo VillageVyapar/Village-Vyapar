@@ -25,7 +25,7 @@ if(!Session::has('adminemail'))
                                     Your Village sub Categories  Here !
                                 </div>
                                 <!-- /.panel-heading -->
-                                <div class="panel-body">
+                                <div class="panel-body" style="padding:50px;">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
@@ -63,6 +63,14 @@ if(!Session::has('adminemail'))
                                             @endforeach
                                             </tbody>
                                         </table>
+                                        <span>
+                                            {{$results->links()}}
+                                        </span>
+                                        <style>
+                                            .w-5{
+                                                display:none;
+                                            }
+                                        </style>
                                     </div>
                                     <!-- /.table-responsive -->
                                     

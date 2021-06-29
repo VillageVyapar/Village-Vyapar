@@ -9,9 +9,9 @@ class admincustomercontroller extends Controller
 {
     function view_customer(Request $req)
     {
-        $cust=customer::all();
+        $cust=customer::paginate(5);
         $email=$req->session()->get('adminemail');
-         $user2=admin::where('a_email','like',$email)->get();
+        $user2=admin::where('a_email','like',$email)->get();
         return view('admin.admincustomer',['cust'=>$cust,'aname'=>$user2]);
     }
 }

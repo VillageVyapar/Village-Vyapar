@@ -10,7 +10,7 @@ class subcategorycontroller extends Controller
 {
     function show_subcategory(Request $req)
     {
-        $results = subcategory::all();
+        $results = subcategory::paginate(5);
         $subcatid=$req->input('subcat_id');
         $subcatname=$req->input('subcat_name');
 
