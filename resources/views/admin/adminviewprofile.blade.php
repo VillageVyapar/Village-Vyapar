@@ -68,9 +68,7 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
 
-                  <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName">
-
-                  <input type="text" value="{{$h->a_name}}" name="FullName" disabled required>
+                  <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName" disabled required>
 
                     </div>
                   </div>
@@ -81,9 +79,7 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
 
-                   <input type="text" class="form-control"value="{{$h->a_email}}" name="Email">
-
-                   <input type="text" value="{{$h->a_email}}" name="Email" disabled required>
+                   <input type="text" class="form-control"value="{{$h->a_email}}" name="Email" disabled required>
 
                     </div>
                   </div>
@@ -97,11 +93,9 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
                     
-<<<<<<< Updated upstream
-                    <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno">
-=======
-                    <input type="text" value="{{$h->a_phone}}" name="phoneno" disabled required>
->>>>>>> Stashed changes
+
+                    <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno"disabled required>
+
                     </div>
                   </div>
                   <hr>
