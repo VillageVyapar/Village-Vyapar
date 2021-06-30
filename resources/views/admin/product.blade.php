@@ -5,7 +5,7 @@ if(!Session::has('adminemail'))
   echo "<script>location.href='adminlogin'</script>";
 }
 ?>
-@include('admin/includes/sidebar_navbar');
+@include('admin/includes/sidebar_navbar')
 
 <div class="container-fluid">
 <div class="card-header py-3">

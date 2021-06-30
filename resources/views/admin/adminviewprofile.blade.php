@@ -67,7 +67,7 @@ function show()
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    {{$h->a_name}}
+                  <input type="text" value="{{$h->a_name}}" name="FullName">
                     </div>
                   </div>
                   <hr>
@@ -76,7 +76,7 @@ function show()
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    {{$h->a_email}}
+                   <input type="text" value="{{$h->a_email}}" name="Email">
                     </div>
                   </div>
                   
@@ -88,7 +88,8 @@ function show()
                       <h6 class="mb-0">Phone Number</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    {{$h->a_phone}}
+                    
+                    <input type="text" value="{{$h->a_phone}}" name="phoneno">
                     </div>
                   </div>
                   <hr>
