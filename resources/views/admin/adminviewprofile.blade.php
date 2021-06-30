@@ -112,7 +112,7 @@ function show()
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="">Edit???</label><input type="checkbox" name="checkname" id="check" onclick="UpdateCheck()">
-                      <p><a class="btn btn-info " >Edit</a></p>
+                      <p><a class="btn btn-info " name="update" id="update">Update</a></p>
                     </div>
 
                   </div>
@@ -238,3 +238,24 @@ function show()
     box-shadow: none!important;
 }
 </style>
+
+<script>
+function UpdateCheck(){
+  var x=document.getElementById('check');
+  if(x.checked==true)
+  {
+    document.getElementById('Fullname').disabled=false;
+    document.getElementById('Email').disabled=false;
+    document.getElementById('phoneno').disabled=false;
+    document.getElementById('passwd').disabled=false;
+  }
+  else
+  {
+    document.getElementById('Fullname').disabled=true;
+    document.getElementById('Email').disabled=true;
+    document.getElementById('phoneno').disabled=true;
+    document.getElementById('passwd').disabled=true;
+  }
+  
+}
+</script>
