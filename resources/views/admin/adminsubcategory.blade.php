@@ -7,22 +7,32 @@ if(!Session::has('adminemail'))
 ?>
 @include('admin/includes/sidebar_navbar')
 
+<div class="container-fluid">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Manage
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
+            Add Subcategory 
+            
+        </button>
+        
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
+            Add Menu 
+        </button> -->
+    </h6>
+   </div>
+   <div class="card shadow mb-4">
+  <div class="card-body">
 
-<div id="page-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header"> Your Sub Category
-                            <a href='#'><button type="button" class="btn btn-primary">Insert </button></a><br><br>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                    </div>
+    <span>
+    {{$results->links()}}
+   </span>
+   <div class="table-responsive">
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Your Village sub Categories  Here !
+                             
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body" style="padding:50px;">
@@ -63,9 +73,7 @@ if(!Session::has('adminemail'))
                                             @endforeach
                                             </tbody>
                                         </table>
-                                        <span>
-                                            {{$results->links()}}
-                                        </span>
+                                       
                                         <style>
                                             .w-5{
                                                 display:none;

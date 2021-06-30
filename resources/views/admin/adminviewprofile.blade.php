@@ -3,17 +3,6 @@
 
 <div class="container">
     <div class="main-body">
-<<<<<<< Updated upstream
-           <li class="breadcrumb-item active" aria-current="page"><h2>Admin Profile<h2></li>
-<style>
-::marker{
-  color:white;
-} 
-</style>
-=======
-        <li class="breadcrumb-item active" aria-current="page"><h2>Admin Profile<h2></li>
-            
->>>>>>> Stashed changes
           <!-- /Breadcrumb -->
           @foreach($data as $h)
           <div class="row gutters-sm">

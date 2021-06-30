@@ -7,16 +7,28 @@ if(!Session::has('adminemail'))
 ?>
 @include('admin/includes/sidebar_navbar');
 
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"> Your Products
-                <a href='#'><button type="button" class="btn btn-primary">Insert </button></a><br><br>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
+<div class="container-fluid">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Manage
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
+            Add Product 
+            
+        </button>
+        
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
+            Add Menu 
+        </button> -->
+    </h6>
+   </div>
+        
         <!-- /.row -->
+        <div class="card shadow mb-4">
+  <div class="card-body">
+
+    <span>
+    {{$procus->links()}}
+   </span>
+    <div class="table-responsive">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -66,9 +78,7 @@ if(!Session::has('adminemail'))
                                     @endforeach
                                 </tbody>
                             </table>
-                            <span>
-                                {{$procus->links()}}
-                            </span>
+                            
                             <style>
                             .w-5{
                             display:none;
