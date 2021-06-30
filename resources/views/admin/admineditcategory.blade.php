@@ -19,7 +19,7 @@
 				
 				<br>
 						@foreach($results as $c)
-				    <form method="post">
+				    <form method="get">
                     @csrf
 					
 				            <label>CATGORY NAME</label>
