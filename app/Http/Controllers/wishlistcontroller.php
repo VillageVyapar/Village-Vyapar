@@ -21,12 +21,17 @@ class wishlistcontroller extends Controller
        // dd($wishlist);
         return view('wishlist_view',['categories'=>$c,'subcategories'=>$sc,'wishlist'=>$wishlist]);
     }
-    function del_wishlist($pid,$cid)
+    function del_wishlist($pid)
     {
+        $email=session()->get('useremail');
+        $cid=DB::select("select c_id from customers where email=?",[$email]);
     
         $c= category::all();
-        $sc= subcategory::all();
-        $qry=wishlist::where('c_id',$cid)->where('p_id',$pid)->delete();
+        $sc= subcategory::all();   
+        foreach($cid as $c)
+        {
+            $qry=wishlist::where('c_id',$c->c_id)->where('p_id',$pid)->delete();
+        }
         //dd($pid.$cid);
         return redirect()->back();
     }

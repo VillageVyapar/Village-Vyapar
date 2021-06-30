@@ -86,7 +86,7 @@ if(!Session::has('adminemail'))
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Registered Customer</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Customer</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 			  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"%>
 					
@@ -111,8 +111,84 @@ if(!Session::has('adminemail'))
       
       <div class="card-body">
         <p>Works with any button colors, just use the <code>.btn-icon-split</code> class and the markup in the examples below. The examples below also use the <code>.text-white-50</code> helper class on the icons for additional styling, but it is not required.</p>
+        <canvas id="bar" style="border:1px solid grey;padding:25px;float:left;height:400px;width:100%;max-width:800px;"></canvas>
+        <canvas id="pie" style="border:1px solid grey;padding:25px;float:right;height:400px;width:100%;max-width:800px;"></canvas>
       </div>
+
     </div>
   </div>
 </div>
 <!-- Page Heading -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<script>
+
+
+// <?php
+// $xarray=array();
+// $yarray=array();
+// foreach ($procus as $pc)
+// {
+//     array_push($xarray,$pc['p_name']);
+//     array_push($yarray,$pc['p_price']);
+// }
+
+// $jsx_array = json_encode($xarray);
+
+// $jsy_array = json_encode($yarray);
+
+// echo "var xValues = ". $jsx_array . ";\n";
+// echo "var yValues = ". $jsy_array . ";\n";
+
+// ?>
+
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = ["red","green","blue","orange","brown","red","green","blue","orange","brown",'red','orange','red'];
+
+new Chart("bar", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Total Quantity of Your Village products"
+    }
+  }
+});
+
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    }
+  }
+});
+</script>
