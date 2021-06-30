@@ -30,7 +30,7 @@
 				            <input type="file"  class="form-control" name="cat_img" required>
 							
 							<br>
-							<button align="center" type="submit" href="{{$c[edit_category}}" name="btnLogin" class="btn btn-primary">SUBMIT</button>	
+							<button align="center" type="submit" href="{{$c['editcategory']}}" name="btnLogin" class="btn btn-primary">SUBMIT</button>	
 				    </form>
 					@endforeach
 			  </div>
