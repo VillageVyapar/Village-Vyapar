@@ -67,7 +67,11 @@ function show()
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
+<<<<<<< Updated upstream
                   <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName">
+=======
+                  <input type="text" value="{{$h->a_name}}" name="FullName" disabled required>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                   <hr>
@@ -76,7 +80,11 @@ function show()
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
+<<<<<<< Updated upstream
                    <input type="text" class="form-control"value="{{$h->a_email}}" name="Email">
+=======
+                   <input type="text" value="{{$h->a_email}}" name="Email" disabled required>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                   
@@ -89,7 +97,11 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
                     
+<<<<<<< Updated upstream
                     <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno">
+=======
+                    <input type="text" value="{{$h->a_phone}}" name="phoneno" disabled required>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                   <hr>
@@ -105,8 +117,10 @@ function show()
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      <label for="">Edit???</label><input type="checkbox" name="checkname" id="check" onclick="UpdateCheck()">
+                      <p><a class="btn btn-info " >Edit</a></p>
                     </div>
+
                   </div>
                 </div>
               </div>
