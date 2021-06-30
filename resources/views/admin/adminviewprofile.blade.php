@@ -67,11 +67,11 @@ function show()
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-<<<<<<< Updated upstream
+
                   <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName">
-=======
+
                   <input type="text" value="{{$h->a_name}}" name="FullName" disabled required>
->>>>>>> Stashed changes
+
                     </div>
                   </div>
                   <hr>
@@ -80,11 +80,11 @@ function show()
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-<<<<<<< Updated upstream
+
                    <input type="text" class="form-control"value="{{$h->a_email}}" name="Email">
-=======
+
                    <input type="text" value="{{$h->a_email}}" name="Email" disabled required>
->>>>>>> Stashed changes
+
                     </div>
                   </div>
                   
