@@ -23,7 +23,7 @@ if(!Session::has('adminemail'))
    <div class="card shadow mb-4">
   <div class="card-body">
 
-    <span>
+  <span>
     {{$results->links()}}
    </span>
    <div class="table-responsive">

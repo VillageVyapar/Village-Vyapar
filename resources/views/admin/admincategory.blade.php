@@ -6,12 +6,38 @@ if(!Session::has('adminemail'))
 }
 ?>
 @include('admin/includes/sidebar_navbar')
+<div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <input class="z" type="submit" value="X" />
+     </button>
+      <form action="" method="POST"  enctype="multipart/form-data" >
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Category Name</label>
+                <input type="text"  pattern="[A-Za-z ]+" title="letters only, no digit or no special characters " autofocus id='name' required="True" name="name" class="form-control" placeholder="Enter Category Name"  />
+            </div>
+			<div class="form-group">
+                <label>Image</label><br /x>
+                <input type="file" required  name="img"/>
+				
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" name="issert" class="btn btn-primary">Insert</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Manage
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
             Add Category 
-            
         </button>
         
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
@@ -23,8 +49,11 @@ if(!Session::has('adminemail'))
    <div class="card shadow mb-4">    
         <div class="card-body">
 
-<div class="table-responsive">
 
+<span>
+    {{$results->links()}}
+   </span>
+   <div class="table-responsive">
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="padding:50px;">
    <thead>
       <tr>
@@ -51,7 +80,7 @@ if(!Session::has('adminemail'))
                 @endforeach
             </tbody>
             </table>
-            {{$results->links()}}
+            
             <style>
             .w-5{
                 display:none;
@@ -100,7 +129,8 @@ if(!Session::has('adminemail'))
         });
     });
 </script>
-
+<!-- Model of insert category -->
 </body>
 </html>
+
 
