@@ -1,4 +1,4 @@
-@include('admin/includes/sidebar_navbar');
+@include('admin/includes/sidebar_navbar')
 
 <script>
 function show()
