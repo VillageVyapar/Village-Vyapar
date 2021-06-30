@@ -67,7 +67,7 @@ function show()
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                  <input type="text" value="{{$h->a_name}}" name="FullName">
+                  <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName">
                     </div>
                   </div>
                   <hr>
@@ -76,7 +76,7 @@ function show()
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                   <input type="text" value="{{$h->a_email}}" name="Email">
+                   <input type="text" class="form-control"value="{{$h->a_email}}" name="Email">
                     </div>
                   </div>
                   
@@ -89,7 +89,7 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
                     
-                    <input type="text" value="{{$h->a_phone}}" name="phoneno">
+                    <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno">
                     </div>
                   </div>
                   <hr>
@@ -98,8 +98,8 @@ function show()
                       <h6 class="mb-0">Password</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                  <input type='password' style='border:none;' id='passwd' value='{{$h->a_password}}' >
-                 <input type='submit' onClick='show()' id='button' value='Show'>
+                  <input type='password'class="form-control" style='border:none;' id='passwd' value='{{$h->a_password}}' >
+                 <input type='submit' class="form-control"onClick='show()' id='button' value='Show Password'>
                     </div>
                   </div>
                   <hr>
