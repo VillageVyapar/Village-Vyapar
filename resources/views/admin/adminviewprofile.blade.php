@@ -1,8 +1,25 @@
 @include('admin/includes/sidebar_navbar');
 
-
+<script>
+function show()
+{
+  
+    var val=document.getElementById('passwd');
+    if(val.type =='text')
+    {
+      val.type= 'password';
+      document.getElementById('button').value='Show';
+    }
+    else
+    { 
+        val.type= 'text';
+        document.getElementById('button').value='Hide';
+    }
+} 
+</script>
 <div class="container">
     <div class="main-body">
+    
           <!-- /Breadcrumb -->
           @foreach($data as $h)
           <div class="row gutters-sm">
@@ -80,7 +97,8 @@
                       <h6 class="mb-0">Password</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                  **********
+                  <input type='password' style='border:none;' id='passwd' value='{{$h->a_password}}' >
+                 <input type='submit' onClick='show()' id='button' value='Show'>
                     </div>
                   </div>
                   <hr>
