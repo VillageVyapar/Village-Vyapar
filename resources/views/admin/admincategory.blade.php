@@ -5,6 +5,17 @@ if(!Session::has('adminemail'))
   echo "<script>location.href='adminlogin'</script>";
 }
 ?>
+<style>
+.z
+{
+	float:right;
+	background:white;
+}
+.z:hover
+{
+	color:red;
+}
+</style>
 @include('admin/includes/sidebar_navbar')
 <div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
