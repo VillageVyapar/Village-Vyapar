@@ -25,7 +25,7 @@ if(!Session::has('adminemail'))
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-              <h4>Total Admin: 2 </h4>
+              <h4>Total Admin: {{count($aname)}} </h4>
               </div>
             </div>
             <div class="col-auto">
@@ -90,7 +90,7 @@ if(!Session::has('adminemail'))
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 			  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"%>
 					
-					<h4> Customer: 5 </h4>
+					<h4> Customer: 3 </h4>
 				  </div>
 			  
 			  </div>
@@ -128,14 +128,18 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 // <?php
 // $xarray=array();
 // $yarray=array();
-// foreach ($procus as $pc)
+// foreach ($product as $p)
 // {
-//     array_push($xarray,$pc['p_name']);
-//     array_push($yarray,$pc['p_price']);
+//   foreach ($customer as $c)
+//   {
+//     if($c->c_id == $p->c_id)
+//     {
+//       array_push($xarray,$c['c_name']);
+//      array_push($yarray,count($product));
+//     }
+//   } 
 // }
-
 // $jsx_array = json_encode($xarray);
-
 // $jsy_array = json_encode($yarray);
 
 // echo "var xValues = ". $jsx_array . ";\n";

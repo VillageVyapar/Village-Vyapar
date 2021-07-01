@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Fascade\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use iLLuminate\Session;
 use App\admin;
+use App\customer;
+use App\product;
 
 class adminlogincontroller extends Controller
 {
@@ -13,7 +16,6 @@ class adminlogincontroller extends Controller
          $email=$req->input('email');
          $password=$req->input('password');
          
-        
          $user=admin::where('a_email','like',$email)->where('a_password','like',$password)->count();
          
          if($user>0)
@@ -21,6 +23,8 @@ class adminlogincontroller extends Controller
             $req->session()->put('adminemail',$email);
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();
+            
+            
             return view('admin.admindashboard',['results'=>$user,'aname'=>$user2]);
             }
          else {
@@ -32,6 +36,8 @@ class adminlogincontroller extends Controller
     {
       $email=$req->session()->get('adminemail');
       $user2=admin::where('a_email','like',$email)->get();
+
+      
       return view('admin.admindashboard',['aname'=>$user2]);
     }
      function adminlogout()
