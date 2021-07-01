@@ -8,7 +8,7 @@ if(!Session::has('adminemail'))
 @include('admin/header')
 @include('admin/includes/sidebar_navbar')
 
-  
+
 <div class="container-fluid">
 <!-- Fonts -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

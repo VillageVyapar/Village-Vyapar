@@ -19,6 +19,12 @@ function show()
 </script>
 <div class="container">
     <div class="main-body">
+    <li class="breadcrumb-item active" aria-current="page"><h2>Admin Profile<h2></li>
+    <style>
+    ::marker{
+      color:white;
+    }
+    </style>
     
           <!-- /Breadcrumb -->
           @foreach($data as $h)

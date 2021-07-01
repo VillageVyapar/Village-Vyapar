@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\category;
 use App\admin;
-
+use DB;
 use Illuminate\Http\Request;
 
 class categorycontroller extends Controller
@@ -19,11 +19,12 @@ class categorycontroller extends Controller
         return view('admin.admincategory',['results'=>$results,'aname'=>$user2]);
         
     }
-    function edit_category($id)
+    function edit_category(Request $req,$id)
     {
         //dd($id);
         $results = category::where('cat_id',$id)->get();
-         return view('admin.admineditcategory',['results'=>$results]);
+        $up=DB::category('update categories set cat_name=?,cat_img=? where cat_id=?',[$req->cat_name,$req->cat_img, $id]);
+         return view('admin.admineditcategory',['results'=>$results,'up'=>$up]);
     }
     
 }
