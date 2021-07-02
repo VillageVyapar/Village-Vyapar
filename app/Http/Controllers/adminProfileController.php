@@ -30,23 +30,5 @@ class adminProfileController extends Controller
             return redirect()->back();   
         }
     
-        // $dp=DB::select('select c_img from customers where c_id = ? ',[$req->id]);
-        // //sdd($dp);
-        // File::delete($dp);
-        // $imageName = $req->file('profiledp');
-        // // $imageName->getClientOriginalName();
-        // $newname=time().'_'.$imageName->getClientOriginalName();
-        // $imageName->move( public_path('customer_img'), $newname);
-        
-        // $user = DB::update('update customers set c_img=?,c_name = ?,phone_no=?,address=?,district=?,village=?,pin_code=? where c_id = ?',
-        // [$newname,$req->name,$req->phone,$req->address,$req->district,$req->village,$req->pincode,$req->id]);
-    
-        // if(!is_null($admin)) { 
-        //     return redirect()->back("success", "Updated profile successfully");
-        // }
-
-        // else {
-        //     return redirect()->back("failed", "Update failed. Try again.");
-        // }
     }
 }
