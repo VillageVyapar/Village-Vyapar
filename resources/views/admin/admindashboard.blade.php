@@ -23,13 +23,15 @@ if(!Session::has('adminemail'))
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
+            
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-              <h4>Total Admin: {{count($aname)}} </h4>
+              <h4>Total Admin: {{$count}} </h4>
               </div>
             </div>
             <div class="col-auto">
               <i class="fas fa-user fa-2x text-gray-300"></i>
+              
             </div>
           </div>
         </div>
@@ -43,11 +45,14 @@ if(!Session::has('adminemail'))
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
 			
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Sales :</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">&#8377;&nbsp;25000</div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Category </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+
+              <h4>Category : {{$cat_count}} </h4>
+              <h4>Sub-category:{{$subcat_count}}</h4>
             </div>
             <div class="col-auto">
-              <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -64,7 +69,7 @@ if(!Session::has('adminemail'))
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"%>
-					<h4> Product: 25 </h4>
+					<h4> Product : {{$pcount}}  </h4>
 					
 				  
 				  </div>
@@ -90,7 +95,7 @@ if(!Session::has('adminemail'))
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 			  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"%>
 					
-					<h4> Customer: 3 </h4>
+					<h4> Customer:{{$cust_count}}</h4>
 				  </div>
 			  
 			  </div>

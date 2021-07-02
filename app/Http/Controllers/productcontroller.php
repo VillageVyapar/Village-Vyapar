@@ -21,15 +21,13 @@ class productcontroller extends Controller
         
         $email=$res->session()->get('useremail');
         $cust=customer::where('email',$email)->get();
+        
         return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
     }
     function priceAjax($price,$sid)
     {
           $product=product::where('p_price','<=',$price)->where('subcat_id',$sid)->get();
-        // foreach ($product as $p)
-        // {
-        //    $msg="{{$p}}";
-        // }
+       
 
             $msg=array();
             foreach($product as $p)
@@ -56,8 +54,7 @@ class productcontroller extends Controller
                 </li>
                 ");
             }
-                 
-
+                
         return response()->json(array('msg'=> $msg), 200);
     }
     function show_catwisepro($cid)

@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\reviewController;
 use App\Http\Controllers\Ajaxcontroller;
 use App\Http\Controllers\wishlistcontroller;
+use  App\Http\Controllers\chatcontroller;
 
 
 // admin
 use  App\Http\Controllers\adminlogincontroller;
+
 use  App\Http\Controllers\productlistcontroller;
 use  App\Http\Controllers\categorycontroller;
 use  App\Http\Controllers\subcategorycontroller;
@@ -57,7 +59,10 @@ Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
 /*  ***************        Customer Panel  Route       ************************ */
 
 
-Route::get('chat','dashboardcontroller@chat_details');
+Route::get('chat','chatcontroller@chat_details');
+Route::get('chat_detail/{cid}','chatcontroller@chat_ajax');
+Route::get('insert_chat/{cid}','chatcontroller@insert_chat_detail');
+
 Route::get('customer_dashboard','dashboardcontroller@show_details');
 
 Route::get('customer_product','dashboardcontroller@show_product_details');

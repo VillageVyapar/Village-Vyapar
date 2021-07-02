@@ -24,8 +24,8 @@ class productlistcontroller extends Controller
             ->join('subcategories','products.subcat_id','subcategories.subcat_id')
             ->join('categories','products.cat_id','categories.cat_id')
             ->paginate(5);
-        
-        return view('admin.product',['procus'=>$procus,'aname'=>$user2]); 
+        $product_count=product::count();
+        return view('admin.product',['procus'=>$procus,'aname'=>$user2,'pcount'=>$product_count]); 
 
     }
      
