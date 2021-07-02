@@ -16,6 +16,8 @@ use  App\Http\Controllers\productlistcontroller;
 use  App\Http\Controllers\categorycontroller;
 use  App\Http\Controllers\subcategorycontroller;
 use  App\Http\Controllers\admincustomercontroller;
+use  App\Http\Controllers\adminProfileController;
+
 
 
 /*
@@ -81,6 +83,8 @@ Route::get('del_product/{pid}','dashboardcontroller@delete_product');
 Route::get('download','dashboardcontroller@pdf');
 
 
+
+
 /*  ***************        Admin  Panel  Route       ************************ */
 
 
@@ -103,3 +107,4 @@ Route::get("admineditcategory/{cid}",[categorycontroller::class,'edit_category']
 Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("admincustomer",[admincustomercontroller::class,'view_customer']);
 
+route::post('adminUpdateProfile',"adminProfileController@editProAdmin");

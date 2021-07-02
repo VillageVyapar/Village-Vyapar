@@ -33,10 +33,15 @@ function show()
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
+                  
+                  
                     <img src="Admin_img/{{$h['a_img']}}"" alt="Admin" class="rounded-circle" width="150">
+                    
+
                     <div class="mt-3">
                      <h4>{{$h->a_name}}</h4>
                     </div>
+                  
                   </div>
                 </div>
               </div>
@@ -66,8 +71,11 @@ function show()
                 </ul>
               </div>
             </div>
+
             <div class="col-md-8">
               <div class="card mb-3">
+              <form action="adminUpdateProfile" method="post" enctype="multipart/form-data">
+                  {{@csrf_field()}}
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
@@ -75,24 +83,21 @@ function show()
                     </div>
                     <div class="col-sm-9 text-secondary">
 
-                  <input type="text" class="form-control" value="{{$h->a_name}}" name="FullName" disabled required>
-
+                  <input type="text" class="form-control" value="{{$h->a_name}}" name="fullname" id="fullname" disabled required>
                     </div>
                   </div>
                   <hr>
+                  <input type="hidden" name="id" value="{{$h->a_id}}">
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
 
-                   <input type="text" class="form-control"value="{{$h->a_email}}" name="Email" disabled required>
+                   <input type="text" class="form-control"value="{{$h->a_email}}" name="email" id="email" disabled required>
 
                     </div>
                   </div>
-                  
-                  
-                  
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
@@ -101,8 +106,19 @@ function show()
                     <div class="col-sm-9 text-secondary">
                     
 
-                    <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno"disabled required>
+                    <input type="text" class="form-control" value="{{$h->a_phone}}" name="phoneno" id="phoneno" disabled required>
 
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Profile Image</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+              
+                    <input type="file" name="proimgad" id="proimgad" disabled></td>
+                    
                     </div>
                   </div>
                   <hr>
@@ -111,7 +127,7 @@ function show()
                       <h6 class="mb-0">Password</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                  <input type='password'class="form-control" style='border:none;' id='passwd' value='{{$h->a_password}}' >
+                  <input type='password'class="form-control" style='border:none;' id='passwd' name="passwd" disabled required value='{{$h->a_password}}' >
                  <input type='submit' class="form-control"onClick='show()' id='button' value='Show Password'>
                     </div>
                   </div>
@@ -119,11 +135,12 @@ function show()
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="">Edit???</label><input type="checkbox" name="checkname" id="check" onclick="UpdateCheck()">
-                      <p><a class="btn btn-info " name="update" id="update">Update</a></p>
+                      <p><button class="btn btn-info " name="update" id="update" type="submit">Update</button></p>
                     </div>
 
                   </div>
                 </div>
+                </form>
               </div>
               @endforeach
               <div class="row gutters-sm">
@@ -182,9 +199,6 @@ function show()
                   </div>
                 </div>
               </div>
-
-
-
             </div>
           </div>
 
@@ -251,18 +265,21 @@ function UpdateCheck(){
   var x=document.getElementById('check');
   if(x.checked==true)
   {
-    document.getElementById('Fullname').disabled=false;
-    document.getElementById('Email').disabled=false;
+    document.getElementById('fullname').disabled=false;
+    document.getElementById('email').disabled=false;
     document.getElementById('phoneno').disabled=false;
     document.getElementById('passwd').disabled=false;
+    document.getElementById('proimgad').disabled=false;
   }
   else
   {
-    document.getElementById('Fullname').disabled=true;
-    document.getElementById('Email').disabled=true;
+    document.getElementById('fullname').disabled=true;
+    document.getElementById('email').disabled=true;
     document.getElementById('phoneno').disabled=true;
     document.getElementById('passwd').disabled=true;
+    document.getElementById('proimgad').disabled=true;
   }
   
 }
+
 </script>
