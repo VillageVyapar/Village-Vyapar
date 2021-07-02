@@ -23,8 +23,9 @@ class categorycontroller extends Controller
     {
         //dd($id);
         $results = category::where('cat_id',$id)->get();
-        $up=DB::category('update categories set cat_name=?,cat_img=? where cat_id=?',[$req->cat_name,$req->cat_img, $id]);
-         return view('admin.admineditcategory',['results'=>$results,'up'=>$up]);
+        $up=DB::update('update categories set cat_name=?,cat_img=? where cat_id=?',[$req->cat_name,$req->cat_img, $id]);
+        
+        return view('admin.admineditcategory',['results'=>$results,'up'=>$up]);
     }
     
 }
