@@ -9,6 +9,7 @@ use App\admin;
 use App\customer;
 use App\product;
 use App\category;
+use App\subcategory;
 
 class adminlogincontroller extends Controller
 {
@@ -28,7 +29,8 @@ class adminlogincontroller extends Controller
             $product_count=product::count();
             $customer_count=customer::count();
             $cat_count=category::count();
-            return view('admin.admindashboard',['results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count]);
+            $subcat_count=subcategory::count();
+            return view('admin.admindashboard',['results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
             }
          else {
              echo "<script> alert('Invalid login credential.')</script>";

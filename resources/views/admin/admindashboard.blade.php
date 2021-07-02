@@ -47,7 +47,9 @@ if(!Session::has('adminemail'))
 			
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Category </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+
               <h4>Category : {{$cat_count}} </h4>
+              <h4>Sub-category:{{$subcat_count}}</h4>
             </div>
             <div class="col-auto">
             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
