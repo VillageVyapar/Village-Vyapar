@@ -25,7 +25,7 @@ class profileController extends Controller
             
             $dp=DB::select('select c_img from customers where c_id = ? ',[$req->id]);
             //sdd($dp);
-            //File::delete($dp);
+            File::delete($dp);
             $imageName = $req->file('profiledp');
             // $imageName->getClientOriginalName();
             $newname=time().'_'.$imageName->getClientOriginalName();
