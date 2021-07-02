@@ -41,9 +41,12 @@ class adminlogincontroller extends Controller
     {
       $email=$req->session()->get('adminemail');
       $user2=admin::where('a_email','like',$email)->get();
-      
+      $cat_count=category::count();
       $count=admin::count();
-      return view('admin.admindashboard',['aname'=>$user2,'count'=>$count]);
+      $subcat_count=subcategory::count();
+      $product_count=product::count();
+      $customer_count=customer::count();
+      return view('admin.admindashboard',['aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
     }
      function adminlogout()
      {
