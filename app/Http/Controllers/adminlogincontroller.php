@@ -8,6 +8,7 @@ use iLLuminate\Session;
 use App\admin;
 use App\customer;
 use App\product;
+use App\category;
 
 class adminlogincontroller extends Controller
 {
@@ -23,9 +24,11 @@ class adminlogincontroller extends Controller
             $req->session()->put('adminemail',$email);
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();
-            
-            
-            return view('admin.admindashboard',['results'=>$user,'aname'=>$user2]);
+            $count=admin::count();
+            $product_count=product::count();
+            $customer_count=customer::count();
+            $cat_count=category::count();
+            return view('admin.admindashboard',['results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count]);
             }
          else {
              echo "<script> alert('Invalid login credential.')</script>";
@@ -36,9 +39,9 @@ class adminlogincontroller extends Controller
     {
       $email=$req->session()->get('adminemail');
       $user2=admin::where('a_email','like',$email)->get();
-
       
-      return view('admin.admindashboard',['aname'=>$user2]);
+      $count=admin::count();
+      return view('admin.admindashboard',['aname'=>$user2,'count'=>$count]);
     }
      function adminlogout()
      {
@@ -53,6 +56,7 @@ class adminlogincontroller extends Controller
       
        return view('admin.adminviewprofile',['data'=>$view,'aname'=>$user2]);
      }
+     
      
    }
    

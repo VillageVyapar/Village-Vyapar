@@ -21,6 +21,7 @@ class productcontroller extends Controller
         
         $email=$res->session()->get('useremail');
         $cust=customer::where('email',$email)->get();
+        
         return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
     }
     function priceAjax($price,$sid)
