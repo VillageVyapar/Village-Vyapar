@@ -26,10 +26,7 @@ class productcontroller extends Controller
     function priceAjax($price,$sid)
     {
           $product=product::where('p_price','<=',$price)->where('subcat_id',$sid)->get();
-        // foreach ($product as $p)
-        // {
-        //    $msg="{{$p}}";
-        // }
+       
 
             $msg=array();
             foreach($product as $p)
@@ -56,8 +53,7 @@ class productcontroller extends Controller
                 </li>
                 ");
             }
-                 
-
+                
         return response()->json(array('msg'=> $msg), 200);
     }
     function show_catwisepro($cid)

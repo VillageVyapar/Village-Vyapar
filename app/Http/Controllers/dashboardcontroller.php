@@ -94,12 +94,7 @@ class dashboardcontroller extends Controller
             return view('customer/customer_product',['procus'=>$procus,'cusname'=>$cusname,'category'=>$cat,'subcategory'=>$scat]);
         }
     }
-    function chat_details()
-    {
-        $email=session()->get('useremail');
-        $cusname=customer::where('email','LIKE',$email)->get();
-        return view('customer/customer_chat',['cusname'=>$cusname]);   
-    }
+    
     function customer_change_password()
     {
         $email=session()->get('useremail');
