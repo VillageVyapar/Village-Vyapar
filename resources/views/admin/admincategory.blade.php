@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
 <?php
 session_start();
 if(!Session::has('adminemail'))
@@ -17,7 +22,7 @@ if(!Session::has('adminemail'))
 }
 </style>
 @include('admin/includes/sidebar_navbar')
-<div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -42,12 +47,30 @@ if(!Session::has('adminemail'))
       </form>
     </div>
   </div>
+</div> -->
+<div class="modal" id="addcategory" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
 <div class="container-fluid">
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Manage
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcategory">
             Add Category 
         </button>
         
