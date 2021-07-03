@@ -179,7 +179,7 @@ img{ max-width:100%;}
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Recent </h4>
+              <h4>Inbox  </h4>
             </div>
 
           </div>
@@ -191,12 +191,14 @@ img{ max-width:100%;}
 
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="customer_img/{{$f->c_img}}" alt="sunil"> </div>
+                <div class="chat_img"> <img src="customer_img/{{$f->c_img}}" title='{{$f->c_img}}' alt="{{$f->c_name}}"> </div>
                 <div class="chat_ib">
 
                   <!-- <button type='button' value='{{$f->from_user}}' onclick='chat_open(this.value)'>Check </button>
                 </form> -->
-                  <h5>{{$f->c_name}} <span style='float:right;' class="chat_date">Dec 25</span></h5>
+                  <h5>{{$f->c_name}}  
+                                      <span style='float:right;' class="chat_date"></span></h5>
+                  <!-- {date('d-m-y', strtotime($f->timestamp} -->
                   <p>Test, which is a new approach to have all solutions
                     astrology under one roof.</p>
                     <button type='button'  value='{{$f->from_user}}' onclick='chat_open(this.value)'>View Chat</button>
@@ -210,7 +212,9 @@ img{ max-width:100%;}
         </div>
 
         <div class="mesgs" style='overflow: scroll;' id='msg' >
+          
               Here is message
+              
         </div>
 
                     </div>

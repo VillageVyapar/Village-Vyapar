@@ -96,7 +96,7 @@ function set(str)
               </div>
               <div class="aa-product-catg-head-right">
                 <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
-                <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
+                <!-- <a id="list-catg" href="#"><span class="fa fa-list"></span></a> -->
               </div>
             </div>
             
@@ -126,7 +126,17 @@ function set(str)
                 <li >
                   <figure>
                     <a  href=""><img style='width:270px;height:300px;float:left' src="/product_images/{{$p['img']}}"/></a>
-                    <a class="aa-add-card-btn"href="#" style=''><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                    
+                    <?php
+                  $pid=$p['p_id'];
+                  if(Session::has('useremail'))
+                  {
+                    
+                    echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                  }
+                  ?>
+                    
+                    
                     <figcaption>
                       <h4 class="aa-product-title"><a href="#" style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a></h4>
                       <span class="aa-product-price" style='float:right;padding-right:15px;'> &#8377; {{$p['p_price']}}</span><span class="aa-product-price"></span>
@@ -138,14 +148,8 @@ function set(str)
                   </figure>                         
                   <div class="aa-product-hvr-content">
                   
-                  <?php
-                  $pid=$p['p_id'];
-                  if(Session::has('useremail'))
-                  {
-                    echo "<a href='addWish/$pid' data-toggle='tooltip' data-placement='top' title='Add to Wishlist'><span class='fa fa-heart-o'></span></a>";
-                  }
-                  ?>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
+                
+                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal-{{$p['p_id']}}"><span class="fa fa-search"></span></a>                            
                   
                   </div>
@@ -206,8 +210,8 @@ function set(str)
                                 </p>
                               </div>
                               <div class="aa-prod-view-bottom">
-                                <a href="#" style='float:left;padding:8px;' class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                <a href="{{ url('product_details',$p['p_id']) }}" style='margin-left:10px;padding:8px;' class="aa-add-to-cart-btn">View Details</a>
+                                <!-- <a href="#" style='float:left;padding:8px;' class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a> -->
+                                <a href="{{ url('product_details',$p['p_id']) }}" style='margin-left:15px;padding:15px;width:250px;text-align:center;' class="aa-add-to-cart-btn">View Details</a>
                               </div>
                           </div>
                         </div>
