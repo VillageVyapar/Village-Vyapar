@@ -55,6 +55,7 @@ Route::get('newReview','reviewController@addReview');
 
 Route::get('product/addWish/{pid}','wishlistcontroller@addWishlist');
 Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
+route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
 /*  ***************        Customer Panel  Route       ************************ */
 

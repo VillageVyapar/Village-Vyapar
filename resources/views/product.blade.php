@@ -347,4 +347,4 @@ function set(str)
       </div>
     </div>
   </section>
-  @include('footer');
+  @include('footer'); 
