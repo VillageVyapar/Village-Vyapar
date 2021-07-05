@@ -161,9 +161,6 @@ img{ max-width:100%;}
          }
            
       </script>
-
-
-
               <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -193,7 +190,6 @@ img{ max-width:100%;}
               <div class="chat_people">
                 <div class="chat_img"> <img src="customer_img/{{$f->c_img}}" title='{{$f->c_img}}' alt="{{$f->c_name}}"> </div>
                 <div class="chat_ib">
-
                   <!-- <button type='button' value='{{$f->from_user}}' onclick='chat_open(this.value)'>Check </button>
                 </form> -->
                   <h5>{{$f->c_name}}  
@@ -205,8 +201,9 @@ img{ max-width:100%;}
                 </div>
               </div>
             </div></form>
-
             @endforeach
+            
+            
           
           </div>
         </div>

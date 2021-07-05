@@ -57,13 +57,19 @@
  }
 
  </script>
- 
+ <style>
+ .simpleLens-big-image:hover
+ {
+    transform:scale(1.5);
+ }
+ </style>
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
    <img src="/img/fashion/fashion-header-bg-8.jpg" style='height:250px;' alt="fashion img">
    <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
+      
       @if(isset($products))
         @foreach($products as $p)
             <h2 align='left'>{{$p['p_name']}}</h2>
@@ -95,7 +101,7 @@
                     <div id="demo-1" class="simpleLens-gallery-container">
                       <div class="simpleLens-container">
                         <div class="simpleLens-big-image-container"><a data-lens-image="/product_images/{{$p['img']}}" class="simpleLens-lens-image">
-                          <img src="/product_images/{{$p['img']}}" class="simpleLens-big-image"></a></div>
+                          <img src="/product_images/{{$p['img']}}" id='bigimages' style='border:2px solid red' class="simpleLens-big-image"></a></div>
                       </div>
                       <!--<div class="simpleLens-thumbnails-container">
                           <a data-big-image="img/view-slider/medium/polo-shirt-1.png" data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-thumbnail-wrapper" href="#">
@@ -145,12 +151,15 @@
                   
                   <form method='get'><h3 style='color:red;'>Seller description : <i  onClick='like()' id='likes' style='color:red;float:right;padding-right:80px;' class="fa fa-heart-o" aria-hidden="true"><p id='msg'>{{$p['total_like']}}</p></i></h3>
                   </form>
+                  
+                  
                   <h4>{{$p['c_name']}}  : </h4>
                   <p>{{$p['address']}}</p>  
                   <a onclick='show2()' style='cursor:pointer;padding-right:20px;color:grey'> Show phone no </a>    
                   <input type='password' disabled style='border:none;' id='pass2' value='{{$p['phone_no']}}' />
                   
-                  <a class="aa-add-to-cart-btn" href="#">Chat Now</a>
+                  <a class="aa-add-to-cart-btn" href="{{url('/customerchat',$p->c_id)}}">Chat Now</a>
+                  </form>
                   
                   </div>
                     <!-- <div class="aa-prod-view-bottom">
@@ -198,10 +207,12 @@
                             </a>
                           </div>
                           <div class="media-body">
-                            <h4 class="media-heading"><strong>{{$fb['c_name']}}</strong> - <span>{{$fb['f_date']}}</span></h4>
+                            <h4 class="media-heading"><strong>{{$fb['c_name']}}</strong> - <span>{{date('d-M-y',strtotime($fb['f_date']))}}</span></h4>
                             
                             <p>{{$fb['desc']}}</p>
+                            <!-- <a href="{{url('delreview/$fb->c_id/$fb->p_id')}}" style='float:right;color:green'><b>Delete review</b></a> -->
                           </div>
+                          
                         </div>
                       </li>
                     @endforeach
@@ -221,7 +232,7 @@
                   <div class='form-group'>
                   <label for='message'>Your Review</label>
                   <input type='text' style='display:none' name='pid' value='$pid'/>
-                  <input type='text' style='display:none' name='cid' value='$cid'/>
+                  
                   <textarea class='form-control' rows='3' name='review' id='message'></textarea>
                   <input type='submit' class='btn btn-default aa-review-submit' value='submit'/>
                   </div>
@@ -241,7 +252,7 @@
                             
                             <li>Phone no : <input type='password' disabled style='border:none;' id='pass' value='{{$p['phone_no']}}' />  </li>
                             <li><a onclick='show()' style='float :left;cursor:pointer;padding-right:20px;'> Show Contact no </a></li>
-                            <li><a> Chat now </a></li>
+                            
                         @endforeach
                         </ul>
                  @endif

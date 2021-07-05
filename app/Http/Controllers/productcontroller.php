@@ -20,6 +20,7 @@ class productcontroller extends Controller
         $scname=subcategory::join('categories','categories.cat_id','subcategories.cat_id')->where('subcat_id',$id)->get();
         
         $email=$res->session()->get('useremail');
+        
         $cust=customer::where('email',$email)->get();
         
         return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
@@ -94,6 +95,10 @@ class productcontroller extends Controller
         $allpro=product::all();
         //$res->cookie('p_id',$p,300);
         //dd($res->cookie('p_id'));
+        
+        // $res->cookie('view',0,100);
+
+        // dd($res->cookie('view'));
         
         $email=$res->session()->get('useremail');
         $cust=customer::where('email',$email)->get();

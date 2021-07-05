@@ -22,7 +22,6 @@ class profileController extends Controller
     {   
         if($req->hasFile('profiledp'))
         {
-            
             $dp=DB::select('select c_img from customers where c_id = ? ',[$req->id]);
             //sdd($dp);
             File::delete($dp);

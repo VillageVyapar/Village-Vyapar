@@ -56,6 +56,8 @@ Route::get('newReview','reviewController@addReview');
 Route::get('product/addWish/{pid}','wishlistcontroller@addWishlist');
 Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
 
+Route::get('customerchat/{cid}','chatcontroller@insert_customer_in_chat');
+
 /*  ***************        Customer Panel  Route       ************************ */
 
 

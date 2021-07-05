@@ -22,8 +22,8 @@ class chatcontroller extends Controller
         {
             //$from=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->get()->distinct('customers.c_name');
           
-            $from=DB::select('select DISTINCT(from_user),customers.* from chats join customers on customers.c_id=chats.from_user where chats.from_user <> ?',[$c->c_id]);
-            $to=DB::select('select DISTINCT(from_user),customers.* from chats join customers on customers.c_id=chats.to_user where chats.to_user <> ?',[$c->c_id]);
+            $from=DB::select('select DISTINCT(from_user),customers.* from chats join customers on customers.c_id=chats.from_user where chats.from_user <> ? and to_user = ? ',[$c->c_id,$c->c_id]);
+            $to=DB::select('select DISTINCT(to_user),customers.* from chats join customers on customers.c_id=chats.to_user where chats.to_user <> ?',[$c->c_id]);
 
             $fromchat=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->get();
             $tochat=chat::join('customers','customers.c_id','chats.to_user')->where('chats.to_user','!=',$c->c_id)->get();
@@ -97,5 +97,39 @@ class chatcontroller extends Controller
             ]);
         }
         return redirect()->back();
+    }
+    function insert_customer_in_chat($cid)
+    {
+        $email=session()->get('useremail');
+        $cusname=customer::where('email','LIKE',$email)->get();
+        foreach($cusname as $c)
+        {
+            $chat=chat::where('to_user',$cid)->where('from_user',$c->c_id)->count();
+            //dd($chat);
+            if($chat < 1)
+            {
+                    $qry=chat::insert([
+                        'message'=>'Hello seller',
+                        'from_user'=>$c->c_id,
+                        'to_user'=>$cid,
+                        'status'=>0
+                    ]);
+                    if($qry)
+                    { 
+                        return redirect('chat');
+
+                    }
+                       
+                    else
+                        return redirect('/');
+            }
+            else
+            {
+                return redirect('chat');
+            }
+        }
+        
+
+        
     }
 }
