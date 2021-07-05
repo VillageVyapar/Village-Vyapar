@@ -56,7 +56,7 @@ if(!Session::has('adminemail'))
                                                     <td  style='width: 50PX;' class="center">
                                                         <a href="{{ url('category_detail',$r['cat_id']) }}"><button type="button" class="btn btn-primary">View</button></a>
                                                         <a href='#'><button type="button" class="btn btn-success">Edit</button></a>
-                                                        <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a href="{{url('deletesubcategory/'.$r['cat_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </td>
                                                 </tr>
                                                 @else
@@ -66,7 +66,7 @@ if(!Session::has('adminemail'))
                                                     <td class="center">
                                                         <a href="{{ url('category_details',$pc['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                                         <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                                        <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                                        <a href="{{url('deletesubcategory/'.$r['cat_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </td>
                                                 </tr>
                                                 @endif

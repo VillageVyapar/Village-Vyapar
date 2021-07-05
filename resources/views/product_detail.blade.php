@@ -85,8 +85,9 @@
 
   <!-- product category -->
   @foreach($products as $p)
-  <?php $pid=$p['p_id'];
-        $cid=$p['c_id'];
+  <?php 
+    $pid=$p['p_id'];
+    $usersession=session('useremail');
   ?>
   <section id="aa-product-details">
     <div class="container">
@@ -199,6 +200,7 @@
                    
                    <ul class="aa-review-nav">
                    @foreach ($feedbacks as $fb) 
+                   
                      <li>
                         <div class="media">
                           <div class="media-left">
@@ -210,7 +212,27 @@
                             <h4 class="media-heading"><strong>{{$fb['c_name']}}</strong> - <span>{{date('d-M-y',strtotime($fb['f_date']))}}</span></h4>
                             
                             <p>{{$fb['desc']}}</p>
+<<<<<<< HEAD
                             <!-- <a href="{{url('delreview/$fb->c_id/$fb->p_id')}}" style='float:right;color:green'><b>Delete review</b></a> -->
+=======
+                            <?php $cemail=$fb['email']; ?>
+                            
+                            {{@csrf_field()}}
+                            <?php
+                              if(Session::has('useremail')){
+                              foreach($customers as $cust){
+                                $cid=$cust['c_id'];
+                                if($usersession==$cemail){
+                                  echo "<form action={{url('deleteFeedback',[$cid,$pid])}} method='post'><button style='background:none; border:none; color:blue; '>Delete</button></form>";
+                                }
+                              }
+                              }
+                              
+                            ?>
+                          </div>
+                          <div>
+                            
+>>>>>>> c44af479014cd4adb52dd6af44217820c95cf324
                           </div>
                           
                         </div>

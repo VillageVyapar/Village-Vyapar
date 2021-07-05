@@ -108,7 +108,7 @@ if(!Session::has('adminemail'))
                     <td class="center">
                         <a href="{{ url('category_detail',$r['cat_id']) }}"><button type="button" class="btn btn-primary">View</button></a>
                         <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button" class="btn btn-success">Edit</button></a>
-                        <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                        <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                     </td>
                     </tr>
                 @endforeach

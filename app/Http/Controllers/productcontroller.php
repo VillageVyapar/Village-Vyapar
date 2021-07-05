@@ -105,5 +105,11 @@ class productcontroller extends Controller
         $productRev=product::where('p_id',$p)->get();
         return view('product_detail',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'feedbacks'=>$feedb,'fbcnt'=>$fbcnt,'allproduct'=>$allpro,'customers'=>$cust,'proRev'=>$productRev]);
     }
-    
+    function del_feedback(Request $req,$cid,$pid){
+        feedback::where("c_id",$cid)->where("p_id",$pid)->delete();
+        return redirect()->back();
+        // echo "hello";
+        // $arr=array('cid' => $cid, 'pid' => $pid);
+        // dd($arr);
+    }
 }

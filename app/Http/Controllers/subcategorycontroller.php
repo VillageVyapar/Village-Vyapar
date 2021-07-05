@@ -19,5 +19,11 @@ class subcategorycontroller extends Controller
         $user2= admin::where('a_email','like',$email)->get();
         return view('admin/adminsubcategory',['results'=>$results,'aname'=>$user2]);
     }
+    function deletesubcategory(Request $req,$id)
+    {
+       
+       subcategory::where('cat_id',$id)->delete();
+       return redirect()->back();
+    }
     
 }
