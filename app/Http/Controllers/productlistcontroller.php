@@ -27,6 +27,14 @@ class productlistcontroller extends Controller
         $product_count=product::count();
         return view('admin.product',['procus'=>$procus,'aname'=>$user2,'pcount'=>$product_count]); 
 
+
+
+    }
+    function deleteproduct(Request $req,$id)
+    {
+        
+      product::where('p_id',$id)->delete();
+      return redirect()->back();
     }
      
 }

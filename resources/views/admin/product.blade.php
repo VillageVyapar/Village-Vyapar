@@ -10,10 +10,10 @@ if(!Session::has('adminemail'))
 <div class="container-fluid">
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Manage
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
+        <a href="#"><button type="button" class="btn btn-primary">
             Add Product 
             
-        </button>
+        </button></a>
         
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
             Add Menu 
@@ -57,8 +57,8 @@ if(!Session::has('adminemail'))
                                         <td><div style='width:250px;height:100px;overflow:scroll'>{{$pc['p_desc']}}</div></td>
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
-                                            <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                            <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                           
+                                            <a href="{{url('deleteproduct/'.$pc['p_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
                                     @else
@@ -70,8 +70,9 @@ if(!Session::has('adminemail'))
                                         <td><div style='width:250px;height:100px;overflow:scroll'>{{$pc['p_desc']}}</div></td>
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
-                                            <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                            <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                            
+                                            <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+                                            <a href="{{url('deleteproduct/'.$pc['p_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endif
@@ -104,6 +105,7 @@ if(!Session::has('adminemail'))
 <!-- /#page-wrapper -->
 </div>
 
+
 <!-- /#wrapper -->
 <!-- jQuery -->
 <script src="Customer/js/jquery.min.js"></script>
@@ -129,6 +131,7 @@ if(!Session::has('adminemail'))
         });
     });
 </script>
+
 
 </body>
 </html>

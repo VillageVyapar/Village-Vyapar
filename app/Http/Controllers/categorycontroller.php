@@ -27,5 +27,10 @@ class categorycontroller extends Controller
         
         return view('admin.admineditcategory',['results'=>$results,'up'=>$up]);
     }
-    
+    function deletecategory(Request $req,$id)
+    {
+       
+       category::where('cat_id',$id)->delete();
+       return redirect()->back();
+    }
 }

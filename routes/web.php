@@ -109,3 +109,6 @@ Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("admincustomer",[admincustomercontroller::class,'view_customer']);
 
 route::post('adminUpdateProfile',"adminProfileController@editProAdmin");
+Route::get("deleteproduct/{id}",[productlistcontroller::class,'deleteproduct']);
+Route::get("deletecategory/{id}",[categorycontroller::class,'deletecategory']);
+Route::get("deletesubcategory/{id}",[subcategorycontroller::class,'deletesubcategory']);
