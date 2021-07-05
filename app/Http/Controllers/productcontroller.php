@@ -14,6 +14,7 @@ class productcontroller extends Controller
     //
     function show_product($id,Request $res)
     {
+        $shoplike=DB::select('select * from products order by total_like desc limit 5');
         $c=category::all();
         $sc=subcategory::all();
         $pro=product::join('customers','customers.c_id','products.c_id')->where('subcat_id',$id)->paginate(9);
@@ -23,13 +24,11 @@ class productcontroller extends Controller
         
         $cust=customer::where('email',$email)->get();
         
-        return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
+        return view('product',['shoplikes'=>$shoplike,'categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
     }
     function priceAjax($price,$sid)
     {
           $product=product::where('p_price','<=',$price)->where('subcat_id',$sid)->get();
-       
-
             $msg=array();
             foreach($product as $p)
             {
@@ -64,8 +63,8 @@ class productcontroller extends Controller
         $sc=subcategory::all();
         $pro=product::join('customers','customers.c_id','products.c_id')->where('cat_id',$cid)->paginate(9);
         $cname=category::select('cat_name')->where('cat_id',$cid)->get();
-
-        return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'cname'=>$cname]);
+        $shopbylike=DB::select('select * from products order by total_like desc limit 5');
+        return view('product',['shoplikes'=>$shopbylike,'categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'cname'=>$cname]);
     }
     function search_product(Request $req)
     {   $s=$req->input('search');
@@ -85,7 +84,7 @@ class productcontroller extends Controller
     }
     function p_details($p,Request $res)
     {
-
+        
         $fbcnt=feedback::join('customers','customers.c_id','feedback.c_id')->where('p_id',$p)->count();
         $feedb=feedback::join('customers','customers.c_id','feedback.c_id')->where('p_id',$p)->get();
         $pro=product::join('customers','products.c_id','customers.c_id')->join('categories','categories.cat_id','products.cat_id')->join('subcategories','subcategories.subcat_id','products.subcat_id')->where('p_id',$p)->get();

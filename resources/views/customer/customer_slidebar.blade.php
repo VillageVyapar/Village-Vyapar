@@ -99,7 +99,8 @@ $email=Session::get('useremail');
 
                         <li>
                             <center>
-                                <img src="customer_img/{{$cn['c_img']}}" style='height:60px;width:60px;radius:50%'>
+                                <img src="customer_img/{{$cn['c_img']}}"
+                                    style='height:60px;width:60px;border-radius:50%'>
                                 <br><br>
                                 <b style='text-align:center'>{{$cn['c_name']}}</b>
                         </li>

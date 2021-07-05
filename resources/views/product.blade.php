@@ -278,23 +278,7 @@ function set(str) {
                     </div>
                     <br> <br>
                     <!-- single sidebar -->
-                    <div class="aa-sidebar-widget">
-                        <h3>Shop By Color</h3>
-                        <div class="aa-color-tag">
-                            <a class="aa-color-green" href="#"></a>
-                            <a class="aa-color-yellow" href="#"></a>
-                            <a class="aa-color-pink" href="#"></a>
-                            <a class="aa-color-purple" href="#"></a>
-                            <a class="aa-color-blue" href="#"></a>
-                            <a class="aa-color-orange" href="#"></a>
-                            <a class="aa-color-gray" href="#"></a>
-                            <a class="aa-color-black" href="#"></a>
-                            <a class="aa-color-white" href="#"></a>
-                            <a class="aa-color-cyan" href="#"></a>
-                            <a class="aa-color-olive" href="#"></a>
-                            <a class="aa-color-orchid" href="#"></a>
-                        </div>
-                    </div>
+
                     <!-- single sidebar -->
                     <div class="aa-sidebar-widget">
                         <h3>Recently Views</h3>
@@ -326,30 +310,23 @@ function set(str) {
                     </div>
                     <!-- single sidebar -->
                     <div class="aa-sidebar-widget">
-                        <h3>Top Rated Products</h3>
+                        <h3>Shop By Product's Likes </h3>
                         <div class="aa-recently-views">
                             <ul>
+                                @if(isset($shoplikes))
+                                @foreach($shoplikes as $sbl)
                                 <li>
-                                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
+                                    <a href="{{ url('product_details',$sbl->p_id) }}" class="aa-cartbox-img"><img
+                                            alt="img" src='/product_images/{{$sbl->img}}'></a>
                                     <div class="aa-cartbox-info">
-                                        <h4><a href="#">Product Name</a></h4>
-                                        <p>1 x $250</p>
+                                        <h4><a href="{{ url('product_details',$sbl->p_id) }}">{{$sbl->p_name}}</a></h4>
+                                        <p>Price(&#8377;) : {{$sbl->p_price}} &#8377;</p>
+                                        <p>likes : {{$sbl->total_like}} <i class='fa fa-heart' style='color:red'></i>
+                                        </p>
                                     </div>
                                 </li>
-                                <li>
-                                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                                    <div class="aa-cartbox-info">
-                                        <h4><a href="#">Product Name</a></h4>
-                                        <p>1 x $250</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                                    <div class="aa-cartbox-info">
-                                        <h4><a href="#">Product Name</a></h4>
-                                        <p>1 x $250</p>
-                                    </div>
-                                </li>
+                                @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
