@@ -164,23 +164,15 @@ class dashboardcontroller extends Controller
         ";
         foreach($pro_data as $pc)
         {   
-            
-                                            $output .=" <tr class='odd gradeX'>
-                                                    <td><img src='product_images/{$pc['img']}' style='height:100px;width:150px;'/><br><b>Total likes : ({{$pc['total_like']}})</b>
-                                                    <td style='width:200px;'>{$pc['p_name']}</td>
-                                                    <td>{$pc['p_price']}</td>
-                                                    <td>{$pc['QOH']}</td>
-                                                    <td>{$pc['cat_name']} <br>{$pc['subcat_name']} </td>
-                                                    <td>{$pc['p_desc']}</td>
-                                                    
-                                                        
-                                                    
-                                                </tr> ";
-            
-           
+            $output .=" <tr class='odd gradeX'>
+                    <td><img src='product_images/{$pc['img']}' style='height:100px;width:150px;'/><br><b>Total likes : ({{$pc['total_like']}})</b>
+                    <td style='width:200px;'>{$pc['p_name']}</td>
+                    <td>{$pc['p_price']}</td>
+                    <td>{$pc['QOH']}</td>
+                    <td>{$pc['cat_name']} <br>{$pc['subcat_name']} </td>
+                    <td>{$pc['p_desc']}</td>
+                </tr> ";
         }
     return $output;
     }
-    
-    
 }

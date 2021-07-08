@@ -20,6 +20,7 @@ use  App\Http\Controllers\adminProfileController;
 
 
 
+use App\Http\Controlers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,9 +56,7 @@ Route::get('newReview','reviewController@addReview');
 
 Route::get('product/addWish/{pid}','wishlistcontroller@addWishlist');
 Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
-route::get("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
-
-Route::get('customerchat/{cid}','chatcontroller@insert_customer_in_chat');
+route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
 /*  ***************        Customer Panel  Route       ************************ */
 
@@ -87,7 +86,6 @@ Route::get('download','dashboardcontroller@pdf');
 
 
 
-
 /*  ***************        Admin  Panel  Route       ************************ */
 
 
@@ -114,3 +112,10 @@ route::post('adminUpdateProfile',"adminProfileController@editProAdmin");
 Route::get("deleteproduct/{id}",[productlistcontroller::class,'deleteproduct']);
 Route::get("deletecategory/{id}",[categorycontroller::class,'deletecategory']);
 Route::get("deletesubcategory/{id}",[subcategorycontroller::class,'deletesubcategory']);
+
+
+
+
+route::view('fpass','admin/fpass');
+Route::post('send-mail','MailController@basic_email');
+route::post('newpass','adminlogincontroller@newpassword');

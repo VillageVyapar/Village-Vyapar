@@ -62,6 +62,22 @@ class adminlogincontroller extends Controller
        return view('admin.adminviewprofile',['data'=>$view,'aname'=>$user2]);
      }
      
-     
-   }
+     function newpassword(Request $req){
+        $passedpassword=$req->passedCode;
+        $userEnterdPass=$req->userCode;
+        $email=$req->passedEmail;
+        $newpass=$req->password;
+        // $arr=[$passedpassword,$userEnterdPass,$email,$newpass];
+        // dd($arr);
+        if($passedpassword==$userEnterdPass){
+          admin::where('a_email',$email)->update(['a_password' => $newpass]);
+          echo "success";
+        }
+        else{
+          $req->session()->put('wrongcode',"Enter Correct code");
+          return redirect()->back();
+        }
+    
+    }
+}
    
