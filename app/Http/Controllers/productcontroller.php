@@ -98,7 +98,11 @@ class productcontroller extends Controller
         // $res->cookie('view',0,100);
 
         // dd($res->cookie('view'));
-        
+        $view=product::where('p_id',$p)->get();
+        foreach ($view as $v)
+        {
+          $totalview=product::where('p_id',$p)->update(['total_view'=>$v->total_view+1]);
+        }
         $email=$res->session()->get('useremail');
         $cust=customer::where('email',$email)->get();
         $productRev=product::where('p_id',$p)->get();

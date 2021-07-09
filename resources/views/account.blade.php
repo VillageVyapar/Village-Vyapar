@@ -34,7 +34,7 @@ function forgotpass() {
                     <div class="row">
                         <div class="col-md-6">
                             <div class="aa-myaccount-login">
-                                <h4>( Customer/Seller )Login Form</h4>
+                                <h4>Login Form</h4>
                                 <?php $random=rand(100000,999999);?>
                                 <form action="" method="post" class="aa-login-form">
                                     {{ @csrf_field() }}
@@ -70,7 +70,7 @@ function forgotpass() {
                         </div>
                         <div class="col-md-6">
                             <div class="aa-myaccount-register">
-                                <h4>( Customer/Seller ) Register Form</h4>
+                                <h4>New Register Form</h4>
                                 <form action="reg" enctype="multipart/form-data" method='post' class="aa-login-form"
                                     id="regForm">
                                     {{@csrf_field()}}
