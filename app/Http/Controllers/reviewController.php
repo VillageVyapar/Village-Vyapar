@@ -32,19 +32,13 @@ class reviewController extends Controller
                 {
                     echo "<script>alert(' Thanks for giving feedback !!');</script>";
                     return redirect()->back();
-                }
-                
+                }   
             }
             else
             {
-               
-                    echo "<script>alert(' You have already given feedback !!');</script>"; 
-                    return redirect()->back();
+                echo "<script>alert(' You have already given feedback !!');</script>"; 
+                return redirect()->back();
             }
-    
         }
-       
-              
-       
     }
 }
