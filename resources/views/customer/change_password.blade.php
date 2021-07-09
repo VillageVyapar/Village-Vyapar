@@ -1,11 +1,3 @@
-<?php
-session_start();
-if(!Session::has('useremail'))
-{
-  echo "<script>location.href='/'</script>";
-}
-?>
-
 @include('customer/customer_slidebar');
 <style>
 .form-input {

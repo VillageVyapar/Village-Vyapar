@@ -33,12 +33,15 @@ use  App\Http\Controllers\adminProfileController;
 
 
 /*  ***************        Customer Route       ************************ */
+Route::get('subscription','customercontroller@subscription_pack');
 
 Route::get('/','menu@show_menu');
 Route::get('/account','menu@account_show');
 
 Route::post('/account','customercontroller@login');
-Route::post('reg','customercontroller@register');  // registration
+Route::post('reg','customercontroller@register');
+Route::post('verify_acc','customercontroller@verify_otp');
+// registration
 Route::get('product/{id}','productcontroller@show_product');
 Route::get('products/{cid}','productcontroller@show_catwisepro');
 Route::post('/product','productcontroller@search_product');
@@ -58,6 +61,7 @@ Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
 route::get("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
 Route::get('customerchat/{cid}','chatcontroller@insert_customer_in_chat');
+Route::post('forgot_pass/','customercontroller@forgot_password');
 
 /*  ***************        Customer Panel  Route       ************************ */
 

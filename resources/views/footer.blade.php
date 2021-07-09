@@ -33,10 +33,6 @@
                                 </div>
                             </div>
 
-
-
-
-
                             <div class="col-md-3 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <div class="aa-footer-widget">
@@ -46,10 +42,28 @@
                                             <p><span class="fa fa-phone"></span>+91 8460730564</p>
                                             <p><span class="fa fa-envelope"></span>villagevyapar253@gmail.com</p>
                                         </address>
-
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="aa-footer-widget">
+                                    <div class="aa-footer-widget">
+                                        <h3>Subscribe Email id</h3>
+                                        <address>
+                                            <form action="" class="aa-subscribe-form">
+                                                <input type="email" name="" style='width:260px;' id=""
+                                                    placeholder="Enter your Email">
+                                                <br><br>
+                                                <input type="submit" style='
+                                                    float:right;color:white;text-decoration:bold;background-color:red'
+                                                    value="Subscribe">
+                                            </form>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

@@ -55,11 +55,10 @@ function forgotpass() {
                                 </form><br><br><br>
                                 <div id="forgot" style='display:none'>
                                     <h4>Forgot Password</h4>
-                                    <form action="" method="post" class="aa-login-form">
+                                    <form action="/forgot_pass" method="post" class="aa-login-form">
                                         {{ @csrf_field() }}
                                         <label for="">Email address<span>*</span></label>
                                         <input type="email" name='email' required placeholder="Enter Email Id">
-
                                         <button type="submit" class="aa-browse-btn">Send</button><br><br><br><br>
                                         <!-- <label class="rememberme" for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label> -->
                                         <b>Note : </b>

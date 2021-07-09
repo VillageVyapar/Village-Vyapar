@@ -46,7 +46,9 @@
             pageLanguage: 'en'
         }, 'google_translate_element');
     }
+    </script>
 
+    <script type="text/javascript">
     (function() {
         var gtConstEvalStartTime = new Date();
         /*
@@ -535,13 +537,8 @@
             _loadJs(b + '/translate_static/js/element/main.js');
         })();
     })();
-
-    <
-    !--Google Form Finished Script-- >
     </script>
-    <script>
-
-    </script>
+    <!-- finished  Google Form Script -->
 
 </head>
 
