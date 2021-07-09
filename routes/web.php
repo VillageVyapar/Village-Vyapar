@@ -59,14 +59,14 @@ Route::get('newReview','reviewController@addReview');
 
 Route::get('product/addWish/{pid}','wishlistcontroller@addWishlist');
 Route::get('delwishlist/{pid}','wishlistcontroller@del_wishlist');
-<<<<<<< HEAD
+
 route::get("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
 Route::get('customerchat/{cid}','chatcontroller@insert_customer_in_chat');
 Route::post('forgot_pass/','customercontroller@forgot_password');
-=======
+
 route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
->>>>>>> 72b8c989128a727754ad34096db468ac5a00332a
+
 
 /*  ***************        Customer Panel  Route       ************************ */
 

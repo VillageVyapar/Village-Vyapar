@@ -28,7 +28,7 @@ class MailController extends Controller
             "body"=>"Enter this code: $tempPass"
         ];
         
-        $user=customer::where("email",$req->email)->count();
+        $user=admin::where("a_email",$req->email)->count();
         
         if($user==1){
             // Mail::to($req->email)->send(new TestMail($data));
