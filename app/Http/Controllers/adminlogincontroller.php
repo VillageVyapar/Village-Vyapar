@@ -63,6 +63,7 @@ class adminlogincontroller extends Controller
      }
      
      function newpassword(Request $req){
+       
         $passedpassword=$req->passedCode;
         $userEnterdPass=$req->userCode;
         $email=$req->passedEmail;
@@ -71,13 +72,13 @@ class adminlogincontroller extends Controller
         // dd($arr);
         if($passedpassword==$userEnterdPass){
           admin::where('a_email',$email)->update(['a_password' => $newpass]);
-          echo "success";
+          $req->session()->put('adminemail',$email);
+          return redirect('dashboard');
         }
         else{
           $req->session()->put('wrongcode',"Enter Correct code");
           return redirect()->back();
         }
-    
     }
 }
    
