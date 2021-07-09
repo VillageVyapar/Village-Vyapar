@@ -7,6 +7,7 @@ use Mail;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Hash;
 use App\customer;
+use App\admin;
 use Session;
 
 class MailController extends Controller
@@ -31,7 +32,7 @@ class MailController extends Controller
         $user=admin::where("a_email",$req->email)->count();
         
         if($user==1){
-            // Mail::to($req->email)->send(new TestMail($data));
+            Mail::to($req->email)->send(new TestMail($data));
             return view('admin.securityCode',['code'=>$tempPass,'proEmail'=>$req->email]);
         }
         else{
