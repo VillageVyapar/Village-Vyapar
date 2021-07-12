@@ -39,7 +39,7 @@ class profileController extends Controller
 
             else {
                 return redirect('profile')->with("failed", "Update failed. Try again.");
-        }
+            }
         }
         else
         {
@@ -53,6 +53,22 @@ class profileController extends Controller
             else {
                 return redirect('profile')->with("failed", "Update failed. Try again.");
             }
+        }
+    }
+    public function updateDP(Request $req)
+    {
+        $id=$req->dpuserid;
+        $dp=DB::select('select c_img from customers where c_id = ? ',[$id]);
+        File::delete($dp);
+        $imageName = $req->file('profiledp');
+        $newname=time().'_'.$imageName->getClientOriginalName();
+        $imageName->move( public_path('customer_img'), $newname);
+        $user=customer::where('c_id',$id)->update(['c_img'=>$newname]);
+        if(!is_null($user)) { 
+            return redirect('profile')->with("success", "Updated profile successfully");
+        }
+        else {
+            return redirect('profile')->with("failed", "Update failed. Try again.");
         }
     }
 }

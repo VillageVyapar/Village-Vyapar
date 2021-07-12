@@ -1,132 +1,202 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</script>
+<script src="Customer/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="Customer/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="Customer/js/metisMenu.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="Customer/js/dataTables/jquery.dataTables.min.js"></script>
+<script src="Customer/js/dataTables/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="Customer/js/startmin.js"></script>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
+</head>
 <?php
 session_start();
 if(!Session::has('useremail'))
- {
-   echo "<script>location.href='/'</script>";
- }  
+{
+  echo "<script>location.href='/'</script>";
+}
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
 
 @include('customer/customer_slidebar');
-@foreach($customers as $cust)
-<div class="profile">
-    <form action="updateProfile" enctype="multipart/form-data" method='post' class="aa-login-form" id="editForm">
-        {{@csrf_field()}}
-        <table width="200" style='border:2px solid black;' align="center" frame="void" style="overflow-x:auto;">
-            <tbody>
-                <td><img src="customer_img/{{$cust->c_img}}" alt="Image" /><input type="file" name="profiledp"
-                        id="proimg" disabled></td>
 
-                <tr>
-                    <td><input type="hidden" name="id" value="{{ $cust->c_id}}"></td>
-                </tr>
-                <tr>
-                    <td><input type="hidden" name="currentdp" value="{{ $cust->c_img}}"></td>
-                </tr>
-                <tr>
-                    <td><label for="">Full Name: </label></td>
-                    <td><input type="text" name="name" id="name" value="{{ $cust->c_name }}" disabled required></td>
-                </tr>
-                <tr>
-                    <td><label for="">Phone No:</label></td>
-                    <td><input type="text" name='phone' id="phone" value="{{ $cust->phone_no }}" disabled required></td>
-                </tr>
-                <tr>
-                    <td><label for="">Address:</label></td>
-                    <td><input type="text" name='address' id="address" value="{{ $cust->address }}" disabled required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="">District:</label></td>
-                    <td><input type="text" name='district' id="district" value="{{ $cust->district }}" disabled
-                            required></td>
-                </tr>
-                <tr>
-                    <td><label for="">Village:</label></td>
-                    <td><input type="text" name='village' id="village" value="{{ $cust->village }}" disabled required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="">Pincode:</label></td>
-                    <td><input type="text" name='pincode' id="pincode" value="{{ $cust->pin_code }}" disabled required>
-                    </td>
-                </tr>
-                <td colspan="2">@if(Session::has('success'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{Session::get('success')}}
+<div id="page-wrapper">
+    <div class="profile">
+        <div class="container-fluid">
+            @foreach($customers as $cust)
+            <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                <form action="updateDP" enctype="multipart/form-data" method='post' class="aa-login-form" id="editForm">
+                {{@csrf_field()}}
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="customer_img/{{$cust->c_img}}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" alt="Image"/>
+                                    <div class="middle">
+                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+                                        <input type="file" style="display:none;" id="profilePicture" name="profiledp" required/>
+                                        <button type="submit" class="btn btn-primary" id="btnChangePicture">Update</button>
+                                        <input type="hidden" name="dpuserid" value="{{ $cust->c_id}}">
+                                    </div>
+                                </div>
+                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                
+                                <div class="tab-content ml-1" id="myTabContent" style="padding-top:10px;">
+                                    <form action="updateProfile" enctype="multipart/form-data" method='post' class="aa-login-form" id="editForm">
+                                    {{@csrf_field()}} 
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Full Name</label>
+                                                <input type="hidden" name="id" value="{{ $cust->c_id}}">
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name="name" id="name" value="{{ $cust->c_name }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Phone no</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name='phone' id="phone" value="{{ $cust->phone_no }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />              
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Address</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name='address' id="address" value="{{ $cust->address }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">District</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name='district' id="district" value="{{ $cust->district }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">village</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name='village' id="village" value="{{ $cust->village }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Pincode</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <input type="text" name='pincode' id="pincode" value="{{ $cust->pin_code }}" disabled required>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        @if(Session::has('success'))
+                                        <div class="alert alert-success alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            {{Session::get('success')}}
+                                        </div>
+                                        @elseif(Session::has('failed'))
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            {{Session::get('failed')}}
+                                        </div>
+                                        @endif
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Edit???</label>&nbsp<input type="checkbox" name="checkname" id="check" onclick="UpdateCheck()">
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <button type="submit" name='update' id='update' class="btn btn-primary d-none">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
                     </div>
-                    @elseif(Session::has('failed'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{Session::get('failed')}}
-                    </div>
-                    @endif
-                </td>
-                <tr>
-                    <td><label for="">Edit???</label><input type="checkbox" name="checkname" id="check"
-                            onclick="UpdateCheck()"></td>
-                    <td><button type="submit" name='update' id='update' class="aa-browse-btn">Update</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-    @endforeach
-
-</div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+            @endforeach
+        </div>
+    </div>
 </div>
 <style>
-.profile img {
+.profile{
+    padding-top:10px;
+}
+    body{
+    padding-top: 68px;
+    padding-bottom: 50px;
+}
+.image-container {
     position: relative;
-    height: 250px;
-    width: 250px;
-    float: center+250px;
-    left: 150px;
-    border-radius: 50%;
-    padding: 20px;
 }
 
-td,
-th {
-    padding: 5px;
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
 
-.profile button {
-    font-size: 14px;
-    padding: 8px 20px;
-    margin-right: 5px;
-    margin-top: 10px;
-    float: right;
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 88%;
+    left: 6.5%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-table {
-    position: relative;
-    top: 50px;
+.image-container:hover .image {
+    opacity: 0.3;
 }
 
-.profile label {
-    margin-bottom: 0;
-    margin-right: 10px;
-    font-weight: normal;
-    color: #555;
-}
-
-.profile input[type=text] {
-    border: 1px solid #ccc;
-    color: #555;
-    font-size: 14px;
-    font-family: "Raleway", sans-serif;
-    height: 40px;
-    padding: 10px 55px 10px 10px;
-    width: 250px;
-}
-
-input[type=checkbox] {
-    height: 15px;
+.image-container:hover .middle {
+    opacity: 1;
 }
 </style>
-
 <script>
+$("input[id='btnChangePicture']").click(function() {
+    $("input[id='profilePicture']").click();
+});
+
 function UpdateCheck() {
     var x = document.getElementById('check');
     if (x.checked == true) {
@@ -149,25 +219,6 @@ function UpdateCheck() {
 
 }
 </script>
-
-
-<!-- jQuery -->
-<script src="Customer/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="Customer/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="Customer/js/metisMenu.min.js"></script>
-
-<!-- Morris Charts JavaScript -->
-<script src="Customer/js/raphael.min.js"></script>
-<script src="Customer/js/morris.min.js"></script>
-<script src="Customer/js/morris-data.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="Customer/js/startmin.js"></script>
-
 </body>
 
 </html>

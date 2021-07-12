@@ -89,6 +89,7 @@ Route::get('setsubcat/{cid}','Ajaxcontroller@set_subcat'); // Ajax
 
 route::get('profile','profileController@prodetails');
 route::post('updateProfile','profileController@update');
+route::post('updateDP','profileController@updateDP');
 
 Route::post('change_pass','dashboardcontroller@change_password');
 Route::post('insertproducts','dashboardcontroller@add_product');
