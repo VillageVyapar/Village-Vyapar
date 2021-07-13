@@ -107,8 +107,6 @@ if(!Session::has('adminemail'))
                             <td style='width:200px;'>{{$r['cat_name']}}</td>
                             <td><img src="category_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
                             <td class="center">
-                                <a href="{{ url('category_detail',$r['cat_id']) }}"><button type="button"
-                                        class="btn btn-primary">View</button></a>
                                 <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button"
                                         class="btn btn-success">Edit</button></a>
                                 <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"

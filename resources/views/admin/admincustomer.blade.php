@@ -45,7 +45,8 @@ if(!Session::has('adminemail'))
                                     @foreach($cust as $c)
                                     @if($c['c_id']>=0)
                                     <tr class="odd gradeX">
-                                        <td><img src="customer_img/{{$c['c_img']}}" style='height:130px;width:180px;'>
+                                        <td><img src="customer_img/{{$c['c_img']}}"
+                                                style='border-radius:50%;height:130px;width:130px;'>
                                         <td style='width:200px;'>{{$c['c_name']}}</td>
                                         <td>{{$c['email']}}</td>
                                         <td>{{$c['phone_no']}} </td>

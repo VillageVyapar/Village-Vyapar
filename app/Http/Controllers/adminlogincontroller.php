@@ -51,7 +51,7 @@ class adminlogincontroller extends Controller
      function adminlogout()
      {
       session()->forget('adminemail');
-        return view('admin.adminlogin','adminlogin');
+      return redirect('adminlogin');
      }
     function adminviewprofile(Request $req)
      {

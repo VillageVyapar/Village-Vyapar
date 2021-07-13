@@ -68,7 +68,7 @@ Route::post('forgot_pass/','customercontroller@forgot_password');
 
 route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
-
+route::get('contactform',[contactform::class,'contactdetail']);
 /*  ***************        Customer Panel  Route       ************************ */
 
 
