@@ -126,6 +126,7 @@ Route::get("deleteproduct/{id}",[productlistcontroller::class,'deleteproduct']);
 Route::get("deletecategory/{id}",[categorycontroller::class,'deletecategory']);
 Route::get("deletesubcategory/{id}",[subcategorycontroller::class,'deletesubcategory']);
 
+Route::get("admininquiry",[inquirycontroller::class,'admin_inquiry']);
 
 
 
