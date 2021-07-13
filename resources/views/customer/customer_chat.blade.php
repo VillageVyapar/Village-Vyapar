@@ -254,7 +254,8 @@ function chat_open(cid) {
                 <div class="inbox_people">
                     <div class="headind_srch">
                         <div class="recent_heading">
-                            <h4>Inbox </h4>
+                            <h4>Inbox
+                            </h4>
                         </div>
 
                     </div>
@@ -266,43 +267,61 @@ function chat_open(cid) {
 
                             <div class="chat_list">
                                 <div class="chat_people">
-                                    <div class="chat_img"> <img src="customer_img/{{$f->c_img}}" title='{{$f->c_img}}'
-                                            alt="{{$f->c_name}}"> </div>
-                                    <div class="chat_ib">
-                                        <!-- <button type='button' value='{{$f->from_user}}' onclick='chat_open(this.value)'>Check </button>
-                </form> -->
-                                        <h5>{{$f->c_name}}
-                                            <span style='float:right;' class="chat_date"></span>
-                                        </h5>
-                                        <!-- {date('d-m-y', strtotime($f->timestamp} -->
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                        <button type='button' value='{{$f->from_user}}'
-                                            onclick='chat_open(this.value)'>View Chat</button>
+                                    <div class="chat_img"> <img src="customer_img/{{$f->c_img}}" title='{{$f->c_name}}'
+                                            alt="{{$f->c_name}}">
+
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="chat_ib">
                         </form>
-                        @endforeach
-
-
-
+                        <h5><b>{{$f->c_name}}</b>
+                            <span style='float:right;font-size:18px;color:green' class="chat_date">
+                                <?php
+                                $onlinecus=session::get('useremail');
+                                if(session::has('useremail'))
+                                {
+                                    echo "<div style='color:green;'>$onlinecus</div>";
+                                }
+                                else
+                                {
+                                    echo "<div style='color:red;'>$f->email</div>";
+                                }
+                                ?></span>
+                        </h5>
+                        <!-- {date('d-m-y', strtotime($f->timestamp} -->
+                        <p>Test, which is a new approach to have all solutions
+                            astrology under one roof.</p>
+                        <button type='button' value='{{$f->from_user}}' onclick='chat_open(this.value)'>View
+                            Chat</button>
                     </div>
                 </div>
-
-                <div class="mesgs" style='overflow: scroll;' id='msg'>
-
-                    Here is message
-
-                </div>
-
             </div>
+            </form>
+            @endforeach
 
-            <!-- /.row -->
+
+
         </div>
-        <!-- /.container-fluid -->
     </div>
-    <!-- /#page-wrapper -->
+
+
+    <div class="mesgs" style='overflow: scroll;color:red;height:530px;' id='msg'>
+        <br>
+        <center><img src="logo.png" style="border:1px solid grey" />
+            <br><br><br>
+            <h2>Chat Board with Village Vyapar</h2>
+        </center>
+
+
+    </div>
+
+
+</div>
+
+<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
 

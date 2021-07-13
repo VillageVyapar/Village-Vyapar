@@ -107,7 +107,6 @@ if(!Session::has('useremail'))
                         <div class="panel-footer">
                             <span class="pull-left">View Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
                             <div class="clearfix"></div>
                         </div>
                     </a>
@@ -138,7 +137,7 @@ if(!Session::has('useremail'))
         <canvas id="bar"
             style="border:1px solid grey;padding:25px;float:left;height:500px;width:100%;max-width:800px;"></canvas>
         <canvas id="pie"
-            style="border:1px solid grey;padding:25px;float:left;margin-top:25px;width:100%;max-width:500px"></canvas>
+            style="border:1px solid grey;padding:25px;float:left;height:300px;width:50%;max-width:800px;"></canvas>
         <!-- /.panel-body -->
 
         <!-- /.panel -->
@@ -167,7 +166,6 @@ foreach ($procus as $pc)
 }
 
 $jsx_array = json_encode($xarray);
-
 $jsy_array = json_encode($yarray);
 
 echo "var xValues = ". $jsx_array . ";\n";
@@ -200,11 +198,25 @@ new Chart("bar", {
         }
     }
 });
+<?php
+$x=array();
+$y=array();
+foreach ($proview as $p)
+{
+    array_push($x,$p['p_name']);
+    array_push($y,$p['total_view']);
+}
+
+$jsx = json_encode($x);
+$jsy = json_encode($y);
+
+echo "var x = ". $jsx . ";\n";
+echo "var y = ". $jsy . ";\n";
+?>
 
 
-
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 15];
+//var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+//var yValues = [55, 49, 44, 24, 15];
 var barColors = [
     "#b91d47",
     "#00aba9",
@@ -216,10 +228,10 @@ var barColors = [
 new Chart("pie", {
     type: "pie",
     data: {
-        labels: xValues,
+        labels: x,
         datasets: [{
             backgroundColor: barColors,
-            data: yValues
+            data: y
         }]
     },
     options: {

@@ -24,6 +24,7 @@ class productcontroller extends Controller
         
         $cust=customer::where('email',$email)->get();
         
+        
         return view('product',['shoplikes'=>$shoplike,'categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'scname'=>$scname,'customers'=>$cust]);
     }
     function priceAjax($price,$sid)
@@ -67,13 +68,15 @@ class productcontroller extends Controller
         return view('product',['shoplikes'=>$shopbylike,'categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'cname'=>$cname]);
     }
     function search_product(Request $req)
+    
     {   $s=$req->input('search');
         $c=category::all();
         $sc=subcategory::all();
+        $shoplike=DB::select('select * from products order by total_like desc limit 5');
         $pro=product::where('p_name','LIKE',"%$s%")->paginate();
         //dump($pro);
         //return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'search'=>$s]);
-        return view('product',['categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'search'=>$s]);
+        return view('product',['shoplikes'=>$shoplike,'categories'=>$c,'subcategories'=>$sc,'products'=>$pro,'search'=>$s]);
     }
     function like($pid,$totallike)
     {

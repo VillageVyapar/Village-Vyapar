@@ -22,9 +22,14 @@ class dashboardcontroller extends Controller
        
        $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->get();
        //select count(*) from products group by(`c_id`);
+       foreach($cusname as $c)
+        {
+            //dd($c->c_id);
+            $proview=product::where('c_id',$c->c_id)->limit(5)->orderBy('total_view','desc')->get();
+                    }
+        
        
-       
-        return view('customer/customer_dashboard',['cusname'=>$cusname,'procus'=>$procount]);
+        return view('customer/customer_dashboard',['proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
     }
     function show_product_details()
     {

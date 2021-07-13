@@ -22,14 +22,12 @@ class chatcontroller extends Controller
         {
             //$from=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->get()->distinct('customers.c_name');
           
-            $from=DB::select('select DISTINCT(from_user),customers.* from chats join customers on customers.c_id=chats.from_user where chats.from_user <> ? and to_user = ? ',[$c->c_id,$c->c_id]);
+            $from=DB::select('select DISTINCT(from_user),customers.* from chats join customers on customers.c_id=chats.from_user where chats.from_user <> ? and to_user = ? order By chats.timestamp desc',[$c->c_id,$c->c_id]);
             $to=DB::select('select DISTINCT(to_user),customers.* from chats join customers on customers.c_id=chats.to_user where chats.to_user <> ?',[$c->c_id]);
 
             $fromchat=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->get();
             $tochat=chat::join('customers','customers.c_id','chats.to_user')->where('chats.to_user','!=',$c->c_id)->get();
         }
-        
-        
         return view('customer/customer_chat',['cusname'=>$cusname,'to'=>$to,'from'=>$from,'fromchat'=>$fromchat,'tochat'=>$tochat]);   
     }
 
@@ -39,9 +37,9 @@ class chatcontroller extends Controller
         $cusname=customer::where('email','LIKE',$email)->get();
         foreach($cusname as $c)
         {
-            $fromchat=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->where('chats.from_user',$cid)->get();
+            $fromchat=chat::join('customers','customers.c_id','chats.from_user')->where('chats.from_user','!=',$c->c_id)->where('chats.from_user',$cid)->where('to_user',$c->c_id)->orderBy('chats.timestamp')->get();
             $status=DB::update('update chats set status=1 where `from_user`= ?',[$cid]);
-            $tochat=chat::join('customers','customers.c_id','chats.to_user')->where('chats.to_user','!=',$c->c_id)->where('chats.to_user',$cid)->get();
+            $tochat=chat::join('customers','customers.c_id','chats.to_user')->where('chats.to_user','!=',$c->c_id)->where('chats.to_user',$cid)->where('from_user',$c->c_id)->orderBy('chats.timestamp')->get();
         }
 
       // $msg = "This is a simple message.";
