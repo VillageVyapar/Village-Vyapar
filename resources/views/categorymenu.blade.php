@@ -585,8 +585,10 @@
                             <!-- / header top left -->
                             <div class="aa-header-top-right">
                                 <ul class="aa-head-top-nav-right">
+                                    <li><a href="/contactform">Contact Us</a></li>
                                     @if(!Session::has('useremail') )
                                     <li><a href="/account">Register/Login</a></li>
+
                                     @endif
 
                                     @if(Session::has('useremail') )

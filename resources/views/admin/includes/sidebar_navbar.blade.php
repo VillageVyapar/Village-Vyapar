@@ -81,12 +81,16 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">activity:</h6>
-                        <a class="collapse-item" href="admincustomer">User</a>
+                        <a class="collapse-item" href="admincustomer">Customer</a>
                         <a class="collapse-item" href="admincustomer">Admin</a>
                     </div>
                 </div>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="admininquiry">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Inquiry</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -115,6 +119,8 @@
                     </div>
                 </div>
             </li>
+
+
             <hr class="sidebar-divider d-none d-md-block">
             <li class="nav-item">
                 <a class="nav-link" href="logout">

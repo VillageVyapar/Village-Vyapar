@@ -149,20 +149,11 @@ $email=Session::get('useremail');
                             <a href="chat"><i class="fa fa-user fa-fw"></i> Chat</a>
                         </li>
 
+
+
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="inquiry"><i class="fa fa-user fa-fw"></i> Your Inquiry</a>
                         </li>
-
-
 
                     </ul>
                 </div>

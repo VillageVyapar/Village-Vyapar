@@ -5,9 +5,9 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>Contact</h2>
+                <h2>Contact Form</h2>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li class="active">Contact</li>
                 </ol>
             </div>
@@ -23,7 +23,7 @@
                 <div class="aa-contact-area">
                     <div class="aa-contact-top">
                         <h2>We are wating to assist you..</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, quos.</p>
+                        <p>If you have any inquiry type in form !!</p>
                     </div>
                     <!-- contact map -->
                     <div class="aa-contact-map">
@@ -36,34 +36,44 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="aa-contact-address-left">
-                                    <form class="comments-form contact-form" action="">
+                                    <form class="comments-form contact-form" action="inquiryaction">
+                                        {{@csrf_field()}}
                                         <div class="row">
+                                            @if(isset($customer))
+                                            @foreach($customer as $cus)
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" placeholder="Your Name" class="form-control">
+                                                    <input type="text" required value='{{$cus->c_name}}'
+                                                        placeholder="Your Name" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="email" placeholder="Email" class="form-control">
+                                                    <input type="email" required value='{{$cus->email}}'
+                                                        placeholder="Email" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" placeholder="Subject" class="form-control">
+                                                    <input type="text" required placeholder="Subject"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" placeholder="Company" class="form-control">
+                                                    <input type="text" required placeholder="Company"
+                                                        class="form-control">
                                                 </div>
                                             </div>
+                                            @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                                            <textarea class="form-control" required rows="3" cols='50'
+                                                placeholder="Message"></textarea>
                                         </div>
                                         <button class="aa-secondary-btn">Send</button>
                                     </form>
@@ -72,12 +82,15 @@
                             <div class="col-md-4">
                                 <div class="aa-contact-address-right">
                                     <address>
-                                        <h4>DailyShop</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum modi dolor
+                                        <h4><b>Village Vyapar </b></h4>
+                                        <hr style='border:1px solid grey'>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
+                                            modi dolor
                                             facilis! Nihil error, eius.</p>
-                                        <p><span class="fa fa-home"></span>Huntsville, AL 35813, USA</p>
-                                        <p><span class="fa fa-phone"></span>+ 021.343.7575</p>
-                                        <p><span class="fa fa-envelope"></span>Email: support@dailyshop.com</p>
+                                        <p><span class="fa fa-home"></span>25 Astor Pl, NY 10003, INDIA</p>
+                                        <p><span class="fa fa-phone"></span>+91 8460730564</p>
+                                        <p><span class="fa fa-envelope"></span>villagevyapar253@gmail.com
+                                        </p>
                                     </address>
                                 </div>
                             </div>

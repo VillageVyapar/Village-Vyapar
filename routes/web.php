@@ -5,9 +5,10 @@ use App\Http\Controllers\dashboardcontroller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\reviewController;
 use App\Http\Controllers\Ajaxcontroller;
+use App\Http\Controllers\contactformcontroller;
 use App\Http\Controllers\wishlistcontroller;
 use  App\Http\Controllers\chatcontroller;
-
+use  App\Http\Controllers\inquirycontroller;
 
 // admin
 use  App\Http\Controllers\adminlogincontroller;
@@ -68,7 +69,7 @@ Route::post('forgot_pass/','customercontroller@forgot_password');
 
 route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
-route::get('contactform',[contactform::class,'contactdetail']);
+route::get('contactform',[contactformcontroller::class,'contactdetail']);
 /*  ***************        Customer Panel  Route       ************************ */
 
 
