@@ -36,20 +36,19 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="aa-contact-address-left">
-                                    <form class="comments-form contact-form" action="inquiryaction">
+                                    <form method='post' class="comments-form contact-form" action="inquiryaction">
                                         {{@csrf_field()}}
                                         <div class="row">
-                                            @if(isset($customer))
-                                            @foreach($customer as $cus)
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" required value='{{$cus->c_name}}'
+                                                    <input type="text" name='cname' required value=''
                                                         placeholder="Your Name" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="email" required value='{{$cus->email}}'
+                                                    <input type="email" name='email' required value=''
                                                         placeholder="Email" class="form-control">
                                                 </div>
                                             </div>
@@ -57,22 +56,21 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" required placeholder="Subject"
+                                                    <input type="text" name='subject' required placeholder="Subject"
                                                         class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" required placeholder="Company"
+                                                    <input type="text" name='comp_name' required placeholder="Company"
                                                         class="form-control">
                                                 </div>
                                             </div>
-                                            @endforeach
-                                            @endif
+
                                         </div>
 
                                         <div class="form-group">
-                                            <textarea class="form-control" required rows="3" cols='50'
+                                            <textarea class="form-control" name='msg' required rows="3" cols='50'
                                                 placeholder="Message"></textarea>
                                         </div>
                                         <button class="aa-secondary-btn">Send</button>

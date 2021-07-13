@@ -7,6 +7,7 @@ use App\category;
 use App\subcategory;
 use App\customer;
 use App\feedback;
+use App\inquiry;
 use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class dashboardcontroller extends Controller
     {
         $email=session()->get('useremail');
         $cusname=customer::where('email','LIKE',$email)->get();
-       // dd($cusname);
+   
+        $inq=inquiry::where('email',$email)->get();
        
        $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->get();
        //select count(*) from products group by(`c_id`);
@@ -29,7 +31,7 @@ class dashboardcontroller extends Controller
                     }
         
        
-        return view('customer/customer_dashboard',['proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
+        return view('customer/customer_dashboard',['inquiry'=>$inq,'proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
     }
     function show_product_details()
     {

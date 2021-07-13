@@ -152,7 +152,7 @@ $email=Session::get('useremail');
 
 
                         <li>
-                            <a href="inquiry"><i class="fa fa-user fa-fw"></i> Your Inquiry</a>
+                            <a href="customer_inquiry"><i class="fa fa-user fa-fw"></i> Your Inquiry</a>
                         </li>
 
                     </ul>

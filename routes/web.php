@@ -70,6 +70,8 @@ Route::post('forgot_pass/','customercontroller@forgot_password');
 route::post("deleteFeedback/{cid}/{pid}","productcontroller@del_feedback");
 
 route::get('contactform',[contactformcontroller::class,'contactdetail']);
+route::post('inquiryaction',[contactformcontroller::class,'insert_inquiry']);
+
 /*  ***************        Customer Panel  Route       ************************ */
 
 
@@ -96,9 +98,7 @@ Route::post('change_pass','dashboardcontroller@change_password');
 Route::post('insertproducts','dashboardcontroller@add_product');
 Route::get('del_product/{pid}','dashboardcontroller@delete_product');
 Route::get('download','dashboardcontroller@pdf');
-
-
-
+Route::get('customer_inquiry',[inquirycontroller::class,'customer_All_inquirydet']);
 /*  ***************        Admin  Panel  Route       ************************ */
 
 
