@@ -93,7 +93,10 @@ if(!Session::has('useremail'))
                                             @endif
 
                                         </td>
-
+                                        <td>
+                                            <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button"
+                                                    class="btn btn-danger">Delete</button></a>
+                                        </td>
                                     </tr>
                                     @endif
                                     @endforeach

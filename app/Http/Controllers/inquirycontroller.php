@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< Updated upstream
+
 use App\admin;
 use App\inquiry;
+use App\customer;
 
 class inquirycontroller extends Controller
 {
@@ -16,15 +17,7 @@ class inquirycontroller extends Controller
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();
             return view('admin.admininquiry',['inq'=>$inq,'aname'=>$user2]);
-        
-    
-=======
-use App\inquiry;
-use App\customer;
-
-class inquirycontroller extends Controller
-{
-    //
+    }
     function customer_All_inquirydet()
     {
         $email=session()->get('useremail');
@@ -35,8 +28,7 @@ class inquirycontroller extends Controller
             //dd($c->c_id);
             $inq=inquiry::where('email',$email)->get();
         }
-        
         return view('customer/customer_total_inquiry',['inquiry'=>$inq,'cusname'=>$cusname,'procus'=>$procount]);
->>>>>>> Stashed changes
-    }
+    }  
+ 
 }
