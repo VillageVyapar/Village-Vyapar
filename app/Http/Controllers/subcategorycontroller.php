@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\subcategory;
 use App\admin;
 use Illuminate\Http\Request;
-
+use App\inquiry;
 
 class subcategorycontroller extends Controller
 {
@@ -17,7 +17,8 @@ class subcategorycontroller extends Controller
 
         $email=$req->session()->get('adminemail');
         $user2= admin::where('a_email','like',$email)->get();
-        return view('admin/adminsubcategory',['results'=>$results,'aname'=>$user2]);
+        $inquiry=inquiry::where('checked',0)->get();
+        return view('admin/adminsubcategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2]);
     }
     function deletesubcategory(Request $req,$id)
     {

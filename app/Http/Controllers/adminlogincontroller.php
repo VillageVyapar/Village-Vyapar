@@ -10,6 +10,7 @@ use App\customer;
 use App\product;
 use App\category;
 use App\subcategory;
+use App\inquiry;
 
 class adminlogincontroller extends Controller
 {
@@ -30,7 +31,8 @@ class adminlogincontroller extends Controller
             $customer_count=customer::count();
             $cat_count=category::count();
             $subcat_count=subcategory::count();
-            return view('admin.admindashboard',['results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
+            $inquiry=inquiry::where('checked',0)->get();
+            return view('admin.admindashboard',['inquiry'=>$inquiry,'results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
             }
          else {
              echo "<script> alert('Invalid login credential.')</script>";
@@ -46,7 +48,9 @@ class adminlogincontroller extends Controller
       $subcat_count=subcategory::count();
       $product_count=product::count();
       $customer_count=customer::count();
-      return view('admin.admindashboard',['aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
+
+      $inquiry=inquiry::where('checked',0)->get();
+      return view('admin.admindashboard',['inquiry'=>$inquiry,'aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
     }
      function adminlogout()
      {
@@ -58,8 +62,8 @@ class adminlogincontroller extends Controller
       $email=$req->session()->get('adminemail');
        $view=admin::where('a_email','like',$email)->get();
        $user2=admin::where('a_email','like',$email)->get();
-      
-       return view('admin.adminviewprofile',['data'=>$view,'aname'=>$user2]);
+       $inquiry=inquiry::where('checked',0)->get();
+       return view('admin.adminviewprofile',['inquiry'=>$inquiry,'data'=>$view,'aname'=>$user2]);
      }
      
      function newpassword(Request $req){
@@ -88,4 +92,3 @@ class adminlogincontroller extends Controller
         return view('admin.adminlist',['admi'=>$admi,'aname'=>$user2]);
     }
 }
-

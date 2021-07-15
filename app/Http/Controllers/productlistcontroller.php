@@ -6,6 +6,7 @@ use App\category;
 use App\subcategory;
 use App\customer;
 use App\admin;
+use App\inquiry;
 use Illuminate\Http\Request;
 
 class productlistcontroller extends Controller
@@ -25,7 +26,8 @@ class productlistcontroller extends Controller
             ->join('categories','products.cat_id','categories.cat_id')
             ->simplePaginate(5);
         $product_count=product::count();
-        return view('admin.product',['procus'=>$procus,'aname'=>$user2,'pcount'=>$product_count]); 
+        $inquiry=inquiry::where('checked',0)->get();
+        return view('admin.product',['inquiry'=>$inquiry,'procus'=>$procus,'aname'=>$user2,'pcount'=>$product_count]); 
 
 
 
