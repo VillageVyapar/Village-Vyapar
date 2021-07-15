@@ -541,6 +541,7 @@
     <!-- finished  Google Form Script -->
 
 </head>
+<!-- oncontextmenu="alert('right click not allowed !! '); return false;"  -->
 
 <body>
     <!-- wpf loader Two -->

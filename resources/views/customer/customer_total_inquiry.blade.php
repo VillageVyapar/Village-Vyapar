@@ -39,6 +39,7 @@ if(!Session::has('useremail'))
                                         <th>Message</th>
                                         <th>Reply</th>
                                         <th>Checked ??</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
