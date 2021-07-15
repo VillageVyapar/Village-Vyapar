@@ -128,8 +128,6 @@ Route::get("deletesubcategory/{id}",[subcategorycontroller::class,'deletesubcate
 
 Route::get("admininquiry",[inquirycontroller::class,'admin_inquiry']);
 
-
-
 route::view('fpass','admin/fpass');
 Route::post('send-mail','MailController@basic_email');
 route::post('newpass','adminlogincontroller@newpassword');

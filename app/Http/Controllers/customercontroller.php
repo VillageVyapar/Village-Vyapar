@@ -6,6 +6,7 @@ use App\category;
 use App\product;
 use App\subcategory;
 use App\plan;
+use App\inquiry;
 use Mail;
 
 use Illuminate\Http\Request;
