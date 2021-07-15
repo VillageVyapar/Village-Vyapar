@@ -84,7 +84,6 @@ if(!Session::has('useremail'))
                                                         echo "<div style='width:250px;height:100px;overflow:scroll'>$i->reply</div>";
                                                     }
                                                 ?>
-
                                         </td>
                                         <td>
                                             @if($i->checked ==1 )
