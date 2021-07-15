@@ -73,8 +73,6 @@ class adminlogincontroller extends Controller
         if($passedpassword==$userEnterdPass){
           admin::where('a_email',$email)->update(['a_password' => $newpass]);
           $req->session()->put('adminemail',$email);
-            
-          
           return redirect('dashboard');
         }
         else{
@@ -82,6 +80,7 @@ class adminlogincontroller extends Controller
           return redirect()->back();
         }
     }
+<<<<<<< HEAD
     function view_admin(Request $req)
     {
         $admi=admin::paginate(5);
@@ -91,3 +90,6 @@ class adminlogincontroller extends Controller
     }
 }
    
+=======
+} 
+>>>>>>> 686a9b52671cac307883ab83260c5d3b699c3ffb
