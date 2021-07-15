@@ -25,17 +25,17 @@
                     <div class="panel-body">
                         <form role="" method='POST' action='change_pass'>
                             {{@csrf_field()}}
-                            <div class="form-group">
+                            <div class="form-group" style='width:500px'>
                                 <label>Current Password : </label>
                                 <input type='password' name='currentp' class='form-input' required
                                     placeholder='Enter Current Password here'>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style='width:500px'>
                                 <label>New Password : </label>
                                 <input type='password' class="form-input" name='newp' required
                                     placeholder='Enter New Password here'>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style='width:500px'>
                                 <label>Confirm Password : </label>
                                 <input type='password' class="form-input" name='newcp' required
                                     placeholder='Enter Confirm Password here'>

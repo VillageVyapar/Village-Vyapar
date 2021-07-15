@@ -541,6 +541,7 @@
     <!-- finished  Google Form Script -->
 
 </head>
+<!-- oncontextmenu="alert('right click not allowed !! '); return false;"  -->
 
 <body>
     <!-- wpf loader Two -->
@@ -592,6 +593,7 @@
                                     @endif
 
                                     @if(Session::has('useremail') )
+
                                     <li class="hidden-xs"><a href="{{url('wishlist')}}">Wishlist</a></li>
                                     <li class="hidden-xs"><a>Hello {{Session::get('useremail')}}</a></li>
                                     <li class="hidden-xs"><a href="logedout">Logout</a></li>
