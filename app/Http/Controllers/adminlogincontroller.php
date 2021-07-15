@@ -80,7 +80,6 @@ class adminlogincontroller extends Controller
           return redirect()->back();
         }
     }
-<<<<<<< HEAD
     function view_admin(Request $req)
     {
         $admi=admin::paginate(5);
@@ -89,7 +88,4 @@ class adminlogincontroller extends Controller
         return view('admin.adminlist',['admi'=>$admi,'aname'=>$user2]);
     }
 }
-   
-=======
-} 
->>>>>>> 686a9b52671cac307883ab83260c5d3b699c3ffb
+
