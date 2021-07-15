@@ -262,14 +262,21 @@
                                 <h6 class="dropdown-header">
                                     Inquiry Center
                                 </h6>
+                                @if(isset($inquiry))
                                 @foreach ($inquiry as $i)
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="font-weight-bold">
+                                        @if(count($inquiry)>0)
                                         <div class="text-truncate">{{$i->message}}</div>
                                         <div class="small text-gray-500">{{$i->c_name}}</div>
+                                        @else
+                                        <div class="text-truncate">Not Found any Inquiry</div>
+                                        @endif
                                     </div>
                                 </a>
+
                                 @endforeach
+                                @endif
 
                                 <a class="dropdown-item text-center small text-gray-500" href="admininquiry">Read More
                                     Messages</a>
@@ -331,7 +338,7 @@
                 </a>
 
                 <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal"  role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="logoutModal" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

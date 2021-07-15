@@ -17,9 +17,9 @@ class inquirycontroller extends Controller
             $inq=inquiry::orderby('i_id','desc')->get();
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();
-
+            $inquiry=inquiry::where('checked',0)->get();
             $up=inquiry::where('checked',0)->update(['checked'=>1]);
-            return view('admin.admininquiry',['inq'=>$inq,'aname'=>$user2]);
+            return view('admin.admininquiry',['inquiry'=>$inquiry,'inq'=>$inq,'aname'=>$user2]);
     }
     function customer_All_inquirydet()
     {

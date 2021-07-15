@@ -88,7 +88,8 @@ class adminlogincontroller extends Controller
     {
         $admi=admin::paginate(5);
         $email=$req->session()->get('adminemail');
+        $inquiry=inquiry::where('checked',0)->get();
         $user2=admin::where('a_email','like',$email)->get();
-        return view('admin.adminlist',['admi'=>$admi,'aname'=>$user2]);
+        return view('admin.adminlist',['inquiry'=>$inquiry,'admi'=>$admi,'aname'=>$user2]);
     }
 }
