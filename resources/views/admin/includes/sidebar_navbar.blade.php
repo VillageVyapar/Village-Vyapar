@@ -83,7 +83,7 @@
                         <h6 class="collapse-header">activity:</h6>
 
                         <a class="collapse-item" href="admincustomer">Customer</a>
-                        <a class="collapse-item" href="admincustomer">Admin</a>
+                        <a class="collapse-item" href="adminlist">Admin</a>
 
                     </div>
                 </div>
