@@ -82,5 +82,12 @@ class adminlogincontroller extends Controller
           return redirect()->back();
         }
     }
+    function view_admin(Request $req)
+    {
+        $admi=admin::paginate(5);
+        $email=$req->session()->get('adminemail');
+        $user2=admin::where('a_email','like',$email)->get();
+        return view('admin.adminlist',['admi'=>$admi,'aname'=>$user2]);
+    }
 }
    

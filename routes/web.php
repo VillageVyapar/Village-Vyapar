@@ -120,7 +120,7 @@ Route::get('admineditcategory/{cid}', function () {
 Route::get("admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
 Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("admincustomer",[admincustomercontroller::class,'view_customer']);
-
+Route::get("adminlist",[adminlogincontroller::class,'view_admin']);
 route::post('adminUpdateProfile',"adminProfileController@editProAdmin");
 Route::get("deleteproduct/{id}",[productlistcontroller::class,'deleteproduct']);
 Route::get("deletecategory/{id}",[categorycontroller::class,'deletecategory']);

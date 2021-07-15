@@ -81,8 +81,13 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">activity:</h6>
+<<<<<<< Updated upstream
                         <a class="collapse-item" href="admincustomer">Customer</a>
                         <a class="collapse-item" href="admincustomer">Admin</a>
+=======
+                        <a class="collapse-item" href="admincustomer">User</a>
+                        <a class="collapse-item" href="adminlist">Admin</a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </li>
@@ -364,7 +369,7 @@
                 </a>
 
                 <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="logoutModal"  role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

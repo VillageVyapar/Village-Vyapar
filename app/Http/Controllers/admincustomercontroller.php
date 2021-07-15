@@ -14,4 +14,6 @@ class admincustomercontroller extends Controller
         $user2=admin::where('a_email','like',$email)->get();
         return view('admin.admincustomer',['cust'=>$cust,'aname'=>$user2]);
     }
+
+   
 }
