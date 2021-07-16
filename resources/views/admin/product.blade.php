@@ -8,20 +8,8 @@ if(!Session::has('adminemail'))
 @include('admin/includes/sidebar_navbar')
 
 <div class="container-fluid">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Manage
-            <a href="#"><button type="button" class="btn btn-primary">
-                    Add Product
-
-                </button></a>
-
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
-            Add Menu 
-        </button> -->
-        </h6>
-    </div>
-
     <!-- /.row -->
+    <br>
     <div class="card shadow mb-4">
         <div class="card-body">
 

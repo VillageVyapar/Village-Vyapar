@@ -28,9 +28,8 @@ class dashboardcontroller extends Controller
         {
             //dd($c->c_id);
             $proview=product::where('c_id',$c->c_id)->limit(5)->orderBy('total_view','desc')->get();
-                    }
-        
-       
+        }
+  
         return view('customer/customer_dashboard',['inquiry'=>$inq,'proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
     }
     function show_product_details()
@@ -47,15 +46,17 @@ class dashboardcontroller extends Controller
     }
     function add_product(Request $res)
     {
-
+        
         $ldate =Carbon::now();
         $cat=category::all();
         $scat=subcategory::all();
         $email=session()->get('useremail');
-        $imageName = $res->file('productimg');
+        $imageName = $res->file('proimg');
+        
+        
         $newname=time().'_'.$imageName->getClientOriginalName();
         $imageName->move( public_path('product_images'), $newname());
-        
+      
         $cusname=customer::where('email','LIKE',$email)->get();
          //$customer->img=$req->file('regimage')->store('docs');
         $procus=customer::join('products','products.c_id','customers.c_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('categories','products.cat_id','categories.cat_id')->where('email','LIKE',$email)->get();
@@ -66,9 +67,9 @@ class dashboardcontroller extends Controller
             'p_date'=>$ldate,
             'QOH'=>$res['qty'],
             'img'=>$newname,
-            'c_id'=>'1',
-            'cat_id'=>'2',
-            'subcat_id'=>'4',
+            'c_id'=>1,
+            'cat_id'=>2,
+            'subcat_id'=>4
             ]);
         if($qry)
         {

@@ -99,6 +99,7 @@ function set_Subcategory() {
                                             <a href='#'><button type="button"
                                                     class="btn btn-success">Edit</button></a><br><br>
                                             <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
+                                                    onclick="return confirm('Are you sure want to delete product ??? ')"
                                                     class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
@@ -172,9 +173,8 @@ $(document).ready(function() {
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action=insertproducts enctype='multipart/form-data'>
-                    {{ @csrf_field() }}
-
+                <form method="get" action="insertproducts" enctype='multipart/form-data'>
+                    {{@csrf_field()}}
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Name :</label>
                         <input type="text" name="pname" required class="form-control" />
@@ -185,7 +185,7 @@ $(document).ready(function() {
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Image :</label>
-                        <input type="file" name='productimg' required class="form-control" />
+                        <input type="file" name='proimg' required class="form-control" />
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Category :</label>
@@ -204,9 +204,7 @@ $(document).ready(function() {
                         <label for="recipient-name" class="col-form-label">Sub Category :</label>
 
                         <select class='form-control' name='subcategory' id='subcategory'>
-
                             <option> None </option>
-
                         </select>
 
                     </div>

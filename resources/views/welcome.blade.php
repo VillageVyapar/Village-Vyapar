@@ -166,40 +166,7 @@
     </center>
     </div>
 
-    <section id="aa-support">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-support-area">
-                        <!-- single support -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="aa-support-single">
-                                <span class="fa fa-truck"></span>
-                                <h4>FREE SHIPPING</h4>
-                                <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, nobis.</P>
-                            </div>
-                        </div>
-                        <!-- single support -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="aa-support-single">
-                                <span class="fa fa-clock-o"></span>
-                                <h4>30 DAYS MONEY BACK</h4>
-                                <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, nobis.</P>
-                            </div>
-                        </div>
-                        <!-- single support -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="aa-support-single">
-                                <span class="fa fa-phone"></span>
-                                <h4>SUPPORT 24/7</h4>
-                                <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, nobis.</P>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 </section>
 <section id="aa-product">
     <div class="container">
@@ -231,8 +198,14 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
-                                                <a class="aa-add-card-btn" href="#" style=''><span
-                                                        class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                <?php
+                  $pid=$p['p_id'];
+                  if(Session::has('useremail'))
+                  {
+                    
+                    echo "<a class='aa-add-card-btn' href='product/addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                  }
+                  ?>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
@@ -249,10 +222,7 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="aa-product-hvr-content">
-                                                <a href="url('wishlist')" data-toggle="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Compare"><span class="fa fa-exchange"></span></a>
+
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
                                                     title="Quick View" data-toggle="modal"
                                                     data-target="#quick-view-modal-{{$p['p_id']}}"><span

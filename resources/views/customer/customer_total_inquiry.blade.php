@@ -95,6 +95,7 @@ if(!Session::has('useremail'))
                                         </td>
                                         <td>
                                             <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button"
+                                                    onClick="return confirm('Are you sure want to delete the inquiry ?? ')"
                                                     class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>

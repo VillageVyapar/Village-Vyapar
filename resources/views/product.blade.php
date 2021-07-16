@@ -114,8 +114,6 @@ function set(str) {
                   }
                 }
                 ?>
-
-
                             @foreach ($products as $p)
 
                             <li>
