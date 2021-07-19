@@ -5,7 +5,7 @@ if(!Session::has('adminemail'))
   echo "<script>location.href='/'</script>";
 }
 ?>
-@include('admin/header')
+
 @include('admin/includes/sidebar_navbar')
 
 

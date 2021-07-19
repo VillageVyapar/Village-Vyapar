@@ -94,7 +94,7 @@ route::post('updateProfile','profileController@update');
 route::post('updateDP','profileController@updateDP');
 
 Route::post('change_pass','dashboardcontroller@change_password');
-Route::get('insertproducts','dashboardcontroller@add_product');
+Route::post('insertproducts','dashboardcontroller@add_product');
 Route::get('del_product/{pid}','dashboardcontroller@delete_product');
 Route::get('download','dashboardcontroller@pdf');
 Route::get('customer_inquiry',[inquirycontroller::class,'customer_All_inquirydet']);

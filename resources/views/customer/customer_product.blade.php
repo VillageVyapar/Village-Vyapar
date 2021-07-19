@@ -75,9 +75,10 @@ function set_Subcategory() {
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-primary">View</button></a><br><br>
-                                            <a href='#'><button type="button"
+                                            <a href='{{ url('del_product',$pc['p_id']) }}'><button type="button"
                                                     class="btn btn-success">Edit</button></a><br><br>
-                                            <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                            <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
+                                                    class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
                                     @else
@@ -96,10 +97,9 @@ function set_Subcategory() {
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-primary">View</button></a><br><br>
-                                            <a href='#'><button type="button"
+                                            <a href='{{ url('del_product',$pc['p_id']) }}'><button type="button"
                                                     class="btn btn-success">Edit</button></a><br><br>
                                             <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
-                                                    onclick="return confirm('Are you sure want to delete product ??? ')"
                                                     class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
@@ -173,8 +173,8 @@ $(document).ready(function() {
                 </button>
             </div>
             <div class="modal-body">
-                <form method="get" action="insertproducts" enctype='multipart/form-data'>
-                    {{@csrf_field()}}
+                <form method="post" action="insertproducts" enctype='multipart/form-data'>
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Name :</label>
                         <input type="text" name="pname" required class="form-control" />
@@ -190,13 +190,12 @@ $(document).ready(function() {
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Category :</label>
 
-                        <form method='get'> <select class='form-control' name='category' id='category'
-                                onchange='set_Subcategory()'>
-                                @foreach ($category as $cat)
-                                <option>{{$cat['cat_name']}}</option>
-                                @endforeach
-                            </select>
-                        </form>
+                        <select class='form-control' name='category' id='category' onchange='set_Subcategory()'>
+                            @foreach ($category as $cat)
+                            <option>{{$cat['cat_name']}}</option>
+                            @endforeach
+                        </select>
+
 
 
                     </div>
@@ -220,7 +219,9 @@ $(document).ready(function() {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-primary" value='Insert' />
+                <a href='insertproducts'>
+                    <input type="submit" class="btn btn-primary" value='Insert' />
+                </a>
             </div>
         </div>
         </form>

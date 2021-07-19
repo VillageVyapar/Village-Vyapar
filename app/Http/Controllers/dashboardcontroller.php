@@ -19,7 +19,7 @@ class dashboardcontroller extends Controller
     {
         $email=session()->get('useremail');
         $cusname=customer::where('email','LIKE',$email)->get();
-   
+        
         $inq=inquiry::where('email',$email)->get();
        
        $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->get();
@@ -36,7 +36,7 @@ class dashboardcontroller extends Controller
     {
         $email=session()->get('useremail');
         $cusname=customer::where('email','LIKE',$email)->get();
-
+       
         $cat=category::all();
         $scat=subcategory::all();
         $procus=customer::join('products','products.c_id','customers.c_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('categories','products.cat_id','categories.cat_id')->where('email','LIKE',$email)->paginate(5);
@@ -45,18 +45,25 @@ class dashboardcontroller extends Controller
     }
     function add_product(Request $res)
     {
-        dd("devahs");
-        $ldate =Carbon::now();
-        $cat=category::all();
-        $scat=subcategory::all();
+        //dd($res->proimg);
         $email=session()->get('useremail');
-        $imageName = $res->file('proimg');
-        
-        
-        $newname=time().'_'.$imageName->getClientOriginalName();
-        $imageName->move( public_path('product_images'), $newname());
-      
         $cusname=customer::where('email','LIKE',$email)->get();
+        $cid=$cusname[0]->c_id;
+        $ldate =Carbon::now();
+        $cat=category::where('cat_name',$res->category)->get();
+        $scat=subcategory::where('subcat_name',$res->subcategory)->get();
+      
+      
+           $imageName = $res->file('proimg');
+            
+            $newname=time().'_'.$imageName->getClientOriginalName();
+        
+        //dd($scat[0]->subcat_id);
+
+        $imageName->move( public_path('product_images'), $newname);
+      
+        
+        
         $procus=customer::join('products','products.c_id','customers.c_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('categories','products.cat_id','categories.cat_id')->where('email','LIKE',$email)->get();
         $qry = product::insert([    
             'p_name'=>$res['pname'],
@@ -65,19 +72,19 @@ class dashboardcontroller extends Controller
             'p_date'=>$ldate,
             'QOH'=>$res['qty'],
             'img'=>$newname,
-            'c_id'=>1,
-            'cat_id'=>2,
-            'subcat_id'=>4
+            'c_id'=>$cid,
+            'cat_id'=>$cat[0]->cat_id,
+            'subcat_id'=>$scat[0]->subcat_id
             ]);
         if($qry)
         {
             echo "<script>alert('Inserted Successfully !!');</script>";
-            return view('customer/customer_product',['procus'=>$procus,'cusname'=>$cusname,'category'=>$cat,'subcategory'=>$scat]);
+            return redirect()->back();
         }
         else
         {
             echo "<script>alert('Something issue !!');</script>";
-            
+            return redirect()->back();
         }
        
     }
@@ -92,12 +99,12 @@ class dashboardcontroller extends Controller
         if(isset($del_qry))
         {
             //echo "<script>alert('Delete Product successfully !!');</script>";
-            return view('customer/customer_product',['procus'=>$procus,'cusname'=>$cusname,'category'=>$cat,'subcategory'=>$scat]);
+            return redirect()->back();
         }
         else
         {
             echo "<script>alert('Not Delete Product successfully !!');</script>";
-            return view('customer/customer_product',['procus'=>$procus,'cusname'=>$cusname,'category'=>$cat,'subcategory'=>$scat]);
+            return redirect()->back();
         }
     }
     
@@ -126,18 +133,18 @@ class dashboardcontroller extends Controller
                     {
                         $qry=customer::where('email',$email)->update(["password"=>$np]);
                         echo "<script>alert('new password updated !!');</script>";
-                        return view('customer/change_password',['cusname'=>$cusname,'procus'=>$procount]);
+                        return redirect()->back();
                     }
                     else
                     {
                         echo "<script>alert('new password and confirm password must be same... !!');</script>";
-                        return view('customer/change_password',['cusname'=>$cusname,'procus'=>$procount]);
+                        return redirect()->back();
                     }
                 }
                 else
                 {
                     echo "<script>alert('current password not matched... !!');</script>";
-                    return view('customer/change_password',['cusname'=>$cusname,'procus'=>$procount]);
+                    return redirect()->back();  
                 }
             }
     }
