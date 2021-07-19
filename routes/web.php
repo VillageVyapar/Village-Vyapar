@@ -98,6 +98,7 @@ Route::get('insertproducts','dashboardcontroller@add_product');
 Route::get('del_product/{pid}','dashboardcontroller@delete_product');
 Route::get('download','dashboardcontroller@pdf');
 Route::get('customer_inquiry',[inquirycontroller::class,'customer_All_inquirydet']);
+Route::get('/reply',[inquirycontroller::class,'reply_inq']);
 /*  ***************        Admin  Panel  Route       ************************ */
 
 

@@ -38,6 +38,6 @@ class contactformcontroller extends Controller
             echo "<script>alert('Invalid Request !!');</script>";
             return "<script>location.href('/');</script>";
         } 
-         
     }
+   
 }

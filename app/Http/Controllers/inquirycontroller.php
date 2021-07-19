@@ -33,5 +33,14 @@ class inquirycontroller extends Controller
         }
         return view('customer/customer_total_inquiry',['inquiry'=>$inq,'cusname'=>$cusname,'procus'=>$procount]);
     }  
+    function reply_inq(Request $req)
+    {
+        $email=$req->session()->get('adminemail');
+        $user2=admin::where('a_email','like',$email)->get();
+        $inquiry=inquiry::where('checked',0)->get();
+        $userinquiry=inquiry::where('i_id',$req->i_id)->get();
+        dd($req->inqid);
+        return view('admin.reply_inquiry',['inquiry'=>$inquiry,'aname'=>$user2]);
+    }
  
 }
