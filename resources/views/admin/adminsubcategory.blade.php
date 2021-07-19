@@ -12,9 +12,7 @@ if(!Session::has('adminemail'))
         <h6 class="m-0 font-weight-bold text-primary">Manage
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">
                 Add Subcategory
-
             </button>
-
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
             Add Menu 
         </button> -->
