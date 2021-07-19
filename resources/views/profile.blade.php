@@ -33,8 +33,9 @@ if(!Session::has('useremail'))
 @include('customer/customer_slidebar');
 
 <div id="page-wrapper">
+    <div class="dev">
     <div class="profile">
-        <div class="container-fluid">
+    <div class="container-fluid">
             @foreach($customers as $cust)
             <div class="container">
         <div class="row">
@@ -152,22 +153,23 @@ if(!Session::has('useremail'))
         </div>
     </div>
 </div>
+</div>
 <style>
 .profile{
     padding-top:20px;
+    width:50%;
+    float:center;
     margin: auto;
-    width: 50%;
     padding: 10px;
-    background-image:url("413-ted4888-teddy.jpg");
 }   
-.page-wrapper{
-    background-image:url("413-ted4888-teddy.jpg");
+.dev{
+    background-image:url("nature-background.jpg");
 }
 hr{
     border-top:0;
 }
 .details{
-    padding-top:10px;
+    padding-top:15px;
 }
 body{
     padding-top: 68px;

@@ -21,18 +21,22 @@ class categorycontroller extends Controller
         return view('admin.admincategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2]);
         
     }
-    function edit_category(Request $req,$id)
+    function edit_category(Request $req)
     {
-        //dd($id);
-        $results = category::where('cat_id',$id)->get();
-        $up=DB::update('update categories set cat_name=?,cat_img=? where cat_id=?',[$req->cat_name,$req->cat_img, $id]);
         
-        return view('admin.admineditcategory',['results'=>$results,'up'=>$up]);
+        $update = category::where('cat_id', $req->id) ->update( [ 'cat_name' => $req->cat_name, 'cat_img' => $req->cat_img]);
+        $data = category::where('cat_id',$id)->get();
+        echo $req->cat_name;
+        return view('admin.admineditcategory',['data'=>$data]);
     }
     function deletecategory(Request $req,$id)
     {
        
        category::where('cat_id',$id)->delete();
        return redirect()->back();
+    }
+    function show_edit_category($id){
+        $data=category::where("cat_id",$id)->get();
+        return view("admin.admineditcategory",['data'=>$data]);
     }
 }

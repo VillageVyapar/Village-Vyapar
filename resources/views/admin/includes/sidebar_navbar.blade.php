@@ -68,8 +68,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Activity:</h6>
 
-                        <a class="collapse-item" href="categorydetail">Categoty</a>
-                        <a class="collapse-item" href="subcategorydetail">sub-category</a>
+                        <a class="collapse-item" href="categorydetail">Category</a>
+                        <a class="collapse-item" href="subcategorydetail">Sub-Category</a>
                         <a class="collapse-item" href="productdetail">Product List</a>
                     </div>
                 </div>
