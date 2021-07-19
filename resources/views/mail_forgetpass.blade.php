@@ -50,7 +50,7 @@
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p style="color:red; font-size:15px;line-height:24px; margin:0;">
                                             Your Current Password : <input style='border:none;' type='text' id='pass'
-                                                value='{{$cus->password}}' />
+                                                value='{{Crypt::decrypt($cus->password)}}' />
 
                                         </p>
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
@@ -87,7 +87,7 @@
         </tr>
     </table>
     @endforeach
-    <!--/100% body table-->
+
 </body>
 
 </html>

@@ -8,6 +8,7 @@ use App\subcategory;
 use App\plan;
 use App\inquiry;
 use Mail;
+use Crypt;
 
 use Illuminate\Http\Request;
 
@@ -23,10 +24,13 @@ class customercontroller extends Controller
         if($r->capcha == $r->cuscapcha)
         {
             $email=$r->input('email');
-            $pass=$r->input('password');
-            $user=customer::where('email','LIKE',$email)->where('password','like',$pass)->count();
+            
+            $pass= $r->input('password');
+
+            $user=customer::where('email','LIKE',$email)->count();
             $det=customer::where('email','LIKE',$email)->get();
-            if($user >0)
+            
+            if($user >0 && $pass == Crypt::decrypt($det[0]->password))
             {
                 $r->session()->put('useremail',$email);
                // dd(session()->get('useremail'));
@@ -46,6 +50,10 @@ class customercontroller extends Controller
        
     }
     function register(Request $req){
+        
+        $c=category::all();
+        $sc=subcategory::all();
+        $p=product::join('categories','products.cat_id','categories.cat_id')->limit(50)->get();
         if($req['regpassword'] == $req['confirm_password'])
         {
             $email=$req['regemail'];
@@ -59,7 +67,7 @@ class customercontroller extends Controller
             {
                 $customer= new customer;
                 $c_name=$req['regname'];
-                $password=$req['regpassword'];
+                $password=Crypt::encrypt($req['regpassword']);
                 $cpassword=$req['confirm_password'];
                 $phone_no=$req['regphone'];
                 // $customer->img=$req->file('regimage')->store('docs');
@@ -68,20 +76,12 @@ class customercontroller extends Controller
                 $district=$req['regdistrict'];
                 $pin_code=$req['regpincode'];
                 
-                // $qry=customer::insert([
-                //     "c_name"=>$c_name,
-                //     "email"=>$email,
-                //     "password"=>$password,
-                //     "phone_no"=>$phone_no,
-                //     "address"=>$address,
-                //     "village"=>$village,
-                //     "district"=>$district,
-                //     "pin_code"=>$pin_code
-                // ]);
+                
                 $random=rand(111111,999999);
                 $req->session()->put(['random'=>$random,'cname'=>$c_name,'email'=>$email,'password'=>$password,'address'=>$address,'village'=>$village,'district'=>$district,'pincode'=>$pin_code,'phoneno'=>$phone_no]);
                 
                 $user=['email'=>$email];
+                
                 Mail::send('otp_mail_template',['random'=>$random,'email'=>$email],function($message) use ($user){
                     $message->to($user['email']);
                     $message->subject('OTP Verification ');
@@ -129,7 +129,7 @@ class customercontroller extends Controller
                 "pin_code"=>$pin_code
             ]);
             $res->session()->put('useremail',$email);
-            return view('/',['categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
+            return view('welcome',['categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
         }
         else
         {
@@ -159,7 +159,6 @@ class customercontroller extends Controller
       $user=['email'=>$res->email];
         if(count($customerdetail) > 0) 
         {
-            
             Mail::send('mail_forgetpass',['customerdetail'=>$customerdetail],function($message) use ($user){
                 $message->to($user['email']);
                 $message->subject('Reset Password');
