@@ -117,7 +117,10 @@ Route::get("subcategorydetail",[subcategorycontroller::class,'show_subcategory']
 Route::get('admineditcategory/{cid}', function () {
     return view('admineditcategory');
 });
-Route::get("admineditcategory/{cid}",[categorycontroller::class,'edit_category']);
+Route::get("admineditcategory/{cid}",[categorycontroller::class,'show_edit_category']);
+
+Route::get("edit_category",[categorycontroller::class,'edit_category']);
+
 Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("admincustomer",[admincustomercontroller::class,'view_customer']);
 Route::get("adminlist",[adminlogincontroller::class,'view_admin']);

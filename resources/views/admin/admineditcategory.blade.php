@@ -1,40 +1,33 @@
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  	<div class="col-md-4 col-md-offset-4" width="30ps">
-	      <div class="panel panel-default">
-			  <!-- Default panel contents -->
-			  <div class="panel-heading">
-				  <center><h3>Edit Category</h3></center>
-				 
-			  </div>
-			  <div class="panel-body" >
-				
-				<br>
-						@foreach($up as $c)
-				    <form method="get">
-                    @csrf
-					
-				            <label>CATGORY NAME</label>
-				            <input type="text" name="cat_name" value="{{$c['cat_name']}}"  class="form-control" required>
-							
-							<br>
-				            <label>CATEGORY IMAGE</label>
-				            <input type="file"  class="form-control" name="cat_img" required>
-							
-							<br>
-							<button align="center" type="submit" href="/edit_category" name="btnLogin" class="btn btn-primary">SUBMIT</button>	
-				    </form>
-					@endforeach
-			  </div>
-			</div>
-	</div>
-</div>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head  action="edit_category">
+<style>
+th, td {
+  padding: 15px;
+}
+</style>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	@foreach($data as $d)
+<table>
+	<title>Edit Category</title>
+<tr>
+	   <td><lable>Category Name</label></td>
+	   <td><input type text="Cat_name" id ="cat_name"value="{{$d['cat_name']}}"><td>
+</tr>
+<tr>
+		<td><lable>Category Image</label></td>
+	    <td><input type="file"  id ="cat_img"name="cat_img" value="{{$d['cat_img']}}"><td>
+</tr>
+<tr>
+		
+	   <td><a href="edit_category"> <input type="button"  name="submit" value="submit""></a><td>
+</tr>
+	@endforeach
+</table>
+		</head>
+<body>
+	
+</body>
+</html>
