@@ -58,7 +58,7 @@ if(!Session::has('useremail'))
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 details">
                                 
                                 <div class="tab-content ml-1" id="myTabContent" style="padding-top:10px;">
                                     <form action="updateProfile" enctype="multipart/form-data" method='post' class="aa-login-form" id="editForm">
@@ -154,14 +154,28 @@ if(!Session::has('useremail'))
 </div>
 <style>
 .profile{
+    padding-top:20px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    background-image:url("413-ted4888-teddy.jpg");
+}   
+.page-wrapper{
+    background-image:url("413-ted4888-teddy.jpg");
+}
+hr{
+    border-top:0;
+}
+.details{
     padding-top:10px;
 }
-    body{
+body{
     padding-top: 68px;
     padding-bottom: 50px;
 }
 .image-container {
     position: relative;
+    left:100px;
 }
 
 .image {
