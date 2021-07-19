@@ -59,7 +59,7 @@ if(!Session::has('useremail'))
                                             </div>
                                         </td>
                                         <td>
-                                            $i->reply
+                                            {{$i->reply}}
                                         </td>
 
                                     </tr>
@@ -97,17 +97,15 @@ if(!Session::has('useremail'))
                                             <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button"
                                                     onClick="return confirm('Are you sure want to delete the inquiry ?? ')"
                                                     class="btn btn-danger">Delete</button></a>
+                                            <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button" class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endif
                                     @endforeach
-
                                 </tbody>
                             </table>
-
                         </div>
                         <!-- /.table-responsive -->
-
                     </div>
                     <!-- /.panel-body -->
                 </div>

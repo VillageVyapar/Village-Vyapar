@@ -40,13 +40,12 @@ class dashboardcontroller extends Controller
         $cat=category::all();
         $scat=subcategory::all();
         $procus=customer::join('products','products.c_id','customers.c_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('categories','products.cat_id','categories.cat_id')->where('email','LIKE',$email)->paginate(5);
-       // dd($procus);
-      // return redirect()->route('customer_dasboard',['procus'=>$procus]);
+        
         return view('customer/customer_product',['procus'=>$procus,'cusname'=>$cusname,'category'=>$cat,'subcategory'=>$scat]);   
     }
     function add_product(Request $res)
     {
-        
+        dd("devahs");
         $ldate =Carbon::now();
         $cat=category::all();
         $scat=subcategory::all();
@@ -58,7 +57,6 @@ class dashboardcontroller extends Controller
         $imageName->move( public_path('product_images'), $newname());
       
         $cusname=customer::where('email','LIKE',$email)->get();
-         //$customer->img=$req->file('regimage')->store('docs');
         $procus=customer::join('products','products.c_id','customers.c_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('categories','products.cat_id','categories.cat_id')->where('email','LIKE',$email)->get();
         $qry = product::insert([    
             'p_name'=>$res['pname'],
@@ -79,7 +77,7 @@ class dashboardcontroller extends Controller
         else
         {
             echo "<script>alert('Something issue !!');</script>";
-            //return view('customer/change_password',['cusname'=>$cusname,'procus'=>$procount]);
+            
         }
        
     }
