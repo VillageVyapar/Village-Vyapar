@@ -7,15 +7,30 @@ if(!Session::has('adminemail'))
 ?>
 @include('admin/includes/sidebar_navbar')
 
+
 <div class="container-fluid">
     <!-- /.row -->
     <br>
     <div class="card shadow mb-4">
         <div class="card-body">
 
-            <span>
+            <span style='float:left'>
                 {{$procus->links()}}
             </span>
+            <form style='float:center;' method='get'
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group" style='text-align:right;'>
+                    <input type="text" style='width:250px;' onkeyup="getproduct(this.value)"
+                        class="form-control bg-light border-1" placeholder="Search products  ..." aria-label="Search"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <!-- <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button> -->
+                    </div>
+                </div>
+            </form>
+
             <br><br>
             <div class="table-responsive">
                 <div class="row">
@@ -36,7 +51,8 @@ if(!Session::has('adminemail'))
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id='msg'>
+
                                             @foreach($procus as $pc)
                                             @if($pc['p_id']%2==0)
                                             <tr class="odd gradeX">
@@ -126,7 +142,8 @@ if(!Session::has('adminemail'))
 
 <!-- Custom Theme JavaScript -->
 <script src="Customer/js/startmin.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
 $(document).ready(function() {
@@ -134,6 +151,18 @@ $(document).ready(function() {
         responsive: true
     });
 });
+
+function getproduct(str) {
+
+    $.ajax({
+        type: 'GET',
+        url: '/admingetproduct/' + str,
+        data: '_token = <?php echo csrf_token() ?>',
+        success: function(data) {
+            $("#msg").html(data.msg);
+        }
+    });
+}
 </script>
 
 

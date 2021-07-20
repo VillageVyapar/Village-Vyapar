@@ -40,28 +40,23 @@ if(!Session::has('adminemail'))
                     <div class="form-group">
                         <label>Image</label><br /x>
                         <input type="file" required name="img" />
-
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="issert" class="btn btn-primary">Insert</button>
                 </div>
-<<<<<<< HEAD
             </form>
         </div>
     </div>
 </div>
 
-=======
->>>>>>> dd501894604bd4a657d3bb56da64945e9d9a6173
 <div class="container-fluid">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Manage
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcategory">
                 Add Category
             </button>
-
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#z">
             Add Menu 
         </button> -->
@@ -70,8 +65,6 @@ if(!Session::has('adminemail'))
 
     <div class="card shadow mb-4">
         <div class="card-body">
-
-
             <span>
                 {{$results->links()}}
             </span>
@@ -95,19 +88,11 @@ if(!Session::has('adminemail'))
                             <td style='width:200px;'>{{$r['cat_name']}}</td>
                             <td><img src="category_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
                             <td class="center">
-<<<<<<< HEAD
                                 <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button"
                                         class="btn btn-success">Edit</button></a>
                                 <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
                                         class="btn btn-danger">Delete</button></a>
-=======
-                                
-                                <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button"
-                                    class="btn btn-success">Edit</button></a>
-                            
-                                <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
-                                    class="btn btn-danger">Delete</button></a>
->>>>>>> dd501894604bd4a657d3bb56da64945e9d9a6173
+
                             </td>
                         </tr>
                         @endforeach
