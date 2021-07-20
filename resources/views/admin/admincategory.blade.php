@@ -46,6 +46,7 @@ if(!Session::has('adminemail'))
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="issert" class="btn btn-primary">Insert</button>
                 </div>
+                <<<<<<< HEAD=======>>>>>>> fe791adec73efbb99676857d4431e8334a24d2f4
             </form>
         </div>
     </div>
@@ -112,14 +113,6 @@ if(!Session::has('adminemail'))
 </div>
 <!-- /.col-lg-12 -->
 
-<!-- /.row -->
-
-
-<!-- /.col-lg-6 -->
-
-
-<!-- /#wrapper -->
-
 <!-- jQuery -->
 <script src="Customer/js/jquery.min.js"></script>
 
@@ -145,6 +138,26 @@ $(document).ready(function() {
 });
 </script>
 <!-- Model of insert category -->
+<!-- Logout Modal-->
+<div class="modal fade" id="editcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current
+                session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

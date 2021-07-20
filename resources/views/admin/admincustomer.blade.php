@@ -25,6 +25,7 @@ if(!Session::has('adminemail'))
             <div class="panel-body">
                 <div class="table-responsive">
 
+<<<<<<< HEAD
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example"
                         style="padding:50px;">
                         <thead>
@@ -53,20 +54,62 @@ if(!Session::has('adminemail'))
                                 <td>{{$c['district']}}</td>
                                 <td>{{$c['pin_code']}}</td>
                                 <!--  <td class="center">
+=======
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example"
+                                style="padding:50px;">
+                                <thead>
+                                    <tr>
+                                        <th>Image </th>
+                                        <th>Name </th>
+                                        <th>E-mail</th>
+                                        <th>Phone-No</th>
+                                        <th>Address</th>
+                                        <th>Village</th>
+                                        <th>District</th>
+                                        <th>Pincode</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($cust as $c)
+                                    @if($c['c_id']>=0)
+                                    <tr class="odd gradeX">
+                                        <td><img src="customer_img/{{$c['c_img']}}"
+                                                style='border-radius:50%;height:130px;width:130px;'>
+                                        <td style='width:200px;'>{{$c['c_name']}}</td>
+                                        <td>{{$c['email']}}</td>
+                                        <td>{{$c['phone_no']}} </td>
+                                        <td>
+                                            <div style='width:250px;height:100px;overflow:scroll'>
+                                                {{$c['address']}}</div>
+                                        </td>
+                                        <td>{{$c['village']}}</td>
+                                        <td>{{$c['district']}}</td>
+                                        <td>{{$c['pin_code']}}</td>
+                                       <td> <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a><td>
+                                        <!--  <td class="center">
+>>>>>>> fe791adec73efbb99676857d4431e8334a24d2f4
                                     <a href="{{ url('product_details',$c['c_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                     <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                    
                                 </td> -->
+<<<<<<< HEAD
                             </tr>
                             @else
                             <!-- <tr class="even gradeC">
+=======
+                                    </tr>
+                                    @else
+                                  <td>  <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                    <!-- <tr class="even gradeC">
+>>>>>>> fe791adec73efbb99676857d4431e8334a24d2f4
                             <td><img src="product_images/{{$c['img']}}" style='height:130px;width:180px;'>
                                 
                                 <td><div style='width:250px;height:100px;overflow:scroll'>{{$c['p_desc']}}</div></td>
                                 <td class="center">
                                     <a href="{{ url('product_details',$c['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                     <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                    
                                 </td>
                             </tr> -->
                             @endif
