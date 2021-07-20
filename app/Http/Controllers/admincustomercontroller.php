@@ -16,6 +16,12 @@ class admincustomercontroller extends Controller
         $inquiry=inquiry::where('checked',0)->get();
         return view('admin.admincustomer',['inquiry'=>$inquiry,'cust'=>$cust,'aname'=>$user2]);
     }
-  
+  function delete_customer(Request $req,$id)
+  {
+    customer::where('c_id',$id)->delete();
+    return redirect()->back();
+    
+  }
+ 
 
 }

@@ -39,6 +39,7 @@ if(!Session::has('adminemail'))
                                         <th>Village</th>
                                         <th>District</th>
                                         <th>Pincode</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,13 +55,15 @@ if(!Session::has('adminemail'))
                                         <td>{{$c['village']}}</td>
                                         <td>{{$c['district']}}</td>
                                         <td>{{$c['pin_code']}}</td>
+                                       <td> <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a><td>
                                         <!--  <td class="center">
                                     <a href="{{ url('product_details',$c['c_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                     <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                    
                                 </td> -->
                                     </tr>
                                     @else
+                                  <td>  <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                     <!-- <tr class="even gradeC">
                             <td><img src="product_images/{{$c['img']}}" style='height:130px;width:180px;'>
                                 
@@ -68,7 +71,7 @@ if(!Session::has('adminemail'))
                                 <td class="center">
                                     <a href="{{ url('product_details',$c['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
                                     <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-danger">Delete</button></a>
+                                    
                                 </td>
                             </tr> -->
                                     @endif
