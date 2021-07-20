@@ -51,7 +51,10 @@ if(!Session::has('adminemail'))
                                         <td style='width:200px;'>{{$c['c_name']}}</td>
                                         <td>{{$c['email']}}</td>
                                         <td>{{$c['phone_no']}} </td>
-                                        <td>{{$c['address']}}</td>
+                                        <td>
+                                            <div style='width:250px;height:100px;overflow:scroll'>
+                                                {{$c['address']}}</div>
+                                        </td>
                                         <td>{{$c['village']}}</td>
                                         <td>{{$c['district']}}</td>
                                         <td>{{$c['pin_code']}}</td>
