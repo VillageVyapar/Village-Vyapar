@@ -314,7 +314,13 @@
         </div>
     </div>
 </div>
-
+<style>
+body
+/* .modal-open { overflow: auto; } */
+.modal.in { pointer-events: none; }
+.modal-content { pointer-events:all; }
+/* .modal-backdrop { display: none; } */
+</style>
 
 </body>
 
