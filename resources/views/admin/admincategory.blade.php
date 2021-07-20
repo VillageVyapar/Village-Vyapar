@@ -47,6 +47,7 @@ if(!Session::has('adminemail'))
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="issert" class="btn btn-primary">Insert</button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -98,6 +99,7 @@ if(!Session::has('adminemail'))
                             
                                 <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
                                     class="btn btn-danger">Delete</button></a>
+
                             </td>
                         </tr>
                         @endforeach
