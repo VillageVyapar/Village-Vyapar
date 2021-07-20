@@ -86,7 +86,6 @@ class dashboardcontroller extends Controller
             echo "<script>alert('Something issue !!');</script>";
             return redirect()->back();
         }
-       
     }
     function delete_product($id)
     {
