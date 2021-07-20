@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head  action="edit_category">
+
 <style>
 th, td {
   padding: 15px;
@@ -9,25 +9,30 @@ th, td {
 </style>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form action="/edit_category" method="get" enctype="multipart/form-data">
+@csrf
 	@foreach($data as $d)
 <table>
 	<title>Edit Category</title>
 <tr>
-	   <td><lable>Category Name</label></td>
-	   <td><input type text="Cat_name" id ="cat_name"value="{{$d['cat_name']}}"><td>
+	   	<input type="hidden" name="id" value="{{$d['cat_id']}}">
+		<td><lable>Category Name</label></td>
+	   	<td><input type="text" name="cat_name" value="{{$d['cat_name']}}"><td>
 </tr>
 <tr>
 		<td><lable>Category Image</label></td>
-	    <td><input type="file"  id ="cat_img"name="cat_img" value="{{$d['cat_img']}}"><td>
+	    <td>
+			<input type="file" name="cat_img" id="" value="{{$d['cat_img']}}">
+		</td>
 </tr>
 <tr>
 		
-	   <td><a href="edit_category"> <input type="button"  name="submit" value="submit""></a><td>
+	   <td><button type="submit">Update</button><td>
 </tr>
 	@endforeach
 </table>
-		</head>
-<body>
-	
+</form>
 </body>
 </html>

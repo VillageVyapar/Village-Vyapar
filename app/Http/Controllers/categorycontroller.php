@@ -5,6 +5,7 @@ use App\category;
 use App\admin;
 use App\inquiry;
 use DB;
+use File;
 use Illuminate\Http\Request;
 
 class categorycontroller extends Controller
@@ -23,11 +24,26 @@ class categorycontroller extends Controller
     }
     function edit_category(Request $req)
     {
-        
-        $update = category::where('cat_id', $req->id) ->update( [ 'cat_name' => $req->cat_name, 'cat_img' => $req->cat_img]);
-        $data = category::where('cat_id',$id)->get();
-        echo $req->cat_name;
-        return view('admin.admineditcategory',['data'=>$data]);
+        // $oldimg=category::where('cat_id',$req->id)->select('cat_img');
+        // $oldimg=DB::table('categories')->where('cat_id',$req->id)->value('cat_img');
+        // dd($req->file('cat_img'));
+        if($req->hasFile('cat_img')){
+            dd('hell');
+            // File::delete($oldimg);
+            $imgname=$req->file('cat_img');
+            $newname=time()."_".$imgname->getClientOriginalName();
+            $imgname->move(public_path('category_images'),$newname);
+            $update=DB::update("update categories set cat_name=?, cat_img=? where cat_id=?",[$req->cat_name,$req->cat_img,$req->id]);
+            
+            $data = category::where('cat_id',$req->id)->get();
+            return view('admin.admineditcategory',['data'=>$data]);
+        }
+        else{
+            $update=DB::update("update categories set cat_name=? where cat_id=?",[$req->cat_name,$req->id]);
+            
+            $data = category::where('cat_id',$req->id)->get();
+            return view('admin.admineditcategory',['data'=>$data]);
+        }
     }
     function deletecategory(Request $req,$id)
     {
@@ -35,6 +51,7 @@ class categorycontroller extends Controller
        category::where('cat_id',$id)->delete();
        return redirect()->back();
     }
+    
     function show_edit_category($id){
         $data=category::where("cat_id",$id)->get();
         return view("admin.admineditcategory",['data'=>$data]);
