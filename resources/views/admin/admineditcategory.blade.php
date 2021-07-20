@@ -11,7 +11,7 @@ th, td {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<form action="/edit_category" method="get" enctype="multipart/form-data">
+<form action="/edit_category" method="post" enctype="multipart/form-data">
 @csrf
 	@foreach($data as $d)
 <table>
