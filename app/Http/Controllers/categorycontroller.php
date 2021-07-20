@@ -25,15 +25,16 @@ class categorycontroller extends Controller
     function edit_category(Request $req)
     {
         // $oldimg=category::where('cat_id',$req->id)->select('cat_img');
-        // $oldimg=DB::table('categories')->where('cat_id',$req->id)->value('cat_img');
+        $oldimg=DB::table('categories')->where('cat_id',$req->id)->value('cat_img');
         // dd($req->file('cat_img'));
         if($req->hasFile('cat_img')){
-            dd('hell');
-            // File::delete($oldimg);
+            // dd('hell');
+            File::delete('category_images/'.$oldimg);
             $imgname=$req->file('cat_img');
+            // dd($imgname);
             $newname=time()."_".$imgname->getClientOriginalName();
             $imgname->move(public_path('category_images'),$newname);
-            $update=DB::update("update categories set cat_name=?, cat_img=? where cat_id=?",[$req->cat_name,$req->cat_img,$req->id]);
+            $update=DB::update("update categories set cat_name=?, cat_img=? where cat_id=?",[$req->cat_name,$newname,$req->id]);
             
             $data = category::where('cat_id',$req->id)->get();
             return view('admin.admineditcategory',['data'=>$data]);

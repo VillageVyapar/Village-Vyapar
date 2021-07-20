@@ -119,7 +119,7 @@ Route::get('admineditcategory/{cid}', function () {
 });
 Route::get("admineditcategory/{cid}",[categorycontroller::class,'show_edit_category']);
 
-Route::get("edit_category",[categorycontroller::class,'edit_category']);
+Route::post("edit_category",[categorycontroller::class,'edit_category']);
 
 Route::get("adminprofile",[adminlogincontroller::class,'adminviewprofile']);
 Route::get("admincustomer",[admincustomercontroller::class,'view_customer']);
@@ -127,6 +127,7 @@ Route::get("adminlist",[adminlogincontroller::class,'view_admin']);
 route::post('adminUpdateProfile',"adminProfileController@editProAdmin");
 Route::get("deleteproduct/{id}",[productlistcontroller::class,'deleteproduct']);
 Route::get("deletecategory/{id}",[categorycontroller::class,'deletecategory']);
+Route::get("delete_customer/{id}",[admincustomercontroller::class,'delete_customer']);
 Route::get("deletesubcategory/{id}",[subcategorycontroller::class,'deletesubcategory']);
 
 Route::get("admininquiry",[inquirycontroller::class,'admin_inquiry']);
