@@ -66,7 +66,7 @@ if(!Session::has('adminemail'))
                     <tr class="odd gradeX">
 
                         <td style='width:200px;'>{{$r['cat_name']}}</td>
-                        <td><img src="category_images/{{$r['cat_img']}}" style='height:130px;width:180px;'>
+                        <td><img src="category_images/{{$r['cat_img']}}" style='height:90px;width:90px;'>
                         <td class="center">
                             <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button"
                                     class="btn btn-success">Edit</button></a>
