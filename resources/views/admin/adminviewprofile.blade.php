@@ -6,10 +6,10 @@ function show() {
     var val = document.getElementById('passwd');
     if (val.type == 'text') {
         val.type = 'password';
-        document.getElementById('button').value = 'Show';
+        document.getElementById('button').value = 'Show Password';
     } else {
         val.type = 'text';
-        document.getElementById('button').value = 'Hide';
+        document.getElementById('button').value = 'Hide Password';
     }
 }
 </script>
@@ -170,17 +170,18 @@ function show() {
                                         <div class="col-sm-9 text-secondary">
                                             <input type='password' class="form-control" style='border:none;' id='passwd'
                                                 name="passwd" disabled required value='{{$h->a_password}}'>
-                                            <input type='submit' class="form-control" onClick='show()' id='button'
+                                            <input type='button' class="form-control" onClick='show()' id='button'
                                                 value='Show Password'>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <label for="">Edit???</label><input type="checkbox" name="checkname"
-                                                id="check" onclick="UpdateCheck()">
-                                            <p><button class="btn btn-info " name="update" id="update"
-                                                    type="submit">Update</button></p>
+                                            <label for="">Edit ??? </label>&nbsp;&nbsp;<input type="checkbox"
+                                                name="checkname" id="check" onclick="UpdateCheck()">
+                                            <button class="btn btn-info "
+                                                style='text-align: center;display: block;margin: 0 auto;' disabled
+                                                name="update" id="update" type="submit">Update</button>
                                         </div>
 
                                     </div>
@@ -269,12 +270,14 @@ function show() {
             document.getElementById('phoneno').disabled = false;
             document.getElementById('passwd').disabled = false;
             document.getElementById('proimgad').disabled = false;
+            document.getElementById('update').disabled = false;
         } else {
             document.getElementById('fullname').disabled = true;
             document.getElementById('email').disabled = true;
             document.getElementById('phoneno').disabled = true;
             document.getElementById('passwd').disabled = true;
             document.getElementById('proimgad').disabled = true;
+            document.getElementById('update').disabled = true;
         }
 
     }

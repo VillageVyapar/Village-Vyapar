@@ -98,7 +98,7 @@ Route::post('insertproducts','dashboardcontroller@add_product');
 Route::get('del_product/{pid}','dashboardcontroller@delete_product');
 Route::get('download','dashboardcontroller@pdf');
 Route::get('customer_inquiry',[inquirycontroller::class,'customer_All_inquirydet']);
-Route::get('/reply',[inquirycontroller::class,'reply_inq']);
+Route::get('del_inquiry/{iid}',[inquirycontroller::class,'delete_inquiry']);
 /*  ***************        Admin  Panel  Route       ************************ */
 
 
@@ -136,3 +136,4 @@ route::view('fpass','admin/fpass');
 Route::post('send-mail','MailController@basic_email');
 route::post('newpass','adminlogincontroller@newpassword');
 route::get('admingetproduct/{pname}',[productlistcontroller::class,'ajax_product_search']);
+Route::post('/reply',[inquirycontroller::class,'reply_inq']);

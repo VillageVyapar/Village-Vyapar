@@ -31,10 +31,12 @@ if(!Session::has('adminemail'))
         <div class="row">
             <div class="col">
                 <h1 class="h3 mb-4 text-gray-800">Category Details</h1>
-
+                <p>
+                    Page : {{$results->currentPage()}}/{{$results->hasMorePages()}}</p>
                 <b>
                     {{$results->links()}}
                 </b>
+
             </div>
             <h6 class="m-0 font-weight-bold text-primary">Manage
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcat">

@@ -194,7 +194,7 @@ new Chart("bar", {
         },
         title: {
             display: true,
-            text: "Total Quantity of Your Village products"
+            text: "Total Price of Your Village products"
         }
     }
 });
@@ -237,7 +237,7 @@ new Chart("pie", {
     options: {
         title: {
             display: true,
-            text: "World Wide Wine Production 2018"
+            text: "Total View of your Product"
         }
     }
 });

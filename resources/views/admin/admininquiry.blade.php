@@ -72,9 +72,14 @@ if(!Session::has('adminemail'))
                                         <h4 class="modal-title" id="modal_title">{{$c->c_name}}'s Inquiry </h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
-                                    <form action="" method="POST" enctype="multipart/form-data">
+                                    <form action="reply" method="POST" enctype="multipart/form-data">
+                                        {{ @csrf_field() }}
                                         <div class="modal-body">
-
+                                            <div class="form-group" style='width:45%;display:none;float:left'>
+                                                <label>id </label>
+                                                <input type="text" name='iid' value='{{$c->i_id}}' autofocus id='name'
+                                                    required="True" name="name" class="form-control" />
+                                            </div>
                                             <div class="form-group" style='width:45%;float:left'>
                                                 <label>Subject </label>
                                                 <input type="text" value='{{$c->subject}}' disabled autofocus id='name'
@@ -96,14 +101,17 @@ if(!Session::has('adminemail'))
                                                 <label>Message</label><br>
                                                 <textarea cols='55' disabled row='25'>{{$c->message}}</textarea>
                                             </div>
+
                                             <div class="form-group">
                                                 <label>Reply</label><br>
-                                                <textarea cols='55' row='25'></textarea>
+                                                <textarea cols='55' name='reply' row='25'>{{$c->reply}}</textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
+                                            <button type="reset" class="btn"
+                                                style='background-color:green;color:white'>Reset</button>
                                             <button type="submit" name="issert" class="btn btn-primary">Send</button>
                                         </div>
 
