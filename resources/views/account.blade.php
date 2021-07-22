@@ -22,6 +22,7 @@ function forgotpass() {
         fg.style.display = 'block';
     } else {
         fg.style.display = 'none';
+
     }
 }
 </script>

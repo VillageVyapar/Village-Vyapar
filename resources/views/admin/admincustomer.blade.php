@@ -6,139 +6,47 @@ if(!Session::has('adminemail'))
 }
 ?>
 @include('admin/includes/sidebar_navbar')
-
-<div id="page-wrapper">
-    <div class="container-fluid">
+<!-- DataTales Example -->
+<span id="message"></span>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"> Customer
-                    <!-- <a href='#'><button type="button" class="btn btn-primary">Insert </button></a><br><br> -->
+            <div class="col">
+                <h1 class="h3 mb-4 text-gray-800">Customer Details</h1>
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Here The List !
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="table-responsive">
-
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example"
-                                style="padding:50px;">
-                                <thead>
-                                    <tr>
-                                        <th>Image </th>
-                                        <th>Name </th>
-                                        <th>E-mail</th>
-                                        <th>Phone-No</th>
-                                        <th>Address</th>
-                                        <th>Village</th>
-                                        <th>District</th>
-                                        <th>Pincode</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($cust as $c)
-                                    @if($c['c_id']>=0)
-                                    <tr class="odd gradeX">
-                                        <td><img src="customer_img/{{$c['c_img']}}"
-                                                style='border-radius:50%;height:130px;width:130px;'>
-                                        <td style='width:200px;'>{{$c['c_name']}}</td>
-                                        <td>{{$c['email']}}</td>
-                                        <td>{{$c['phone_no']}} </td>
-                                        <td>
-                                            <div style='width:250px;height:100px;overflow:scroll'>
-                                                {{$c['address']}}</div>
-                                        </td>
-                                        <td>{{$c['village']}}</td>
-                                        <td>{{$c['district']}}</td>
-                                        <td>{{$c['pin_code']}}</td>
-                                       <td> <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a><td>
-                                        <!--  <td class="center">
-                                    <a href="{{ url('product_details',$c['c_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    
-                                </td> -->
-                                    </tr>
-                                    @else
-                                  <td>  <a href="{{url('delete_customer/'.$c['c_id'])}}"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    <!-- <tr class="even gradeC">
-                            <td><img src="product_images/{{$c['img']}}" style='height:130px;width:180px;'>
-                                
-                                <td><div style='width:250px;height:100px;overflow:scroll'>{{$c['p_desc']}}</div></td>
-                                <td class="center">
-                                    <a href="{{ url('product_details',$c['p_id']) }}"><button type="button" class="btn btn-primary">View</button></a><br><br>
-                                    <a href='#'><button type="button" class="btn btn-success">Edit</button></a><br><br>
-                                    
-                                </td>
-                            </tr> -->
-                                    @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                        <span>
-                            {{$cust->links()}}
-                        </span>
-                        <style>
-                        .w-5 {
-                            display: none;
-                        }
-                        </style>
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-
-
-        <!-- /.col-lg-6 -->
-
-        <!-- /.col-lg-6 -->
     </div>
-    <!-- /.row -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="student_table" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Image </th>
+                        <th>Name </th>
+                        <th>E-mail</th>
+                        <th>Phone-No</th>
+                        <th>Address</th>
+                        <th>Village</th>
+                        <th>District</th>
+                        <th>Pincode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cust as $c)
+                    @if($c['c_id']>=0)
+                    <tr class="odd gradeX">
+                        <td><img src="customer_img/{{$c['c_img']}}" style='border-radius:50%;height:70px;width:70px;'>
+                        <td style='width:200px;'>{{$c['c_name']}}</td>
+                        <td>{{$c['email']}}</td>
+                        <td>{{$c['phone_no']}} </td>
+                        <td>{{$c['address']}}</td>
+                        <td>{{$c['village']}}</td>
+                        <td>{{$c['district']}}</td>
+                        <td>{{$c['pin_code']}}</td>
+                    </tr>
+
+                    @endif
+                    @endforeach
+        </div>
+    </div>
 </div>
-<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery -->
-<script src="Customer/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="Customer/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="Customer/js/metisMenu.min.js"></script>
-
-<!-- DataTables JavaScript -->
-<script src="Customer/js/dataTables/jquery.dataTables.min.js"></script>
-<script src="Customer/js/dataTables/dataTables.bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="Customer/js/startmin.js"></script>
-
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-$(document).ready(function() {
-    $('#dataTables-example').DataTable({
-        responsive: true
-    });
-});
-</script>
-
-</body>
-
-</html>

@@ -98,7 +98,6 @@ function set(str) {
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg" id='msg'>
                             <!-- start single product item -->
-
                             <?php 
                 $maxprice=-1;
                 $minprice=1000000;

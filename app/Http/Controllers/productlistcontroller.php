@@ -39,4 +39,35 @@ class productlistcontroller extends Controller
       return redirect()->back();
     }
      
+    public function ajax_product_search($pname)
+    {
+        $pro=product::join('categories','categories.cat_id','products.cat_id')->join('subcategories','subcategories.subcat_id','products.subcat_id')->where('p_name','LIKE','%'.$pname.'%')->get();
+        $msg ="";
+        
+            foreach ($pro as $pc)
+            {
+                $msg.="
+                <tr class='odd gradeX'>
+                    <td><img src='product_images/{$pc['img']}' style='height:130px;width:180px;'>
+                    <td style='width:200px;'>{$pc['p_name']}</td>
+                    <td>{$pc['p_price']}</td>
+                    <td>{$pc['cat_name']} <br>{$pc['subcat_name']} 
+                    </td>
+                    <td>
+                    <div style='width:250px;height:100px;overflow:scroll'>
+                    {$pc['p_desc']}</div>
+                    </td>
+                    <td class='center'>
+                    <a href='#'><button
+                    type='button'
+                    class='btn btn-primary'>View</button></a><br><br>
+                    <a href='#'><button
+                    type='button' class='btn btn-danger'>Delete</button></a>
+                    </td>
+                    </tr>";
+            }
+
+        return response()->json(array('msg'=> $msg), 200);
+       
+    }
 }

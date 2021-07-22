@@ -10,8 +10,7 @@ if(!Session::has('adminemail'))
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="http://localhost/report1/Invoicesmry.php"
-        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
@@ -27,7 +26,7 @@ if(!Session::has('adminemail'))
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered
                             Admin</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <h4>Total Admin: {{$count}} </h4>
+                            <h5>Total Admin: {{$count}} </h5>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -49,8 +48,8 @@ if(!Session::has('adminemail'))
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Category </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
 
-                        <h4>Category : {{$cat_count}} </h4>
-                        <h4>s-category:{{$subcat_count}}</h4>
+                        <h5>Category : {{$cat_count}} </h5>
+                        <h5>Sub-category: {{$subcat_count}}</h5>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -72,7 +71,7 @@ if(!Session::has('adminemail'))
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" %>
-                                    <h4> Product : {{$pcount}} </h4>
+                                    <h5> Product : {{$pcount}} </h5>
 
 
                                 </div>
@@ -98,7 +97,7 @@ if(!Session::has('adminemail'))
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" %>
 
-                                <h4> Customer:{{$cust_count}}</h4>
+                                <h5> Customer:{{$cust_count}}</h5>
                             </div>
 
                         </div>
@@ -148,7 +147,7 @@ if(!Session::has('adminemail'))
                 session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
+                <a class="btn btn-primary" href="logout">Logout</a>
             </div>
         </div>
     </div>

@@ -35,12 +35,14 @@ class inquirycontroller extends Controller
     }  
     function reply_inq(Request $req)
     {
-        $email=$req->session()->get('adminemail');
-        $user2=admin::where('a_email','like',$email)->get();
-        $inquiry=inquiry::where('checked',0)->get();
-        $userinquiry=inquiry::where('i_id',$req->i_id)->get();
-        dd($req->inqid);
-        return view('admin.reply_inquiry',['inquiry'=>$inquiry,'aname'=>$user2]);
+        $userinquiry=inquiry::where('i_id',$req->iid)->update(['reply'=>$req->reply]);
+        
+        return redirect()->back();
+    }
+    function delete_inquiry($iid)
+    {
+        $qry=inquiry::where('i_id',$iid)->delete();
+        return redirect()->back();
     }
  
 }

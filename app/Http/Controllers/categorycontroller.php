@@ -24,11 +24,12 @@ class categorycontroller extends Controller
     }
     function edit_category(Request $req)
     {
-        $oldimg=category::where('cat_id',$req->id)->select('cat_img');
+        // $oldimg=category::where('cat_id',$req->id)->select('cat_img');
+        $oldimg=DB::table('categories')->where('cat_id',$req->id)->value('cat_img');
         // dd($req->file('cat_img'));
         if($req->hasFile('cat_img')){
             // dd('hell');
-            File::delete($oldimg);
+            File::delete('category_images/'.$oldimg);
             $imgname=$req->file('cat_img');
             // dd($imgname);
             $newname=time()."_".$imgname->getClientOriginalName();
