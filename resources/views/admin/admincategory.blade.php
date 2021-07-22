@@ -88,35 +88,7 @@ if(!Session::has('adminemail'))
         </div>
     </div>
 </div>
-<script>
-// $('#editcat').on('show.bs.modal', function (event){
-//     var button=$(event.relatedTarget)
-//     var id=button.data('myname')
-//     // var name=$('#name').val()
-//     // var img=$('#img').val()
-//     var modal=$(this)
-//     model.find('.model-body #name').val(name)
- 
 
-$("#edit").click(function () {
-    var name = $("#name").val();
-    var img = $("#img").val();
-    var str = "You Have Entered " 
-        + "Name: " + name 
-        + " and Marks: ";// + marks;
-    $("#name").html(name);
-});
-
-// $('#edit').on('show.bs.modal', function (event) {
-//   var button = $(event.relatedTarget) // Button that triggered the modal
-//   var recipient = button.data('myname') // Extract info from data-* attributes
-//   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-//   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-//   var modal = $(this)
-//   modal.find('.modal-body #name').val(recipient)
-// })
-
-</script>
 <div class="modal fade" id="editcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -132,14 +104,17 @@ $("#edit").click(function () {
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Category Name:</label>
-                        <input type="text" class="form-control" name="name" id="name">
+                        <select name="catname">
+                            @foreach($results as $r)
+                                <option value="$r->cat_name">{{$r->cat_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     
                     <div class="form-group">
                         <input type="file" name="cat_img" id="img">
-                        <!-- <h6 id="modal_body"></h6> -->
                     </div>
-			        
+			         
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
