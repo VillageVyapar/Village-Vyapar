@@ -7,6 +7,7 @@ use App\inquiry;
 use DB;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class categorycontroller extends Controller
 {
@@ -14,35 +15,29 @@ class categorycontroller extends Controller
     {
         $email=$req->session()->get('adminemail');
         $user2=admin::where('a_email','like',$email)->get();
-
         $results = category::simplePaginate(5);
-        $results = category::simplePaginate(5);
+        $cat = category::all();
         $catid=$req->input('cat_id');
         $catname=$req->input('cat_name');
         $inquiry=inquiry::where('checked',0)->get();
-        return view('admin.admincategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2]);
-        
+        return view('admin.admincategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2,"category"=>$cat]);
     }
     function edit_category(Request $req)
     {
-        $oldimg=DB::table('categories')->where('cat_id',$req->id)->value('cat_img');
-        if($req->hasFile('cat_img')){
-            // dd('hell');
+        $id=$req->catid;
+        $oldimg=DB::table('categories')->where('cat_id',$id)->value('cat_img');
+        if($req->hasFile('updateimg')){
             File::delete('category_images/'.$oldimg);
-            $imgname=$req->file('cat_img');
-            // dd($imgname);
+            $imgname=$req->file('updateimg');
             $newname=time()."_".$imgname->getClientOriginalName();
             $imgname->move(public_path('category_images'),$newname);
-            $update=DB::update("update categories set cat_name=?, cat_img=? where cat_id=?",[$req->cat_name,$newname,$req->id]);
-            
-            $data = category::where('cat_id',$req->id)->get();
-            return view('admin.admineditcategory',['data'=>$data]);
+            $update=DB::update("update categories set cat_name=?, cat_img=? where cat_id=?",[$req->updatename,$newname,$id]);
+            return redirect()->back();
         }
-        else{
-            $update=DB::update("update categories set cat_name=? where cat_id=?",[$req->cat_name,$req->id]);
-            
-            $data = category::where('cat_id',$req->id)->get();
-            return view('admin.admineditcategory',['data'=>$data]);
+        else
+        {
+            $update=DB::update("update categories set cat_name=? where cat_id=?",[$req->updatename,$id]);
+            return redirect()->back();
         }
     }
     function deletecategory(Request $req,$id)
