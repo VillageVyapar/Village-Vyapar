@@ -135,5 +135,8 @@ Route::get("admininquiry",[inquirycontroller::class,'admin_inquiry']);
 route::view('fpass','admin/fpass');
 Route::post('send-mail','MailController@basic_email');
 route::post('newpass','adminlogincontroller@newpassword');
+
 route::get('admingetproduct/{pname}',[productlistcontroller::class,'ajax_product_search']);
 Route::post('/reply',[inquirycontroller::class,'reply_inq']);
+
+route::post('insertcat','categorycontroller@add_cat');

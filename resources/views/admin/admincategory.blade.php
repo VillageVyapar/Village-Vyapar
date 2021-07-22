@@ -31,8 +31,9 @@ if(!Session::has('adminemail'))
         <div class="row">
             <div class="col">
                 <h1 class="h3 mb-4 text-gray-800">Category Details</h1>
-                <p>
-                    Page : {{$results->currentPage()}}/{{$results->hasMorePages()}}</p>
+                <!-- <p>
+                    Page : {{$results->currentPage()}}/{{$results->hasMorePages()}}
+                </p> -->
                 <b>
                     {{$results->links()}}
                 </b>
@@ -64,16 +65,21 @@ if(!Session::has('adminemail'))
                 </thead>
                 <tbody>
                     @foreach($results as $r)
-
+                    
                     <tr class="odd gradeX">
+                        
+                        <input type="hidden" name="cat_id" id="id" value="$r['cat_id']">
+                        <input type="hidden" name="cat_name" id="name" value="$r['cat_name']">
+                        <input type="hidden" name="cat_img" id="img" value="$r['cat_img']">
 
                         <td style='width:200px;'>{{$r['cat_name']}}</td>
                         <td><img src="category_images/{{$r['cat_img']}}" style='height:90px;width:90px;'>
                         <td class="center">
-                            <a href="{{ url('admineditcategory',$r['cat_id']) }}"><button type="button"
-                                    class="btn btn-success">Edit</button></a>
-                            <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
-                                    class="btn btn-danger">Delete</button></a>
+                            <button type="button" data-toggle="modal" data-target="#editcat" id="edit" data-myname="hello"
+                                    class="btn btn-success">Edit</button>
+                            
+                            <button type="button" href="{{url('deletecategory/'.$r['cat_id'])}}"
+                                    class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                     @endforeach
@@ -82,7 +88,67 @@ if(!Session::has('adminemail'))
         </div>
     </div>
 </div>
+<script>
+// $('#editcat').on('show.bs.modal', function (event){
+//     var button=$(event.relatedTarget)
+//     var id=button.data('myname')
+//     // var name=$('#name').val()
+//     // var img=$('#img').val()
+//     var modal=$(this)
+//     model.find('.model-body #name').val(name)
+ 
 
+$("#edit").click(function () {
+    var name = $("#name").val();
+    var img = $("#img").val();
+    var str = "You Have Entered " 
+        + "Name: " + name 
+        + " and Marks: ";// + marks;
+    $("#name").html(name);
+});
+
+// $('#edit').on('show.bs.modal', function (event) {
+//   var button = $(event.relatedTarget) // Button that triggered the modal
+//   var recipient = button.data('myname') // Extract info from data-* attributes
+//   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+//   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+//   var modal = $(this)
+//   modal.find('.modal-body #name').val(recipient)
+// })
+
+</script>
+<div class="modal fade" id="editcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/edit_category" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5  class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Category Name:</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="file" name="cat_img" id="img">
+                        <!-- <h6 id="modal_body"></h6> -->
+                    </div>
+			        
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -90,17 +156,20 @@ if(!Session::has('adminemail'))
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <input class="z" type="submit" style='border:none' value="X" />
             </button>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="insertcat" method="post" enctype="multipart/form-data">
+            @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Category Name</label>
                         <input type="text" pattern="[A-Za-z ]+" title="letters only, no digit or no special characters "
-                            autofocus id='name' required="True" name="name" class="form-control"
-                            placeholder="Enter Category Name" />
+                            autofocus id='name' name="name" class="form-control"
+                            placeholder="Enter Category Name" required/>
                     </div>
                     <div class="form-group">
                         <label>Image</label><br /x>
-                        <input type="file" required name="img" />
+
+                        <input type="file" name="catimg" required/>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -112,3 +181,33 @@ if(!Session::has('adminemail'))
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<script src="Customer/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="Customer/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="Customer/js/metisMenu.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="Customer/js/dataTables/jquery.dataTables.min.js"></script>
+<script src="Customer/js/dataTables/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="Customer/js/startmin.js"></script>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+$(document).ready(function() {
+    $('#dataTables-example').DataTable({
+        responsive: true
+    });
+});
+</script>
+<!-- Model of insert category -->
+<!-- Logout Modal-->
+</body>
+
+</html>

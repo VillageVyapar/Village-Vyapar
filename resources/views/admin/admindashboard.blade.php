@@ -5,7 +5,7 @@ if(!Session::has('adminemail'))
   echo "<script>location.href='/'</script>";
 }
 ?>
-@include('admin.header');
+@include('admin.header')
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

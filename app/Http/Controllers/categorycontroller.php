@@ -57,4 +57,7 @@ class categorycontroller extends Controller
         $data=category::where("cat_id",$id)->get();
         return view("admin.admineditcategory",['data'=>$data]);
     }
+    function add_cat(Request $req){
+        
+    }
 }
