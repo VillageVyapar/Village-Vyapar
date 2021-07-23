@@ -24,9 +24,7 @@ class customercontroller extends Controller
         if($r->capcha == $r->cuscapcha)
         {
             $email=$r->input('email');
-            
             $pass= $r->input('password');
-
             $user=customer::where('email','LIKE',$email)->count();
             $det=customer::where('email','LIKE',$email)->get();
             

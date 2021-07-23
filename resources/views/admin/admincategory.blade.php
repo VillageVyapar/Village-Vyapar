@@ -67,11 +67,6 @@ if(!Session::has('adminemail'))
                     @foreach($results as $r)
                     
                     <tr class="odd gradeX">
-                        
-                        <input type="hidden" name="cat_id" id="id" value="$r['cat_id']">
-                        <input type="hidden" name="cat_name" id="name" value="$r['cat_name']">
-                        <input type="hidden" name="cat_img" id="img" value="$r['cat_img']">
-
                         <td style='width:200px;'>{{$r['cat_name']}}</td>
                         <td><img src="category_images/{{$r['cat_img']}}" style='height:90px;width:90px;'>
                         <td class="center">
@@ -104,17 +99,21 @@ if(!Session::has('adminemail'))
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Category Name:</label>
-                        <select name="catname">
-                            @foreach($results as $r)
-                                <option value="$r->cat_name">{{$r->cat_name}}</option>
+                        <select name="catid" class="form-control">
+                            <option>Select Category:</option>
+                            @foreach($category as $c)
+                                <option value="{{$c->cat_id}}">{{$c->cat_name}}</option>
                             @endforeach
                         </select>
                     </div>
-                    
                     <div class="form-group">
-                        <input type="file" name="cat_img" id="img">
+                        <label for="recipient-name" class="control-label">New Name:</label>
+                        <input type="text" class="form-control" name="updatename" required>
                     </div>
-			         
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">New Image:</label>
+                        <p><input type="file" name="updateimg"></p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
