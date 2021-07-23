@@ -23,7 +23,7 @@ class subcategorycontroller extends Controller
         return view('admin/adminsubcategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2,'sub'=>$sub,'cat'=>$cat]);
     }
     function deletesubcategory(Request $req,$id)
-    {x
+    {
        
        subcategory::where('cat_id',$id)->delete();
        return redirect()->back();
