@@ -16,13 +16,13 @@ class adminlogincontroller extends Controller
 {
     function adminlogin(Request $req)
     {
-         $email=$req->input('email');
-         $password=$req->input('password');
-         
-         $user=admin::where('a_email','like',$email)->where('a_password','like',$password)->count();
-         
-         if($user>0)
-         {
+        $email=$req->input('email');
+        $password=$req->input('password');
+        
+        $user=admin::where('a_email','like',$email)->where('a_password','like',$password)->count();
+        
+        if($user>0)
+        {
             $req->session()->put('adminemail',$email);
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();
@@ -33,40 +33,41 @@ class adminlogincontroller extends Controller
             $subcat_count=subcategory::count();
             $inquiry=inquiry::where('checked',0)->get();
             return view('admin.admindashboard',['inquiry'=>$inquiry,'results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
-            }
-         else {
-             echo "<script> alert('Invalid login credential.')</script>";
-             return view('admin.adminlogin');
-         }
+        }
+        else {
+            echo "<script> alert('Invalid login credential.')</script>";
+            return view('admin.adminlogin');
+        }
     }
     function dashboard(Request $req)   
     {
-      $email=$req->session()->get('adminemail');
-      $user2=admin::where('a_email','like',$email)->get();
-      $cat_count=category::count();
-      $count=admin::count();
-      $subcat_count=subcategory::count();
-      $product_count=product::count();
-      $customer_count=customer::count();
 
-      $inquiry=inquiry::where('checked',0)->get();
-      return view('admin.admindashboard',['inquiry'=>$inquiry,'aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
+        $email=$req->session()->get('adminemail');
+        $user2=admin::where('a_email','like',$email)->get();
+        $cat_count=category::count();
+        $count=admin::count();
+        $subcat_count=subcategory::count();
+        $product_count=product::count();
+        $customer_count=customer::count();
+
+        $inquiry=inquiry::where('checked',0)->get();
+        return view('admin.admindashboard',['inquiry'=>$inquiry,'aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
     }
-     function adminlogout()
-     {
-      session()->forget('adminemail');
-      return redirect('adminlogin');
-     }
+    function adminlogout()
+    {
+        session()->forget('adminemail');
+        return redirect('adminlogin');
+    }
     function adminviewprofile(Request $req)
-     {
-      $email=$req->session()->get('adminemail');
-       $view=admin::where('a_email','like',$email)->get();
-       $user2=admin::where('a_email','like',$email)->get();
-       $inquiry=inquiry::where('checked',0)->get();
-       return view('admin.adminviewprofile',['inquiry'=>$inquiry,'data'=>$view,'aname'=>$user2]);
-     }
+    {
+        $email=$req->session()->get('adminemail');
+        $view=admin::where('a_email','like',$email)->get();
+        $user2=admin::where('a_email','like',$email)->get();
+        $inquiry=inquiry::where('checked',0)->get();
+        return view('admin.adminviewprofile',['inquiry'=>$inquiry,'data'=>$view,'aname'=>$user2]);
+    }
      
-     function newpassword(Request $req){
+    function newpassword(Request $req){
        
         $passedpassword=$req->passedCode;
         $userEnterdPass=$req->userCode;
@@ -75,13 +76,13 @@ class adminlogincontroller extends Controller
         // $arr=[$passedpassword,$userEnterdPass,$email,$newpass];
         // dd($arr);
         if($passedpassword==$userEnterdPass){
-          admin::where('a_email',$email)->update(['a_password' => $newpass]);
-          $req->session()->put('adminemail',$email);
-          return redirect('dashboard');
+            admin::where('a_email',$email)->update(['a_password' => $newpass]);
+            $req->session()->put('adminemail',$email);
+            return redirect('dashboard');
         }
         else{
-          $req->session()->put('wrongcode',"Enter Correct code");
-          return redirect()->back();
+            $req->session()->put('wrongcode',"Enter Correct code");
+            return redirect()->back();
         }
     }
     function view_admin(Request $req)

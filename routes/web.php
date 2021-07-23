@@ -141,3 +141,4 @@ Route::post('/reply',[inquirycontroller::class,'reply_inq']);
 
 route::post('insertcat','categorycontroller@add_cat');
 route::post('insertsubcat','subcategorycontroller@add_subcat');
+route::post('editsubcat','subcategorycontroller@edit_subcat');

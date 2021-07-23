@@ -1,10 +1,3 @@
-<?php
-session_start();
-if(!Session::has('adminemail'))
-{
-  echo "<script>location.href='/'</script>";
-}
-?>
 @include('admin.header')
 
 <!-- Page Heading -->
