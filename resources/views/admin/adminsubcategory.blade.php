@@ -79,7 +79,7 @@ if(!Session::has('adminemail'))
                 <input class="z" type="submit" style='border:none;float:right;' value="X" />
             </button>
             <form action="insertsubcat" method="POST" enctype="multipart/form-data">
-            @csrf
+                @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Sub-Category Name</label>
@@ -91,7 +91,7 @@ if(!Session::has('adminemail'))
                         <label>Category Name</label>
                         <select name="catname" class="form-control">
                             @foreach($cat as $r)
-                                <option value="$r->cat_name">{{$r->cat_name}}</option>
+                            <option value="$r->cat_name">{{$r->cat_name}}</option>
                             @endforeach
                         </select>
                     </div>

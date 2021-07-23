@@ -138,14 +138,10 @@ if(!Session::has('adminemail'))
                         <label>Category Name</label>
                         <input type="text" name="cat_name" class="form-control"
                             placeholder="Enter Category Name" required/>
-
                     </div>
                         <div class="form-group">
                         <label>Image</label><br /x>
-
-
                         <input type="file" name="cat_img" required/>
-
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -41,7 +41,6 @@ class categorycontroller extends Controller
     }
     function deletecategory(Request $req,$id)
     {
-       
        category::where('cat_id',$id)->delete();
        return redirect()->back();
     }
