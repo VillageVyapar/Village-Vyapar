@@ -56,7 +56,7 @@ if(!Session::has('adminemail'))
 
                         </td>
                         <td style='width: 50PX;' class="center">
-                            <a href="{{url('deletesubcategory/'.$r['cat_id'])}}"><button type="button"
+                            <a href="{{url('deletesubcategory/'.$r['subcat_id'])}}"><button type="button"
                                     class="btn btn-danger">Delete</button></a>
                         </td>
                     </tr>
