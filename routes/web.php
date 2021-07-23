@@ -140,3 +140,4 @@ route::get('admingetproduct/{pname}',[productlistcontroller::class,'ajax_product
 Route::post('/reply',[inquirycontroller::class,'reply_inq']);
 
 route::post('insertcat','categorycontroller@add_cat');
+route::post('insertsubcat','subcategorycontroller@add_subcat');
