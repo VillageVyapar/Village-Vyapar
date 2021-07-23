@@ -16,11 +16,10 @@ class categorycontroller extends Controller
         $email=$req->session()->get('adminemail');
         $user2=admin::where('a_email','like',$email)->get();
         $results = category::simplePaginate(5);
-        $cat = category::all();
         $catid=$req->input('cat_id');
         $catname=$req->input('cat_name');
         $inquiry=inquiry::where('checked',0)->get();
-        return view('admin.admincategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2,"category"=>$cat]);
+        return view('admin.admincategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2]);
     }
     function edit_category(Request $req)
     {
