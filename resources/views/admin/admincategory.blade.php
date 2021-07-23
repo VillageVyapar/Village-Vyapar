@@ -131,20 +131,18 @@ if(!Session::has('adminemail'))
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <input class="z" type="submit" style='border:none' value="X" />
             </button>
-            <form action="insertcat" method="post" enctype="multipart/form-data">
+            <form action="/insertcat" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Category Name</label>
-                        <input type="text" pattern="[A-Za-z ]+" title="letters only, no digit or no special characters "
-                            autofocus id='name' name="name" class="form-control"
+                        <input type="text" name="cat_name" class="form-control"
                             placeholder="Enter Category Name" required/>
                     </div>
-                    <div class="form-group">
+                        <div class="form-group">
                         <label>Image</label><br /x>
 
-                        <input type="file" name="catimg" required/>
-
+                        <input type="file" name="cat_img" required/>
                     </div>
                 </div>
                 <div class="modal-footer">

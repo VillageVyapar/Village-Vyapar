@@ -57,6 +57,14 @@ class categorycontroller extends Controller
         return view("admin.admineditcategory",['data'=>$data]);
     }
     function add_cat(Request $req){
-        
+        // dd($req->cat_name);
+        $imgname=$req->file('cat_img');
+            // dd($imgname);
+            $newname=time()."_".$imgname->getClientOriginalName();
+            $imgname->move(public_path('category_images'),$newname);
+        $insert=DB::insert("insert into categories values(null,?,?)",[$req->cat_name,$newname]);
+        if($insert){
+            return redirect()->back();
+        }
     }
 }

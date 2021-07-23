@@ -78,22 +78,27 @@ if(!Session::has('adminemail'))
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <input class="z" type="submit" style='border:none;float:right;' value="X" />
             </button>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="insertsubcat" method="POST" enctype="multipart/form-data">
+            @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Category Name</label>
+                        <label>Sub-Category Name</label>
                         <input type="text" pattern="[A-Za-z ]+" title="letters only, no digit or no special characters "
-                            autofocus id='name' required="True" name="name" class="form-control"
-                            placeholder="Enter Category Name" />
+                            autofocus id='subcat_name' required="True" name="subcat_name" class="form-control"
+                            placeholder="Enter Sub-Category Name" />
                     </div>
                     <div class="form-group">
-                        <label>Image</label><br /x>
-                        <input type="file" required name="img" />
+                        <label>Category Name</label>
+                        <select name="catname" class="form-control">
+                            @foreach($cat as $r)
+                                <option value="$r->cat_name">{{$r->cat_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="issert" class="btn btn-primary">Insert</button>
+                    <button type="submit" name="insert" class="btn btn-primary">Insert</button>
                 </div>
 
             </form>
