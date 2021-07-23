@@ -83,15 +83,14 @@ if(!Session::has('adminemail'))
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Sub-Category Name</label>
-                        <input type="text" pattern="[A-Za-z ]+" title="letters only, no digit or no special characters "
-                            autofocus id='subcat_name' required="True" name="subcat_name" class="form-control"
+                        <input type="text"  required name="subcat_name" class="form-control"
                             placeholder="Enter Sub-Category Name" />
                     </div>
                     <div class="form-group">
                         <label>Category Name</label>
-                        <select name="catname" class="form-control">
+                        <select name="catid" class="form-control">
                             @foreach($cat as $r)
-                            <option value="$r->cat_name">{{$r->cat_name}}</option>
+                            <option value="{{$r->cat_id}}">{{$r->cat_name}}</option>
                             @endforeach
                         </select>
                     </div>

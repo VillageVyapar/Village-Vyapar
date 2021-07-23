@@ -23,16 +23,18 @@ class subcategorycontroller extends Controller
         return view('admin/adminsubcategory',['inquiry'=>$inquiry,'results'=>$results,'aname'=>$user2,'sub'=>$sub,'cat'=>$cat]);
     }
     function deletesubcategory(Request $req,$id)
-    {x
-       
-       subcategory::where('cat_id',$id)->delete();
-       return redirect()->back();
+    {
+        $delete=subcategory::where('subcat_id',$id)->delete();
+        if($delete){
+            return redirect()->back();
+        }
     }
-    function add_subcat(Request $req){
-        dd($req->catname);
-        $id=category::where('cat_name',$req->catname)->value('cat_id');
-        $insert=DB::insert("insert into subcategories values(null,?,?)",[$req->subcat_name,$id]);
-        
+    function add_subcat(Request $req)
+    {
+        $insert=DB::insert("insert into subcategories values(null,?,?)",[$req->subcat_name,$req->catid]);
+        if($insert){
+            return redirect()->back();
+        }
     }
     
 }
