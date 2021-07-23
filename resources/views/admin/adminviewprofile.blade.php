@@ -37,7 +37,7 @@ function show() {
 
 
                                     <img src="Admin_img/{{$h['a_img']}}"" alt=" Admin" class="rounded-circle"
-                                        width="150">
+                                        style='height:150px;width:150px;border-radius:50%'>
 
 
                                     <div class="mt-3">

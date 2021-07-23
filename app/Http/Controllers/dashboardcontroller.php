@@ -11,6 +11,7 @@ use App\inquiry;
 use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
+use Crypt;
 
 class dashboardcontroller extends Controller
 {
@@ -123,27 +124,29 @@ class dashboardcontroller extends Controller
         $email=session()->get('useremail');
         $cusname=customer::where('email','LIKE',$email)->get();
         $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->get();
-        echo $np.$ncp.$cp;
+        //echo $np.$ncp.$cp;
             foreach ($cusname as $c)
             {
-                if($cp == $c['password'])
+                $cp2=Crypt::decrypt($c->password);
+                if($cp == $cp2)
                 {
                     if($np == $ncp)
                     {
-                        $qry=customer::where('email',$email)->update(["password"=>$np]);
+                        $npass=Crypt::encrypt($np);
+                        $qry=customer::where('email',$email)->update(["password"=>$npass]);
                         echo "<script>alert('new password updated !!');</script>";
-                        return redirect()->back();
+                        return redirect()->back()->with('New Password Updated !!');
                     }
                     else
                     {
                         echo "<script>alert('new password and confirm password must be same... !!');</script>";
-                        return redirect()->back();
+                        return redirect()->back()->with('New Password and Confirm password must be same !!');
                     }
                 }
                 else
                 {
                     echo "<script>alert('current password not matched... !!');</script>";
-                    return redirect()->back();  
+                    return redirect()->back()->with('Current Password not matched  !!');  
                 }
             }
     }
