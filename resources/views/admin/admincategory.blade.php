@@ -73,8 +73,8 @@ if(!Session::has('adminemail'))
                             <button type="button" data-toggle="modal" data-target="#editcat{{$r->cat_id}}" id="edit"
                                 data-myname="hello" class="btn btn-success">Edit</button>
 
-                            <button type="button" href="{{url('deletecategory/'.$r['cat_id'])}}"
-                                class="btn btn-danger">Delete</button>
+                                <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
+                                    class="btn btn-danger">Delete</button></a>
                         </td>
                     </tr>
                     <div class="modal fade" id="editcat{{$r->cat_id}}" tabindex="-1" role="dialog"
