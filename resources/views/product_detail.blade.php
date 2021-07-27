@@ -25,6 +25,15 @@ function show2() {
 
 }
 
+function qrshow() {
+    var img = document.getElementById('image');
+    if (img.style.display == 'none') {
+        img.style.display = 'block';
+    } else {
+        img.style.display = 'none';
+    }
+}
+
 function like() {
 
     likes = document.getElementById('likes');
@@ -281,140 +290,149 @@ function like() {
 
                                     <li>Phone no : <input type='password' disabled style='border:none;' id='pass'
                                             value='{{$p['phone_no']}}' /> </li>
-                                    <li><a onclick='show()' style='float :left;cursor:pointer;padding-right:20px;'> Show
+                                    <li><a onclick='show()'
+                                            style='float :left;color:blue;cursor:pointer;padding-right:20px;'> Show
                                             Contact no </a></li>
-
-                                    @endforeach
-                                </ul>
-                                @endif
+                                    <li><a onclick='qrshow()'
+                                            style='float :left;color:green;cursor:pointer;padding-right:20px;'> Show
+                                            Contact no(QR-Code) </a></li>
+                                    <br>
+                                    <img id='image' loader='lazy'
+                                        src="https://chart.googleapis.com/chart?cht=qr&chl={{$p->phone_no}}&chs=120x120&chld=L|0"
+                                        class="qr-code img-thumbnail img-responsive" style='display:none;' />
                             </div>
+                            @endforeach
+                            </ul>
+                            @endif
                         </div>
                     </div>
-                    <!-- Related product -->
-                    <div class="aa-product-related-item">
-                        <h3>Related Products</h3>
-                        <ul class="aa-product-catg aa-related-item-slider">
-                            <!-- start single product item -->
-                            @foreach($allproduct as $ap)
-                            @foreach($products as $p)
-                            @if($ap['subcat_id'] == $p['subcat_id'])
-                            <li>
-                                <figure>
-                                    <a href=""><img style='width:270px;height:300px;'
-                                            src="/product_images/{{$ap['img']}}"></a>
-                                    <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To
-                                        Cart</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="#"
-                                                style='float:left;padding-left:15px;'><b>{{$ap['p_name']}}</b></a></h4>
-                                        <span class="aa-product-price"
-                                            style='float:right;padding-right:15px;'>{{"gram"}} | &#8377;
-                                            {{$ap['p_price']}}</span><span class="aa-product-price"></span>
+                </div><br /><br /><br />
 
-                                        <h4 class="aa-product-title"><a
-                                                style='float:left;padding-left:15px;'><b>{{$ap['c_name']}}</b></a></h4>
-                                        <p style='float:right;padding-right:15px;'>{{$ap['p_date']}}</p>
-
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span
-                                            class="fa fa-heart-o"></span></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span
-                                            class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View"
-                                        data-toggle="modal" data-target="#quick-view-modal-{{$ap['p_id']}}"><span
-                                            class="fa fa-search"></span></a>
-                                </div>
-                                <!-- product badge -->
-
-                            </li>
-                            @endif
-                            @endforeach
-                            @endforeach
-                            <!-- start single product item -->
-
-                        </ul>
-                        <!-- quick view modal -->
+                <!-- Related product -->
+                <div class="aa-product-related-item">
+                    <h3>Related Products</h3>
+                    <ul class="aa-product-catg aa-related-item-slider">
+                        <!-- start single product item -->
                         @foreach($allproduct as $ap)
                         @foreach($products as $p)
                         @if($ap['subcat_id'] == $p['subcat_id'])
-                        <div class="modal fade" id="quick-view-modal-{{$ap['p_id']}}" tabindex="-1" role="dialog"
-                            aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">&times;</button>
-                                        <div class="row">
-                                            <!-- Modal view slider -->
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <div class="aa-product-view-slider">
-                                                    <div class="simpleLens-gallery-container" id="demo-1">
-                                                        <div class="simpleLens-container">
-                                                            <div class="simpleLens-big-image-container">
-                                                                <br>
-                                                                <img src="/product_images/{{$p['img']}}"
-                                                                    style='width:220px;height:300px;'
-                                                                    alt="{{$p['p_name']}}" class="simpleLens-big-image">
-                                                            </div>
+                        <li>
+                            <figure>
+                                <a href=""><img style='width:270px;height:300px;'
+                                        src="/product_images/{{$ap['img']}}"></a>
+                                <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To
+                                    Cart</a>
+                                <figcaption>
+                                    <h4 class="aa-product-title"><a href="#"
+                                            style='float:left;padding-left:15px;'><b>{{$ap['p_name']}}</b></a></h4>
+                                    <span class="aa-product-price" style='float:right;padding-right:15px;'>{{"gram"}} |
+                                        &#8377;
+                                        {{$ap['p_price']}}</span><span class="aa-product-price"></span>
+
+                                    <h4 class="aa-product-title"><a
+                                            style='float:left;padding-left:15px;'><b>{{$ap['c_name']}}</b></a></h4>
+                                    <p style='float:right;padding-right:15px;'>{{$ap['p_date']}}</p>
+
+                                </figcaption>
+                            </figure>
+                            <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span
+                                        class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span
+                                        class="fa fa-exchange"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View"
+                                    data-toggle="modal" data-target="#quick-view-modal-{{$ap['p_id']}}"><span
+                                        class="fa fa-search"></span></a>
+                            </div>
+                            <!-- product badge -->
+
+                        </li>
+                        @endif
+                        @endforeach
+                        @endforeach
+                        <!-- start single product item -->
+
+                    </ul>
+                    <!-- quick view modal -->
+                    @foreach($allproduct as $ap)
+                    @foreach($products as $p)
+                    @if($ap['subcat_id'] == $p['subcat_id'])
+                    <div class="modal fade" id="quick-view-modal-{{$ap['p_id']}}" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                    <div class="row">
+                                        <!-- Modal view slider -->
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="aa-product-view-slider">
+                                                <div class="simpleLens-gallery-container" id="demo-1">
+                                                    <div class="simpleLens-container">
+                                                        <div class="simpleLens-big-image-container">
+                                                            <br>
+                                                            <img src="/product_images/{{$p['img']}}"
+                                                                style='width:220px;height:300px;' alt="{{$p['p_name']}}"
+                                                                class="simpleLens-big-image">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Modal view content -->
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <div class="aa-product-view-content">
-                                                    <h2>{{$p['p_name']}}</h2>
-                                                    <div class="aa-price-block">
-                                                        <span class="aa-product-view-price"><b>Price (&#8377;) :
-                                                            </b>{{$p['p_price']}} &#8377;</span>
-                                                        <p><b>Avilability : </b>
-                                                            @if($p['QOH']>0)
-                                                            In Stock ({{$p['QOH']}})
-                                                            @else
-                                                            Unavailable ({{$p['QOH']}})
-                                                            @endif
-                                                        </p>
-                                                    </div>
-                                                    <p><b>Description : </b>{{$p['p_desc']}}</p>
-
-
-                                                    <div class="aa-prod-quantity">
-
-
-                                                        <p class="aa-prod-category">
-                                                            @if(isset($scname))
-                                                            @foreach($scname as $s)
-                                                        <p><b>Category : </b>{{$s['cat_name']}}</p>
-                                                        <p><b>Sub category : </b>{{$s['subcat_name']}}</p>
-                                                        @endforeach
+                                        </div>
+                                        <!-- Modal view content -->
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="aa-product-view-content">
+                                                <h2>{{$p['p_name']}}</h2>
+                                                <div class="aa-price-block">
+                                                    <span class="aa-product-view-price"><b>Price (&#8377;) :
+                                                        </b>{{$p['p_price']}} &#8377;</span>
+                                                    <p><b>Avilability : </b>
+                                                        @if($p['QOH']>0)
+                                                        In Stock ({{$p['QOH']}})
+                                                        @else
+                                                        Unavailable ({{$p['QOH']}})
                                                         @endif
-                                                        </p>
-                                                    </div>
-                                                    <div class="aa-prod-view-bottom">
-                                                        <a href="#" style='float:left;padding:8px;'
-                                                            class="aa-add-to-cart-btn"><span
-                                                                class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                                        <a href="{{ url('product_details',$p['p_id']) }}"
-                                                            style='margin-left:10px;padding:8px;'
-                                                            class="aa-add-to-cart-btn">View Details</a>
-                                                    </div>
+                                                    </p>
+                                                </div>
+                                                <p><b>Description : </b>{{$p['p_desc']}}</p>
+
+
+                                                <div class="aa-prod-quantity">
+
+
+                                                    <p class="aa-prod-category">
+                                                        @if(isset($scname))
+                                                        @foreach($scname as $s)
+                                                    <p><b>Category : </b>{{$s['cat_name']}}</p>
+                                                    <p><b>Sub category : </b>{{$s['subcat_name']}}</p>
+                                                    @endforeach
+                                                    @endif
+                                                    </p>
+                                                </div>
+                                                <div class="aa-prod-view-bottom">
+                                                    <a href="#" style='float:left;padding:8px;'
+                                                        class="aa-add-to-cart-btn"><span
+                                                            class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                    <a href="{{ url('product_details',$p['p_id']) }}"
+                                                        style='margin-left:10px;padding:8px;'
+                                                        class="aa-add-to-cart-btn">View Details</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div>
-                        @endif
-                        @endforeach
-                        @endforeach
-                        <!-- Quick view complete -->
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
                     </div>
+                    @endif
+                    @endforeach
+                    @endforeach
+                    <!-- Quick view complete -->
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!-- / product category -->

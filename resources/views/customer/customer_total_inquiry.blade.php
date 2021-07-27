@@ -55,13 +55,27 @@ if(!Session::has('useremail'))
                                             </div>
                                         </td>
                                         <td>
-                                            <div style='width:250px;height:100px;overflow:scroll'>{{$i->reply}}
-                                            </div>
+                                            <?php
+                                                if($i->reply == '')
+                                                    echo "<p style='color:red'>Sorry ,Yet not given any reply</p>";
+                                                else
+                                                {
+                                                    echo "<div style='width:250px;height:100px;overflow:scroll'>$i->reply</div>";
+                                                }
+                                            ?>
+                                        <td>
+                                            <?php
+                                            if($i['checked']==1)
+                                                echo " <b style='color:green'> read</b>";
+                                            else
+                                                echo "<b style='color:red'> unread</b>";
+                                            ?>
                                         </td>
                                         <td>
-                                            {{$i->reply}}
+                                            <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button"
+                                                    onClick="return confirm('Are you sure want to delete the inquiry ?? ')"
+                                                    class="btn btn-danger">Delete</button></a>
                                         </td>
-
                                     </tr>
                                     @else
                                     <tr class="odd gradeX">
@@ -86,18 +100,17 @@ if(!Session::has('useremail'))
                                                 ?>
                                         </td>
                                         <td>
-                                            @if($i->checked ==1 )
-                                            <b style='color:green'> read</b>
-                                            @else
-                                            <b style='color:red'> unread</b>
-                                            @endif
-
+                                            <?php
+                                            if($i['checked']==1)
+                                                echo " <b style='color:green'> read</b>";
+                                            else
+                                                echo "<b style='color:red'> unread</b>";
+                                            ?>
                                         </td>
                                         <td>
                                             <a href="{{ url('del_inquiry',$i['i_id']) }}"><button type="button"
                                                     onClick="return confirm('Are you sure want to delete the inquiry ?? ')"
                                                     class="btn btn-danger">Delete</button></a>
-
                                         </td>
                                     </tr>
                                     @endif

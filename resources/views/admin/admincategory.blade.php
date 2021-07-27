@@ -73,8 +73,9 @@ if(!Session::has('adminemail'))
                             <button type="button" data-toggle="modal" data-target="#editcat{{$r->cat_id}}" id="edit"
                                 data-myname="hello" class="btn btn-success">Edit</button>
 
-                                <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
-                                    class="btn btn-danger">Delete</button></a>
+                            <a href="{{url('deletecategory/'.$r['cat_id'])}}"><button type="button"
+                                    class="btn btn-danger" onClick="return confirm('Are you sure
+                                want to delete category ??')">Delete</button></a>
                         </td>
                     </tr>
                     <div class="modal fade" id="editcat{{$r->cat_id}}" tabindex="-1" role="dialog"
@@ -93,7 +94,8 @@ if(!Session::has('adminemail'))
                                         <div class="form-group">
                                             <label for="recipient-name" class="control-label">Category Name:</label>
                                             <input type="hidden" name="catid" value="{{$r->cat_id}}">
-                                            <input type="text" name="currentname" id="" value="{{$r->cat_name}}" class="form-control" disabled>
+                                            <input type="text" name="currentname" id="" value="{{$r->cat_name}}"
+                                                class="form-control" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="control-label">New Name:</label>
@@ -132,16 +134,16 @@ if(!Session::has('adminemail'))
             </button>
 
             <form action="/insertcat" method="post" enctype="multipart/form-data">
-            @csrf
+                @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Category Name</label>
-                        <input type="text" name="cat_name" class="form-control"
-                            placeholder="Enter Category Name" required/>
+                        <input type="text" name="cat_name" class="form-control" placeholder="Enter Category Name"
+                            required />
                     </div>
-                        <div class="form-group">
+                    <div class="form-group">
                         <label>Image</label><br /x>
-                        <input type="file" name="cat_img" required/>
+                        <input type="file" name="cat_img" required />
                     </div>
                 </div>
                 <div class="modal-footer">

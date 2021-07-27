@@ -33,7 +33,7 @@ if(!Session::has('adminemail'))
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="student_table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
 
@@ -71,6 +71,7 @@ if(!Session::has('adminemail'))
 
 
 
+
 <div class="modal fade" id="addsubcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -83,7 +84,7 @@ if(!Session::has('adminemail'))
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Sub-Category Name</label>
-                        <input type="text"  required name="subcat_name" class="form-control"
+                        <input type="text" required name="subcat_name" class="form-control"
                             placeholder="Enter Sub-Category Name" />
                     </div>
                     <div class="form-group">
