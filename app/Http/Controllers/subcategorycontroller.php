@@ -24,12 +24,10 @@ class subcategorycontroller extends Controller
     }
     function deletesubcategory(Request $req,$id)
     {
-
         $delete=subcategory::where('subcat_id',$id)->delete();
         if($delete){
             return redirect()->back();
         }
-
     }
     function add_subcat(Request $req)
     {
@@ -38,5 +36,11 @@ class subcategorycontroller extends Controller
             return redirect()->back();
         }
     }
-    
+    function edit_subcat(Request $req)
+    {
+        $up=subcategory::where('subcat_id',$req->subcatid)->update(['subcat_name'=>$req->newsubname]);
+        if($up){
+            return redirect()->back();
+        }
+    }
 }

@@ -52,7 +52,8 @@ if(!Session::has('adminemail'))
 
                         <td style='width: 50PX;' class="center">
 
-                            <a href='#'><button type="button" class="btn btn-success">Edit</button></a>
+                            <a data-toggle="modal" data-target="#editsubcat{{$r->subcat_id}}"><button type="button"
+                                    class="btn btn-success">Edit</button></a>
 
                         </td>
                         <td style='width: 50PX;' class="center">
@@ -61,6 +62,41 @@ if(!Session::has('adminemail'))
                         </td>
                     </tr>
 
+                    <div class="modal fade" id="editsubcat{{$r->subcat_id}}" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{$r->subcat_name}} Subcategory</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <input class="z" type="submit" style='border:none;float:right;' value="X" />
+                                    </button>
+                                </div>
+                                <form action="editsubcat" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Sub-Category current Name</label>
+                                            <input type="hidden" name="subcatid" value="{{$r->subcat_id}}">
+                                            <input type="text" required name="curname" class="form-control"
+                                                placeholder="Enter Sub-Category Name" value="{{$r->subcat_name}}"
+                                                disabled />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="newsubname"
+                                                placeholder="Enter New Sub-Category Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" name="insert" class="btn btn-primary">Insert</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                     @endforeach
                 </tbody>
