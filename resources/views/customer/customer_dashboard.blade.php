@@ -209,7 +209,7 @@ new Chart("bar", {
         },
         title: {
             display: true,
-            text: "Total Price of Your Village products"
+            text: "Total Likes of Your Village products"
         }
     }
 });
@@ -252,7 +252,7 @@ new Chart("pie", {
     options: {
         title: {
             display: true,
-            text: "Total View of your Product"
+            text: "Total Viewer of your Product"
         }
     }
 });

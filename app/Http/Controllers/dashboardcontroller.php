@@ -23,7 +23,7 @@ class dashboardcontroller extends Controller
         
         $inq=inquiry::where('email',$email)->get();
        
-       $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->get();
+       $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->orderby('total_like','desc')->limit(5)->get();
        //select count(*) from products group by(`c_id`);
        foreach($cusname as $c)
         {

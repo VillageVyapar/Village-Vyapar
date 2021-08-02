@@ -670,10 +670,11 @@
                             <!-- search box -->
                             <div class="aa-search-box">
 
-                                <form action="product" method='post'>
+                                <form action="{{url('product')}}" method='post'>
                                     {{ @csrf_field() }}
                                     <input type="text" name="search" required id=""
-                                        placeholder="Search here all village products ..">
+                                        placeholder="Search here all village products .."
+                                        value="<?php if(isset($search)) {echo $search;}?>" />
                                     <button type="submit"><span class="fa fa-search"></span></button>
                                 </form>
                             </div>

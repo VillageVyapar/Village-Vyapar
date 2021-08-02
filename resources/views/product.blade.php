@@ -40,13 +40,11 @@ function set(str) {
 <section id="aa-catg-head-banner">
     <div class="container">
         <div class="aa-catg-head-banner-content">
-            @if(isset($search))
-            <h2 align='left'>{{$search}}</h2>
-            @endif
+
 
             @if(isset($scname))
             @foreach($scname as $scn)
-            <h2 align='center' style='height:40px;border:1px solid red;'>{{$scn['cat_name']}} >
+            <h2 align='center' style='padding:20px;height:auto;border:1px solid red;'>{{$scn['cat_name']}} >
                 {{$scn['subcat_name']}}
             </h2>
             <input type='hidden' id='show' value='{{$scn['subcat_id']}}'>

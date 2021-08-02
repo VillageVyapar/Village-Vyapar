@@ -20,9 +20,8 @@ class customercontroller extends Controller
     {
         $c=category::all();
         $sc=subcategory::all();
-        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
-        dd($latest);
-        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
+        $latest=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('p_id','DESC')->limit(6)->get();
+        $popular=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('total_like','DESC')->limit(8)->get();
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(50)->get();
         if($r->capcha == $r->cuscapcha)
         {
@@ -56,8 +55,8 @@ class customercontroller extends Controller
         
         $c=category::all();
         $sc=subcategory::all();
-        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
-        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
+        $latest=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('p_id','DESC')->limit(6)->get();
+        $popular=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('total_like','DESC')->limit(8)->get();
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(50)->get();
         if($req['regpassword'] == $req['confirm_password'])
         {
@@ -105,8 +104,8 @@ class customercontroller extends Controller
     }
     function verify_otp(Request $res)
     {
-        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
-        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
+        $latest=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('p_id','DESC')->limit(6)->get();
+        $popular=product::join('categories','products.cat_id','categories.cat_id')->join('subcategories','products.subcat_id','subcategories.subcat_id')->join('customers','products.c_id','customers.c_id')->orderby('total_like','DESC')->limit(8)->get();
         
         $c= category::all();
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(90)->get();

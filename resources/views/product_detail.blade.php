@@ -1,9 +1,5 @@
 @include('categorymenu');
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-<!-- </script> 
--->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 function show() {
     var pass = document.getElementById('pass');
@@ -12,7 +8,6 @@ function show() {
     } else {
         pass.type = 'password';
     }
-
 }
 
 function show2() {
@@ -22,7 +17,6 @@ function show2() {
     } else {
         pass.type = 'password';
     }
-
 }
 
 function qrshow() {
@@ -44,7 +38,7 @@ function like() {
     }
     pid = document.getElementById('product').value;
     total = document.getElementById('total').value;
-    //alert(pid); 
+
     $.ajax({
         type: 'GET',
         url: '/like/' + pid + '/' + total,
@@ -60,9 +54,7 @@ function like() {
     transform: scale(1.5);
 }
 </style>
-<!-- catg header banner section -->
 
-<!-- / catg header banner section -->
 
 <!-- product category -->
 @foreach($products as $p)
