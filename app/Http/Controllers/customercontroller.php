@@ -8,6 +8,7 @@ use App\subcategory;
 use App\plan;
 use App\inquiry;
 use Mail;
+use DB;
 use Crypt;
 
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ class customercontroller extends Controller
     {
         $c=category::all();
         $sc=subcategory::all();
-    
+        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
+        dd($latest);
+        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(50)->get();
         if($r->capcha == $r->cuscapcha)
         {
@@ -27,12 +30,14 @@ class customercontroller extends Controller
             $pass= $r->input('password');
             $user=customer::where('email','LIKE',$email)->count();
             $det=customer::where('email','LIKE',$email)->get();
+          
             
             if($user >0 && $pass == Crypt::decrypt($det[0]->password))
             {
                 $r->session()->put('useremail',$email);
+               
                // dd(session()->get('useremail'));
-                return view('welcome',['categories'=>$c,'subcategories'=>$sc,'customer',$det,'catpro'=>$p]);
+                return view('welcome',['latest'=>$latest,'popular'=>$popular,'categories'=>$c,'subcategories'=>$sc,'customer',$det,'catpro'=>$p]);
             }
             else
             {
@@ -51,6 +56,8 @@ class customercontroller extends Controller
         
         $c=category::all();
         $sc=subcategory::all();
+        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
+        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(50)->get();
         if($req['regpassword'] == $req['confirm_password'])
         {
@@ -98,6 +105,9 @@ class customercontroller extends Controller
     }
     function verify_otp(Request $res)
     {
+        $latest=DB::select("SELECT * FROM `products` join categories using(cat_id) JOIN subcategories USING(subcat_id) JOIN customers USING(c_id) order by p_id desc LIMIT 8");
+        $popular=DB::select("SELECT * FROM `products` order by `total_like` desc limit 5");
+        
         $c= category::all();
         $p=product::join('categories','products.cat_id','categories.cat_id')->limit(90)->get();
         $sc= subcategory::all();
@@ -127,7 +137,7 @@ class customercontroller extends Controller
                 "pin_code"=>$pin_code
             ]);
             $res->session()->put('useremail',$email);
-            return view('welcome',['categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
+            return view('welcome',['Latest'=>$latest,'Popular'=>$popular,'categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
         }
         else
         {
