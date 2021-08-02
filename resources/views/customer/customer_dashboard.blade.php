@@ -162,7 +162,7 @@ $yarray=array();
 foreach ($procus as $pc)
 {
     array_push($xarray,$pc['p_name']);
-    array_push($yarray,$pc['p_price']);
+    array_push($yarray,$pc['total_like']);
 }
 
 $jsx_array = json_encode($xarray);
@@ -175,6 +175,20 @@ echo "var yValues = ". $jsy_array . ";\n";
 
 // var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 //var yValues = [55, 49, 44, 24, 15];
+function dynamicColors() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+}
+
+function poolColors(a) {
+    var pool = [];
+    for (i = 0; i < a; i++) {
+        pool.push(dynamicColors());
+    }
+    return pool;
+}
 var barColors = ["red", "green", "blue", "orange", "brown", "red", "green", "blue", "orange", "brown", 'red', 'orange',
     'red'
 ];
@@ -184,7 +198,8 @@ new Chart("bar", {
     data: {
         labels: xValues,
         datasets: [{
-            backgroundColor: barColors,
+            backgroundColor: poolColors(yValues.length),
+            borderColor: poolColors(yValues.length),
             data: yValues
         }]
     },

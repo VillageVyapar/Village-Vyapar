@@ -3,12 +3,12 @@
 <script>
 function show() {
 
-    var val = document.getElementById('passwd');
-    if (val.type == 'text') {
-        val.type = 'password';
+    var val = document.getElementById('image');
+    if (val.style.display == 'block') {
+        val.style.display = 'none';
         document.getElementById('button').value = 'Show Password';
     } else {
-        val.type = 'text';
+        val.style.display = 'block';
         document.getElementById('button').value = 'Hide Password';
     }
 }
@@ -19,8 +19,9 @@ function show() {
         <div class="card-body">
             <div class="main-body">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <h2>Admin Profile<h2>
+                    <h2 style='margin:auto'>Admin Profile<h2>
                 </li>
+                <hr style=' border-top:1px solid grey'>
                 <style>
                 ::marker {
                     color: white;
@@ -167,11 +168,16 @@ function show() {
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Password</h6>
                                         </div>
+
                                         <div class="col-sm-9 text-secondary">
                                             <input type='password' class="form-control" style='border:none;' id='passwd'
                                                 name="passwd" disabled required value='{{$h->a_password}}'>
-                                            <input type='button' class="form-control" onClick='show()' id='button'
-                                                value='Show Password'>
+
+                                            <input type='button' class="form-control" style='float:left;width:50%'
+                                                onClick='show()' id='button' value='Show Password'>
+                                            <img id='image' loader='lazy'
+                                                src="https://chart.googleapis.com/chart?cht=qr&chl={{$h->a_password}}&chs=120x120&chld=L|0"
+                                                class="qr-code img-thumbnail img-responsive" style='display:none;' />
                                         </div>
                                     </div>
                                     <hr>

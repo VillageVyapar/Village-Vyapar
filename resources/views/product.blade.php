@@ -38,27 +38,27 @@ function set(str) {
 </script>
 <!-- catg header banner section -->
 <section id="aa-catg-head-banner">
-    <img src="/img/fashion/fashion-header-bg-8.jpg" style='height:250px;' alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-        <div class="container">
-            <div class="aa-catg-head-banner-content">
-                @if(isset($search))
-                <h2 align='left'>{{$search}}</h2>
-                @endif
+    <div class="container">
+        <div class="aa-catg-head-banner-content">
+            @if(isset($search))
+            <h2 align='left'>{{$search}}</h2>
+            @endif
 
-                @if(isset($scname))
-                @foreach($scname as $scn)
-                <h2 align='left'>{{$scn['cat_name']}} > {{$scn['subcat_name']}}</h2>
-                <input type='hidden' id='show' value='{{$scn['subcat_id']}}'>
-                @endforeach
-                @endif
-                @if(isset($cname))
-                @foreach($cname as $cn)
-                <h2 align='left'>{{$cn['cat_name']}}</h2>
-                @endforeach
-                @endif
-            </div>
+            @if(isset($scname))
+            @foreach($scname as $scn)
+            <h2 align='center' style='height:40px;border:1px solid red;'>{{$scn['cat_name']}} >
+                {{$scn['subcat_name']}}
+            </h2>
+            <input type='hidden' id='show' value='{{$scn['subcat_id']}}'>
+            @endforeach
+            @endif
+            @if(isset($cname))
+            @foreach($cname as $cn)
+            <h2 align='left'>{{$cn['cat_name']}}</h2>
+            @endforeach
+            @endif
         </div>
+
     </div>
 </section>
 <!-- / catg header banner section -->
@@ -277,7 +277,7 @@ function set(str) {
                     <!-- single sidebar -->
 
                     <!-- single sidebar -->
-                    <div class="aa-sidebar-widget">
+                    <!-- <div class="aa-sidebar-widget">
                         <h3>Recently Views</h3>
                         <div class="aa-recently-views">
                             <ul>
@@ -304,7 +304,7 @@ function set(str) {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- single sidebar -->
                     <div class="aa-sidebar-widget">
                         <h3>Shop By Product's Likes </h3>

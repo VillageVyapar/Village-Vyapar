@@ -61,23 +61,7 @@ function like() {
 }
 </style>
 <!-- catg header banner section -->
-<section id="aa-catg-head-banner">
-    <img src="/img/fashion/fashion-header-bg-8.jpg" style='height:250px;' alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-        <div class="container">
-            <div class="aa-catg-head-banner-content">
 
-                @if(isset($products))
-                @foreach($products as $p)
-                <h2 align='left'>{{$p['p_name']}}</h2>
-                <input type='text' style='display:none' id='product' disabled value="{{$p['p_id']}}">
-                <input type='text' style='display:none' id='total' disabled value="{{$p['total_like']}}">
-                @endforeach
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
 <!-- / catg header banner section -->
 
 <!-- product category -->
@@ -306,16 +290,17 @@ function like() {
                             @endif
                         </div>
                     </div>
-                </div><br /><br /><br />
+                </div>
 
                 <!-- Related product -->
                 <div class="aa-product-related-item">
-                    <h3>Related Products</h3>
+                    <h2>Related Products</h2>
                     <ul class="aa-product-catg aa-related-item-slider">
                         <!-- start single product item -->
                         @foreach($allproduct as $ap)
                         @foreach($products as $p)
                         @if($ap['subcat_id'] == $p['subcat_id'])
+
                         <li>
                             <figure>
                                 <a href=""><img style='width:270px;height:300px;'
@@ -372,9 +357,9 @@ function like() {
                                                     <div class="simpleLens-container">
                                                         <div class="simpleLens-big-image-container">
                                                             <br>
-                                                            <img src="/product_images/{{$p['img']}}"
+                                                            <img src="/product_images/{{$ap['img']}}"
                                                                 style='width:220px;height:300px;' alt="{{$p['p_name']}}"
-                                                                class="simpleLens-big-image">
+                                                                class="-big-image">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -383,19 +368,19 @@ function like() {
                                         <!-- Modal view content -->
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <div class="aa-product-view-content">
-                                                <h2>{{$p['p_name']}}</h2>
+                                                <h2>{{$ap['p_name']}}</h2>
                                                 <div class="aa-price-block">
                                                     <span class="aa-product-view-price"><b>Price (&#8377;) :
-                                                        </b>{{$p['p_price']}} &#8377;</span>
+                                                        </b>{{$ap['p_price']}} &#8377;</span>
                                                     <p><b>Avilability : </b>
-                                                        @if($p['QOH']>0)
-                                                        In Stock ({{$p['QOH']}})
+                                                        @if($ap['QOH']>0)
+                                                        In Stock ({{$ap['QOH']}})
                                                         @else
-                                                        Unavailable ({{$p['QOH']}})
+                                                        Unavailable ({{$ap['QOH']}})
                                                         @endif
                                                     </p>
                                                 </div>
-                                                <p><b>Description : </b>{{$p['p_desc']}}</p>
+                                                <p><b>Description : </b>{{$ap['p_desc']}}</p>
 
 
                                                 <div class="aa-prod-quantity">
@@ -411,10 +396,8 @@ function like() {
                                                     </p>
                                                 </div>
                                                 <div class="aa-prod-view-bottom">
-                                                    <a href="#" style='float:left;padding:8px;'
-                                                        class="aa-add-to-cart-btn"><span
-                                                            class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                                    <a href="{{ url('product_details',$p['p_id']) }}"
+
+                                                    <a href="{{ url('product_details',$ap['p_id']) }}"
                                                         style='margin-left:10px;padding:8px;'
                                                         class="aa-add-to-cart-btn">View Details</a>
                                                 </div>

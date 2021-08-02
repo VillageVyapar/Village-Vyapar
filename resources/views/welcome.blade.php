@@ -150,20 +150,20 @@
 &nbsp;&nbsp;&nbsp;
 
 <section style='margin-top:00px;'>
-    <center>
-        <div style='width:80%;padding:25px;'>
-            <img src='\vlgpic.jpg' style='margin:25px;float:left;width:400px;' />
 
-            <h2>Welcome to My Village Vyapar</h2>
-            <hr style='border:1px solid red;'>
-            <h4 style='text-align:left;word-spacing:5px;'>
-                All MyVillageShop products support health and True Wellness and are made with
-                loving care. Each product is one link in a chain of connectedness between Mother Nature,
-                our farmers and you. By choosing My Village Shop you are completing this chain, actively
-                participating in our mission to create a sustainable environment of True Wellness, providing
-                training and a life of dignity to our farmers, and bringing health, happiness and True Wellness to you
-            </h4>
-    </center>
+    <div style='width:80%;padding:25px;margin:auto'>
+        <img src='\vlgpic.jpg' style='margin:auto;float:left;width:400px;' />
+
+        <h2>Welcome to My Village Vyapar</h2>
+        <hr style='border:1px solid red;'>
+        <h4 style='text-align:left;word-spacing:5px;'>
+            All MyVillageShop products support health and True Wellness and are made with
+            loving care. Each product is one link in a chain of connectedness between Mother Nature,
+            our farmers and you. By choosing My Village Shop you are completing this chain, actively
+            participating in our mission to create a sustainable environment of True Wellness, providing
+            training and a life of dignity to our farmers, and bringing health, happiness and True Wellness to you
+        </h4>
+
     </div>
 
 
