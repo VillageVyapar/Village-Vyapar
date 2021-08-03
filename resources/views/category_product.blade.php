@@ -61,8 +61,7 @@
                                 <figure>
                                     <a href=""><img style='width:270px;height:300px;float:left'
                                             src="/product_images/{{$p['img']}}" /></a>
-                                    <a class="aa-add-card-btn" href="#" style=''><span
-                                            class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    
                                     <figcaption>
                                         <h4 class="aa-product-title"><a href="#"
                                                 style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a></h4>
@@ -148,9 +147,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="aa-prod-view-bottom">
-                                                        <a href="#" style='float:left;padding:8px;'
-                                                            class="aa-add-to-cart-btn"><span
-                                                                class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                        
                                                         <a href="{{ url('product_details',$p['p_id']) }}"
                                                             style='margin-left:10px;padding:8px;'
                                                             class="aa-add-to-cart-btn">View Details</a>
