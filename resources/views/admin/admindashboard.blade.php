@@ -1,5 +1,6 @@
 @include('admin.header')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -98,11 +99,13 @@
                     <div class="col-auto">
                         <i class="fas fa-users fa-2x text-gray-300"></i>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<canvas id="bar" style="border:1px solid grey;padding:25px;float:left;max-height:400px;max-width:80%;"></canvas>
 
 </div>
 <!-- /.container-fluid -->
@@ -146,6 +149,65 @@
     </div>
 </div>
 
+
+<script>
+<?php
+$xarray=array();
+$yarray=array();
+foreach ($maxprobyuser as $x)
+{
+    array_push($xarray,$x->c_id);
+    array_push($yarray,$x->max);
+}
+
+$jsx_array = json_encode($xarray);
+$jsy_array = json_encode($yarray);
+
+echo "var xValues = ". $jsx_array . ";\n";
+echo "var yValues = ". $jsy_array . ";\n";
+
+?>
+
+//var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+//var yValues = [55, 49, 44, 24, 15];
+
+function dynamicColors() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+}
+
+function poolColors(a) {
+    var pool = [];
+    for (i = 0; i < a; i++) {
+        pool.push(dynamicColors());
+    }
+    return pool;
+}
+
+
+new Chart("bar", {
+    type: "horizontalBar",
+    data: {
+        labels: xValues,
+        datasets: [{
+            backgroundColor: poolColors(yValues.length),
+            borderColor: poolColors(yValues.length),
+            data: yValues
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: "Maximum 5 customer's products "
+        }
+    }
+});
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -27,9 +27,16 @@ function set_Subcategory() {
             <div class="col-lg-12">
                 <h1 class="page-header"> Your Products
                     <button data-toggle="modal" data-target="#addadminprofile" type="button"
-                        class="btn btn-primary">Insert </button><br><br>
+                        class="btn btn-primary">Insert </button>
+                    <input type="text" id='myInput'
+                        style='padding:20px;width:400px;border:none;border-bottom:1px solid blue;float:right;'
+                        onkeyup="search_product(this.value)" class="form-control bg-light border-1"
+                        placeholder="Search Your Products...." aria-label="Search" aria-describedby="basic-addon2">
+
+                    <br><br>
                     <a href='download' target='_blank'><button type="button" class="btn btn-primary">Download
                         </button></a>
+
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -45,7 +52,7 @@ function set_Subcategory() {
                     <div class="panel-body">
                         <div class="table-responsive">
 
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="myTable">
                                 <thead>
                                     <tr>
                                         <th>Image & likes</th>
@@ -134,7 +141,26 @@ function set_Subcategory() {
 
 </div>
 <!-- /#wrapper -->
-
+<script>
+function search_product() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; /// customer name searching
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 <!-- jQuery -->
 <script src="Customer/js/jquery.min.js"></script>
 
@@ -158,6 +184,17 @@ $(document).ready(function() {
         responsive: true
     });
 });
+
+var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+        var output = document.getElementById('output');
+        output.src = reader.result;
+        document.getElementById('link').href = reader.result;
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+};
 </script>
 
 <!-- Product Add model -->
@@ -185,7 +222,8 @@ $(document).ready(function() {
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Image :</label>
-                        <input type="file" name='proimg' required class="form-control" />
+                        <a href='#' id='link'> <img id="output" style='max-height: 90px;' /></a>
+                        <input type="file" onchange="loadFile(event)" name='proimg' required class=" form-control" />
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Category :</label>

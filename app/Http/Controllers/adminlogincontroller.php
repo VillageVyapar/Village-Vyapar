@@ -12,13 +12,15 @@ use App\category;
 use App\subcategory;
 use App\inquiry;
 
+
 class adminlogincontroller extends Controller
 {
     function adminlogin(Request $req)
     {
         $email=$req->input('email');
         $password=$req->input('password');
-        
+        $maxprobyuser=DB::select("SELECT c_id,max(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(p.c_id) limit 5;");
+      // dd($maxprobyuser);
         $user=admin::where('a_email','like',$email)->where('a_password','like',$password)->count();
         
         if($user>0)
@@ -32,7 +34,7 @@ class adminlogincontroller extends Controller
             $cat_count=category::count();
             $subcat_count=subcategory::count();
             $inquiry=inquiry::where('checked',0)->get();
-            return view('admin.admindashboard',['inquiry'=>$inquiry,'results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
+            return view('admin.admindashboard',['maxprobyuser'=>$maxprobyuser,'inquiry'=>$inquiry,'results'=>$user,'aname'=>$user2,'count'=>$count,'pcount'=>$product_count,'cust_count'=>$customer_count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count]);
         }
         else {
             echo "<script> alert('Invalid login credential.')</script>";
@@ -41,7 +43,9 @@ class adminlogincontroller extends Controller
     }
     function dashboard(Request $req)   
     {
-
+        $maxprobyuser=DB::select("SELECT c_id,max(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(p.c_id) limit 5;"); 
+        //$smaxprobyuser=product::join('customers','customers.c_id','products.c_id')->groupby('products.c_id')->max('products.p_id');
+        //dd($smaxprobyuser);
         $email=$req->session()->get('adminemail');
         $user2=admin::where('a_email','like',$email)->get();
         $cat_count=category::count();
@@ -51,7 +55,7 @@ class adminlogincontroller extends Controller
         $customer_count=customer::count();
 
         $inquiry=inquiry::where('checked',0)->get();
-        return view('admin.admindashboard',['inquiry'=>$inquiry,'aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
+        return view('admin.admindashboard',['maxprobyuser'=>$maxprobyuser,'inquiry'=>$inquiry,'aname'=>$user2,'count'=>$count,'cat_count'=>$cat_count,'subcat_count'=> $subcat_count,'pcount'=>$product_count,'cust_count'=>$customer_count]);
     }
     function adminlogout()
     {
@@ -68,7 +72,7 @@ class adminlogincontroller extends Controller
     }
      
     function newpassword(Request $req){
-       
+        
         $passedpassword=$req->passedCode;
         $userEnterdPass=$req->userCode;
         $email=$req->passedEmail;

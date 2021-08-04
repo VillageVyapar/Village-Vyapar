@@ -13,7 +13,7 @@ class inquirycontroller extends Controller
 {
     function admin_inquiry(Request $req)
     {
-            
+
             $inq=inquiry::orderby('i_id','desc')->get();
             $email=$req->session()->get('adminemail');
             $user2=admin::where('a_email','like',$email)->get();

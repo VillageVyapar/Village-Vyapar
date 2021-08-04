@@ -165,22 +165,20 @@
         </h4>
 
     </div>
-
-
 </section>
-<section id="aa-product">
+
+<section id="aa-popular-category">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="aa-product-area">
                         <div class="aa-product-inner">
+
                             <!-- start prduct navigation -->
 
                             <ul class="nav nav-tabs aa-products-tab">
-
-
-                                <li><a href="#food" data-toggle="tab">Food</a></li>
+                                <li class="active"><a href="#food" data-toggle="tab">Food</a></li>
                                 <li><a href="#medicine" data-toggle="tab">Medicine</a></li>
                                 <li><a href="#fertilizer" data-toggle="tab">Fertilizer</a></li>
                                 <li><a href="#tool" data-toggle="tab">Tools</a></li>
@@ -190,7 +188,7 @@
                             <div class="tab-content">
                                 <!-- Start men product category -->
                                 <div class="tab-pane fade in active" id="food">
-                                    <ul class="aa-product-catg">
+                                    <ul class="aa-product-catg ">
                                         <!-- start single product item -->
                                         @foreach($catpro as $p)
                                         @if($p['cat_id']==1 && $p['subcat_id']==1)
@@ -198,22 +196,26 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
+
                                                 <?php
-                  $pid=$p['p_id'];
-                  if(Session::has('useremail'))
-                  {
-                    
-                    echo "<a class='aa-add-card-btn' href='product/addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
-                  }
-                  ?>
+                                                $pid=$p['p_id'];
+                                                if(Session::has('useremail'))
+                                                {
+                                                    
+                                                    echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                                                }
+                                                ?>
+
+
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
                                                     </h4>
                                                     <span class="aa-product-price"
-                                                        style='float:right;padding-right:15px;'>{{"gram"}} | &#8377;
+                                                        style='float:right;padding-right:15px;'> &#8377;
                                                         {{$p['p_price']}}</span><span class="aa-product-price"></span>
 
+                                                    <br>
                                                     <h4 class=""><a
                                                             style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a>
                                                     </h4>
@@ -223,16 +225,18 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
 
+
+                                                <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
                                                     title="Quick View" data-toggle="modal"
                                                     data-target="#quick-view-modal-{{$p['p_id']}}"><span
                                                         class="fa fa-search"></span></a>
+
                                             </div>
                                             <!-- product badge -->
-                                            @if($p['p_id']>=3)
+                                            @if($p['p_id']>=60)
                                             <span class="aa-badge aa-sale" href="#">New!</span>
                                             @endif
-
                                         </li>
                                         @endif
                                         @endforeach
@@ -252,16 +256,24 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
-                                                <a class="aa-add-card-btn" href="#" style=''><span
-                                                        class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                <?php
+                                                $pid=$p['p_id'];
+                                                if(Session::has('useremail'))
+                                                {
+                                                    
+                                                    echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                                                }
+                                                ?>
+
+
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
                                                     </h4>
                                                     <span class="aa-product-price"
-                                                        style='float:right;padding-right:15px;'>{{"gram"}} | &#8377;
+                                                        style='float:right;padding-right:15px;'> &#8377;
                                                         {{$p['p_price']}}</span><span class="aa-product-price"></span>
-
+                                                    <br>
                                                     <h4 class=""><a
                                                             style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a>
                                                     </h4>
@@ -270,18 +282,19 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="aa-product-hvr-content">
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Compare"><span class="fa fa-exchange"></span></a>
+
+
+                                                <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
                                                     title="Quick View" data-toggle="modal"
                                                     data-target="#quick-view-modal-{{$p['p_id']}}"><span
                                                         class="fa fa-search"></span></a>
+
                                             </div>
                                             <!-- product badge -->
-                                            @if($p['p_id']<=20) <span class="aa-badge aa-sale" href="#">New!</span>
-                                                @endif
+                                            @if($p['p_id']>=60)
+                                            <span class="aa-badge aa-sale" href="#">New!</span>
+                                            @endif
                                         </li>
                                         @endif
                                         @endforeach
@@ -300,16 +313,26 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
-                                                <a class="aa-add-card-btn" href="#" style=''><span
-                                                        class="fa fa-shopping-cart"></span>Add To Cart</a>
+
+                                                <?php
+                                                    $pid=$p['p_id'];
+                                                    if(Session::has('useremail'))
+                                                    {
+                                                        
+                                                        echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                                                    }
+                                                ?>
+
+
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
                                                     </h4>
                                                     <span class="aa-product-price"
-                                                        style='float:right;padding-right:15px;'>{{"gram"}} | &#8377;
+                                                        style='float:right;padding-right:15px;'> &#8377;
                                                         {{$p['p_price']}}</span><span class="aa-product-price"></span>
 
+                                                    <br>
                                                     <h4 class=""><a
                                                             style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a>
                                                     </h4>
@@ -318,20 +341,19 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="aa-product-hvr-content">
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Compare"><span class="fa fa-exchange"></span></a>
+
+
+                                                <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
                                                     title="Quick View" data-toggle="modal"
                                                     data-target="#quick-view-modal-{{$p['p_id']}}"><span
                                                         class="fa fa-search"></span></a>
+
                                             </div>
                                             <!-- product badge -->
-                                            @if($p['p_id']>=30)
-                                            <span class="aa-badge aa-sale" href="#">NEw!</span>
+                                            @if($p['p_id']>=60)
+                                            <span class="aa-badge aa-sale" href="#">New!</span>
                                             @endif
-
                                         </li>
                                         @endif
                                         @endforeach
@@ -350,16 +372,25 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
-                                                <a class="aa-add-card-btn" href="#" style=''><span
-                                                        class="fa fa-shopping-cart"></span>Add To Cart</a>
+
+                                                <?php
+                                                $pid=$p['p_id'];
+                                                if(Session::has('useremail'))
+                                                {
+                                                    
+                                                    echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                                                }
+                                                ?>
+
+
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
                                                     </h4>
                                                     <span class="aa-product-price"
-                                                        style='float:right;padding-right:15px;'>{{"gram"}} | &#8377;
+                                                        style='float:right;padding-right:15px;'> &#8377;
                                                         {{$p['p_price']}}</span><span class="aa-product-price"></span>
-
+                                                    <br>
                                                     <h4 class=""><a
                                                             style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a>
                                                     </h4>
@@ -368,14 +399,14 @@
                                                 </figcaption>
                                             </figure>
                                             <div class="aa-product-hvr-content">
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                                                <a href="#" data-toggle="tooltip" data-placement="top"
-                                                    title="Compare"><span class="fa fa-exchange"></span></a>
+
+
+                                                <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
                                                     title="Quick View" data-toggle="modal"
                                                     data-target="#quick-view-modal-{{$p['p_id']}}"><span
                                                         class="fa fa-search"></span></a>
+
                                             </div>
                                             <!-- product badge -->
                                             @if($p['p_id']>=60)
@@ -461,11 +492,9 @@
                                                             </p>
                                                         </div>
                                                         <div class="aa-prod-view-bottom">
-                                                            <a href="#" style='float:left;padding:8px;'
-                                                                class="aa-add-to-cart-btn"><span
-                                                                    class="fa fa-shopping-cart"></span>Add To Cart</a>
+
                                                             <a href="{{ url('product_details',$p['p_id']) }}"
-                                                                style='margin-left:10px;padding:8px;'
+                                                                style='margin-left:10px;text-align:center;width:80%;padding:8px;'
                                                                 class="aa-add-to-cart-btn">View Details</a>
                                                         </div>
                                                     </div>
@@ -509,7 +538,6 @@
                         <!-- start prduct navigation -->
                         <ul class="nav nav-tabs aa-products-tab">
                             <li class="active"><a href="#popular" data-toggle="tab">Popular</a></li>
-
                             <li><a href="#latest" data-toggle="tab">Latest</a></li>
                         </ul>
                         <!-- Tab panes -->
@@ -572,8 +600,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a class="aa-browse-btn" href="#">Browse all Product <span
-                                        class="fa fa-long-arrow-right"></span></a>
+
                             </div>
                             <!-- / popular product category -->
 
@@ -630,8 +657,7 @@
                                     </li>
                                     @endforeach
                                 </ul>
-                                <a class="aa-browse-btn" href="#">Browse all Product <span
-                                        class="fa fa-long-arrow-right"></span></a>
+
                             </div>
                             <!-- / featured product category -->
 
