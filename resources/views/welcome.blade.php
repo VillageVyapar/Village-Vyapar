@@ -256,6 +256,7 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
+<<<<<<< HEAD
                                                 <?php
                                                 $pid=$p['p_id'];
                                                 if(Session::has('useremail'))
@@ -266,6 +267,9 @@
                                                 ?>
 
 
+=======
+                                                
+>>>>>>> 1be0d85d29ebc3beded19dfb6afdab7602c00fa8
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
@@ -313,6 +317,7 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
+<<<<<<< HEAD
 
                                                 <?php
                                                     $pid=$p['p_id'];
@@ -324,6 +329,9 @@
                                                 ?>
 
 
+=======
+                                                
+>>>>>>> 1be0d85d29ebc3beded19dfb6afdab7602c00fa8
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
@@ -372,6 +380,7 @@
                                             <figure>
                                                 <a href=""><img style='width:270px;height:300px;float:left'
                                                         src="/product_images/{{$p['img']}}" /></a>
+<<<<<<< HEAD
 
                                                 <?php
                                                 $pid=$p['p_id'];
@@ -383,6 +392,9 @@
                                                 ?>
 
 
+=======
+                                                
+>>>>>>> 1be0d85d29ebc3beded19dfb6afdab7602c00fa8
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="#"
                                                             style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
@@ -492,7 +504,11 @@
                                                             </p>
                                                         </div>
                                                         <div class="aa-prod-view-bottom">
+<<<<<<< HEAD
 
+=======
+                                                            
+>>>>>>> 1be0d85d29ebc3beded19dfb6afdab7602c00fa8
                                                             <a href="{{ url('product_details',$p['p_id']) }}"
                                                                 style='margin-left:10px;text-align:center;width:80%;padding:8px;'
                                                                 class="aa-add-to-cart-btn">View Details</a>

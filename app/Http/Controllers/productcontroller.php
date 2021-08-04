@@ -37,7 +37,7 @@ class productcontroller extends Controller
                 <li>
                   <figure>
                     <a  href=''><img style='width:270px;height:300px;float:left' src='/product_images/{$p['img']}'/></a>
-                    <a class='aa-add-card-btn'href='#' style=''><span class='fa fa-shopping-cart'></span>Add To Cart</a>
+                    
                     <figcaption>
                       <h4 class='aa-product-title'><a href='#' style='float:left;padding-left:15px;'><b>{$p['p_name']}</b></a></h4>
                       <span class='aa-product-price' style='float:right;padding-right:15px;'> &#8377; {$p['p_price']}</span><span class='aa-product-price'></span>
