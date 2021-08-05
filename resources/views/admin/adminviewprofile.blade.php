@@ -173,11 +173,8 @@ function show() {
                                             <input type='password' class="form-control" style='border:none;' id='passwd'
                                                 name="passwd" disabled required value='{{$h->a_password}}'>
 
-                                            <input type='button' class="form-control" style='float:left;width:50%'
-                                                onClick='show()' id='button' value='Show Password'>
-                                            <img id='image' loader='lazy'
-                                                src="https://chart.googleapis.com/chart?cht=qr&chl={{$h->a_password}}&chs=120x120&chld=L|0"
-                                                class="qr-code img-thumbnail img-responsive" style='display:none;' />
+                                            <input type='button' class="form-control" onClick='show()' id='button'
+                                            value='Show Password'>
                                         </div>
                                     </div>
                                     <hr>
