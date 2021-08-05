@@ -43,7 +43,7 @@ class adminlogincontroller extends Controller
     }
     function dashboard(Request $req)   
     {
-        $maxprobyuser=DB::select("SELECT c_id,max(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(p.c_id) limit 5;"); 
+        $maxprobyuser=DB::select("SELECT c.c_name,count(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(c.c_name) limit 5;"); 
         //$smaxprobyuser=product::join('customers','customers.c_id','products.c_id')->groupby('products.c_id')->max('products.p_id');
         //dd($smaxprobyuser);
         $email=$req->session()->get('adminemail');
