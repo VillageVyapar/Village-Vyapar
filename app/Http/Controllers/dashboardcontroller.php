@@ -20,18 +20,21 @@ class dashboardcontroller extends Controller
     {
         $email=session()->get('useremail');
         $cusname=customer::where('email','LIKE',$email)->get();
-        
+        $procnt=product::join('customers','customers.c_id','products.c_id')->get();
         $inq=inquiry::where('email',$email)->get();
-       
+        $like=product::join('customers','customers.c_id','products.c_id')->where('customers.email',$email)->sum('total_like');
+        
+
        $procount=customer::join('products','products.c_id','customers.c_id')->where('email','LIKE',$email)->orderby('total_like','desc')->limit(5)->get();
+       
        //select count(*) from products group by(`c_id`);
        foreach($cusname as $c)
         {
-            //dd($c->c_id);
+            
             $proview=product::where('c_id',$c->c_id)->limit(5)->orderBy('total_view','desc')->get();
         }
   
-        return view('customer/customer_dashboard',['inquiry'=>$inq,'proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
+        return view('customer/customer_dashboard',['like'=>$like,'procnt'=>$procnt,'inquiry'=>$inq,'proview'=>$proview,'cusname'=>$cusname,'procus'=>$procount]);
     }
     function show_product_details()
     {

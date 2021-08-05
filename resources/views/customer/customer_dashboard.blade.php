@@ -29,7 +29,7 @@ if(!Session::has('useremail'))
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">{{count($procus)}}</div>
+                                <div class="huge">{{count($procnt)}}</div>
                                 <div>Total Products!</div>
                             </div>
                         </div>
@@ -98,14 +98,14 @@ if(!Session::has('useremail'))
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
-                                <div>Support Tickets!</div>
+                                <div class="huge">{{$like}}</div>
+                                <div>Total like </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="{{url('customer_product')}}">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">View Products</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>

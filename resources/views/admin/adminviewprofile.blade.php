@@ -3,12 +3,12 @@
 <script>
 function show() {
 
-    var val = document.getElementById('image');
-    if (val.style.display == 'block') {
-        val.style.display = 'none';
+    var val = document.getElementById('passwd');
+    if (val.type == 'password') {
+        val.type = 'text';
         document.getElementById('button').value = 'Show Password';
     } else {
-        val.style.display = 'block';
+        val.type = 'password';
         document.getElementById('button').value = 'Hide Password';
     }
 }

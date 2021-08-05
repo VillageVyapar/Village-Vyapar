@@ -65,6 +65,7 @@ function set_Subcategory() {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($procus) > 0)
                                     @foreach($procus as $pc)
                                     @if($pc['p_id']%2==0)
                                     <tr class="odd gradeX">
@@ -104,7 +105,7 @@ function set_Subcategory() {
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-primary">View</button></a><br><br>
-                                            <a href='{{ url('del_product',$pc['p_id']) }}'><button type="button"
+                                            <a href="{{ url('edit_product',$pc->p_id) }}"><button type="button"
                                                     class="btn btn-success">Edit</button></a><br><br>
                                             <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-danger">Delete</button></a>
@@ -112,7 +113,11 @@ function set_Subcategory() {
                                     </tr>
                                     @endif
                                     @endforeach
-
+                                    @else
+                                    <tr>
+                                        <td colspan=9><b style='color:red;'>Not found any Product !!!</b></td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
 

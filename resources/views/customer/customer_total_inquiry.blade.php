@@ -43,6 +43,7 @@ if(!Session::has('useremail'))
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($inquiry)>0)
                                     @foreach($inquiry as $i)
                                     @if($i['i_id']%2==0)
                                     <tr class="odd gradeX">
@@ -115,6 +116,11 @@ if(!Session::has('useremail'))
                                     </tr>
                                     @endif
                                     @endforeach
+                                    @else
+                                    <tr>
+                                        <td colspan=9><b style='color:red;'>Not found any inquiry !!!</b></td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
