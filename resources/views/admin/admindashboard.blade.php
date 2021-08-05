@@ -156,6 +156,7 @@ $yarray=array();
 foreach ($maxprobyuser as $x)
 {
     array_push($xarray,$x->c_name);
+
     array_push($yarray,$x->max);
 }
 

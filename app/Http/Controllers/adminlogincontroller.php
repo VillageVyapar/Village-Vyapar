@@ -19,7 +19,7 @@ class adminlogincontroller extends Controller
     {
         $email=$req->input('email');
         $password=$req->input('password');
-        $maxprobyuser=DB::select("SELECT c_id,max(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(p.c_id) limit 5;");
+        $maxprobyuser=DB::select("SELECT c.c_name,count(p.p_id) as 'max' FROM `products` p join customers c USING (c_id) group by(c.c_name) limit 5;"); 
       // dd($maxprobyuser);
         $user=admin::where('a_email','like',$email)->where('a_password','like',$password)->count();
         

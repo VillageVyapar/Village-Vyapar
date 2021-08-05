@@ -136,7 +136,7 @@ class customercontroller extends Controller
                 "pin_code"=>$pin_code
             ]);
             $res->session()->put('useremail',$email);
-            return view('welcome',['Latest'=>$latest,'Popular'=>$popular,'categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
+            return view('welcome',['latest'=>$latest,'popular'=>$popular,'categories'=>$c,'subcategories'=>$sc,'catpro'=>$p]);
         }
         else
         {
