@@ -209,7 +209,7 @@
                                 </h6>
                                 @if(isset($inquiry))
                                 @foreach ($inquiry as $i)
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="admininquiry">
                                     <div class="font-weight-bold">
                                         @if(count($inquiry)>0)
                                         <div class="text-truncate">{{$i->message}}</div>
