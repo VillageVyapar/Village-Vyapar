@@ -53,8 +53,7 @@ class productcontroller extends Controller
                   </div>
                 </li>
                 ");
-            }
-                
+            }     
         return response()->json(array('msg'=> $msg), 200);
     }
     function show_catwisepro($cid)

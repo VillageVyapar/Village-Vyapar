@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/css/jquery.simpleLens.css">
     <!-- slick slider -->
     <link rel="stylesheet" type="text/css" href="/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="/css/theme-color/default-theme.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/theme-color/default-theme.css"> -->
     <!-- price picker slider -->
     <link rel="stylesheet" type="text/css" href="/css/nouislider.css">
     <!-- Theme color -->
@@ -89,17 +89,14 @@
             link.type = 'text/css';
             link.href = '/css/theme-color/default-theme.css';
             head.appendChild(link);
-
         }
     }
     </script>
-
     <!-- finished  Google Form Script -->
-
 </head>
 <!-- oncontextmenu="alert('right click not allowed !! '); return false;"  -->
 
-<body>
+<body onload="themechange(' Red')">
     <!-- wpf loader Two -->
 
     <!-- / wpf loader Two -->
