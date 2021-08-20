@@ -169,10 +169,11 @@ function set_Subcategory() {
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">{{$pc->p_name}} Edit</h5>
+                                                        <h2 class="modal-title" id="exampleModalLabel">{{$pc->p_name}} Edit
                                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                             <input class="z" type="submit" style='border:none;float:right;' value="X" />
                                                         </button>
+                                                        </h2>
                                                     </div>
                                                     <form action="editProduct" method="POST">
                                                         @csrf
