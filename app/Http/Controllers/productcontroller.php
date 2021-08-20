@@ -78,6 +78,7 @@ class productcontroller extends Controller
     }
     function like($pid,$totallike)
     {
+        
         $qry=product::where("p_id",$pid)->update(["total_like"=>$totallike+1]);
         $msg=$totallike+1;
         return response()->json(array('msg'=> $msg), 200);
