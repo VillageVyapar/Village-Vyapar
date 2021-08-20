@@ -9,6 +9,7 @@ use App\Http\Controllers\contactformcontroller;
 use App\Http\Controllers\wishlistcontroller;
 use  App\Http\Controllers\chatcontroller;
 use  App\Http\Controllers\inquirycontroller;
+use Illuminate\Support\Facades\Route;
 
 // admin
 use  App\Http\Controllers\adminlogincontroller;
@@ -96,7 +97,7 @@ route::post('updateDP','profileController@updateDP');
 Route::post('change_pass','dashboardcontroller@change_password');
 Route::post('insertproducts','dashboardcontroller@add_product');
 Route::get('del_product/{pid}','dashboardcontroller@delete_product');
-Route::get('edit_product/{pid}','dashboardcontroller@edit_product');
+Route::post('editProduct','dashboardcontroller@edit_product');
 Route::get('download','dashboardcontroller@pdf');
 Route::get('customer_inquiry',[inquirycontroller::class,'customer_All_inquirydet']);
 Route::get('del_inquiry/{iid}',[inquirycontroller::class,'delete_inquiry']);
@@ -143,3 +144,4 @@ Route::post('/reply',[inquirycontroller::class,'reply_inq']);
 route::post('insertcat','categorycontroller@add_cat');
 route::post('insertsubcat','subcategorycontroller@add_subcat');
 route::post('editsubcat','subcategorycontroller@edit_subcat');
+route::get('customerProduct','admincustomercontroller@view_custopro');
