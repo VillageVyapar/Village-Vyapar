@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/css/jquery.simpleLens.css">
     <!-- slick slider -->
     <link rel="stylesheet" type="text/css" href="/css/slick.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/theme-color/default-theme.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/theme-color/default-theme.css">
     <!-- price picker slider -->
     <link rel="stylesheet" type="text/css" href="/css/nouislider.css">
     <!-- Theme color -->
@@ -96,7 +96,7 @@
 </head>
 <!-- oncontextmenu="alert('right click not allowed !! '); return false;"  -->
 
-<body onload="themechange(' Red')">
+<body>
     <!-- wpf loader Two -->
 
     <!-- / wpf loader Two -->

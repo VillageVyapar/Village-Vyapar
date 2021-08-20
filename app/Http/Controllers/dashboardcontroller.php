@@ -91,6 +91,27 @@ class dashboardcontroller extends Controller
             return redirect()->back();
         }
     }
+    function edit_product(Request $req){
+        if($req->hasfile('img'))
+        {
+            $oldimg=DB::select("select img from products where p_id = ?",[$req->pid]);
+            File::delete($oldimg);
+            $imgname=$req->file('img');
+            $newimg=time()."_".$imgname->getClientOriginalName();
+            $imgname->move(public_path("product_images"),$newimg);
+            
+            $update=array('p_name'=>$req->name,'p_price'=>$req->price,
+                'p_desc'=>$req->desc,'QOH'=>$req->qoh,"img"=>$newimg);
+            $product=product::where('p_id',$req->pid)->update($update);
+            return redirect()->back();   
+        }
+        else{
+            $update=array('p_name'=>$req->name,'p_price'=>$req->price,
+                'p_desc'=>$req->desc,'QOH'=>$req->qoh);
+            $product=product::where('p_id',$req->pid)->update($update);
+            return redirect()->back();   
+        }
+    }
     function delete_product($id)
     {
         $email=session()->get('useremail');

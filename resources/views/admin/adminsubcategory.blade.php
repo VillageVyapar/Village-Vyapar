@@ -83,6 +83,7 @@ if(!Session::has('adminemail'))
                                                 disabled />
                                         </div>
                                         <div class="form-group">
+                                            <label>Sub-Category new Name</label>
                                             <input type="text" class="form-control" name="newsubname"
                                                 placeholder="Enter New Sub-Category Name" required>
                                         </div>

@@ -83,11 +83,65 @@ function set_Subcategory() {
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-primary">View</button></a><br><br>
-                                            <a href='{{ url('del_product',$pc['p_id']) }}'><button type="button"
-                                                    class="btn btn-success">Edit</button></a><br><br>
+                                            {{-- <a href='{{ url('',$pc['p_id']) }}'><button type="button"
+                                                    class="btn btn-success"> --}}
+                                            <a data-toggle="modal" data-target="#editproduct{{$pc->p_id}}"><button type="button"
+                                                    class="btn btn-sucess">Edit</button></a><br><br>
                                             <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-danger">Delete</button></a>
                                         </td>
+                                        <div class="modal fade" id="editproduct{{$pc->p_id}}" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">{{$pc->p_name}} Edit</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <input class="z" type="submit" style='border:none;float:right;' value="X" />
+                                                        </button>
+                                                    </div>
+                                                    <form action="editProduct" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label>Product's Name</label>
+                                                                <input type="hidden" name="pid" value="{{$pc->p_id}}">
+                                                                <input type="text" required name="name" class="form-control"
+                                                                    placeholder="Enter Product Name" value="{{$pc->p_name}}"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="price">Product price</label>
+                                                                <input type="number" class="form-control" name="price"
+                                                                    placeholder="Enter Price" required value="{{$pc->p_price}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="desc">Product Description</label>
+                                                                <textarea class="form-control" name="desc"
+                                                                    placeholder="Enter Description" required  
+                                                                    rows="3">{{$pc->p_desc}}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="number">Product Quantity at hand</label>
+                                                                <input type="number" class="form-control" name="qoh"
+                                                                    placeholder="Enter Quantity at hand" required value="{{$pc->QOH}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="image">Product Image</label>
+                                                                <img src="{{$pc->img}}" alt="" srcset="">
+                                                                <input type="file" class="form-control" name="img"
+                                                                    placeholder="Upload Image" requiredvalue="{{$pc->img}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                                        </div>
+                    
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                     @else
                                     <tr class="even gradeC">
@@ -105,11 +159,62 @@ function set_Subcategory() {
                                         <td class="center">
                                             <a href="{{ url('product_details',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-primary">View</button></a><br><br>
-                                            <a href="{{ url('edit_product',$pc->p_id) }}"><button type="button"
-                                                    class="btn btn-success">Edit</button></a><br><br>
+                                            <a data-toggle="modal" data-target="#editproduct{{$pc->p_id}}"><button type="button"
+                                                    class="btn btn-sucess">Edit</button></a><br><br>
                                             <a href="{{ url('del_product',$pc['p_id']) }}"><button type="button"
                                                     class="btn btn-danger">Delete</button></a>
                                         </td>
+                                        <div class="modal fade" id="editproduct{{$pc->p_id}}" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">{{$pc->p_name}} Edit</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <input class="z" type="submit" style='border:none;float:right;' value="X" />
+                                                        </button>
+                                                    </div>
+                                                    <form action="editProduct" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label>Product's Name</label>
+                                                                <input type="hidden" name="pid" value="{{$pc->p_id}}">
+                                                                <input type="text" required name="name" class="form-control"
+                                                                    placeholder="Enter Product Name" value="{{$pc->p_name}}"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="price">Product price</label>
+                                                                <input type="number" class="form-control" name="price"
+                                                                    placeholder="Enter Price" required value="{{$pc->p_price}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="desc">Product Description</label>
+                                                                <textarea class="form-control" name="desc"
+                                                                    placeholder="Enter Description" required 
+                                                                    rows="3">{{$pc->p_desc}}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="number">Product Quantity at hand</label>
+                                                                <input type="number" class="form-control" name="qoh"
+                                                                    placeholder="Enter Quantity at hand" required value="{{$pc->QOH}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="image">Product Image</label>
+                                                                <input type="file" class="form-control" name="img"
+                                                                    placeholder="Upload Image" value="{{$pc->img}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                                        </div>
+                    
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                     @endif
                                     @endforeach

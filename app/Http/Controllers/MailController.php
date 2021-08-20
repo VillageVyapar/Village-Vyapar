@@ -16,6 +16,8 @@ class MailController extends Controller
     public function viewpage(){
         return redirect('admin.fpass');
     }
+
+    
     public function basic_email(Request $req) {
         function password_generate($chars) 
         {
