@@ -145,3 +145,4 @@ route::post('insertcat','categorycontroller@add_cat');
 route::post('insertsubcat','subcategorycontroller@add_subcat');
 route::post('editsubcat','subcategorycontroller@edit_subcat');
 route::get('customerProduct','admincustomercontroller@view_custopro');
+Route::get('cusreport/{cid}','productlistcontroller@pdf');

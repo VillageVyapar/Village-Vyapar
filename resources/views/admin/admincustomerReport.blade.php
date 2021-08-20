@@ -41,7 +41,7 @@ if(!Session::has('adminemail'))
 
                     <tr class="odd gradeX">
                         <td><img src="customer_img/{{$c['c_img']}}" style='border-radius:50%;height:70px;width:70px;'>
-                        <td style='width:200px;'><a href="">{{$c['c_name']}}</a></td>
+                        <td style='width:200px;'><a href="cusreport/{{$c->c_id}}" target='_blank'>{{$c['c_name']}}</a></td>
                         <td>{{$c['email']}}</td>
                         <td>{{$c['phone_no']}} </td>
                         <td>{{$c['address']}}</td>
