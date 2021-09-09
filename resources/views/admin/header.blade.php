@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +29,20 @@
     <link rel="stylesheet" type="text/css" href="../vendor/datepicker/bootstrap-datepicker.css" />
 
     <link rel="stylesheet" type="text/css" href="../vendor/datetimepicker/bootstrap-datetimepicker.css" />
-
+    <!-- <style>
+        theme
+        {
+            color:white;
+            background-color:red;
+        }
+    </style>
+    <script>
+        function theme()
+        {
+            var nm=document.getElementById('theme');
+            nm.className +='theme';
+        }
+    </script> -->
 </head>
 
 <body id="page-top">
@@ -136,7 +148,9 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
+                    <!-- <li class="nav-item dropdown no-arrow mx-1">
+                        <button id='theme' onclick='theme()'>Dark</button>
+                    </li> -->
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
