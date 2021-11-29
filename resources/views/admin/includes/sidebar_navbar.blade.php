@@ -185,7 +185,7 @@
 
                         <!-- Nav Item - Alerts -->
 
-
+                        
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
