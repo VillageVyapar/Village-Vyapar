@@ -19,22 +19,22 @@ function getMessage(str) {
     });
 }
 
-function set(str) {
-    var sid = document.getElementById('show').value;
+// function set(str) {
+//     var sid = document.getElementById('show').value;
 
-    var cid = document.getElementById('rangevalue').value;
-    document.getElementById('div2').value = cid;
-    document.getElementById('div3').value = cid;
+//     var cid = document.getElementById('rangevalue').value;
+//     document.getElementById('div2').value = cid;
+//     document.getElementById('div3').value = cid;
 
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", "productAjaxprice/" + str + "/" + sid, true);
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.statusText == 'OK') {
-            document.getElementById('user').innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.send();
-}
+//     xmlhttp = new XMLHttpRequest();
+//     xmlhttp.open("POST", "productAjaxprice/" + str + "/" + sid, true);
+//     xmlhttp.onreadystatechange = function() {
+//         if (xmlhttp.readyState == 4 && xmlhttp.statusText == 'OK') {
+//             document.getElementById('user').innerHTML = this.responseText;
+//         }
+//     };
+//     xmlhttp.send();
+// }
 </script>
 <!-- catg header banner section -->
 <section id="aa-catg-head-banner">
@@ -69,23 +69,7 @@ function set(str) {
                 <div class="aa-product-catg-content">
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left">
-                            <form action="" class="aa-sort-form">
-                                <label for="">Sort by</label>
-                                <select name="">
-                                    <option value="1" selected="Default">Default</option>
-                                    <option value="2">Name</option>
-                                    <option value="3">Price</option>
-                                    <option value="4">Date</option>
-                                </select>
-                            </form>
-                            <form action="" class="aa-show-form">
-                                <label for="">Show</label>
-                                <select name="">
-                                    <option value="1" selected="12">12</option>
-                                    <option value="2">24</option>
-                                    <option value="3">36</option>
-                                </select>
-                            </form>
+
                         </div>
                         <div class="aa-product-catg-head-right">
                             <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -95,6 +79,7 @@ function set(str) {
 
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg" id='msg'>
+
                             <!-- start single product item -->
                             <?php 
                 $maxprice=-1;
@@ -119,23 +104,26 @@ function set(str) {
                                             src="/product_images/{{$p['img']}}" /></a>
 
                                     <?php
-                  $pid=$p['p_id'];
-                  if(Session::has('useremail'))
-                  {
-                    
-                    echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
-                  }
-                  ?>
+                                    $pid=$p['p_id'];
+                                    if(Session::has('useremail'))
+                                    {
+                                        
+                                        echo "<a class='aa-add-card-btn' href='addWish/$pid' title='Add to Wishlist' style=''><span class='fa fa-heart-o'></span>Add to Wishlist</a>";
+                                    }
+                                    ?>
 
 
                                     <figcaption>
                                         <h4 class="aa-product-title"><a href="#"
-                                                style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a></h4>
-                                        <span class="aa-product-price" style='float:right;padding-right:15px;'> &#8377;
+                                                style='float:left;padding-left:15px;'><b>{{$p['p_name']}}</b></a>
+                                        </h4>
+                                        <span class="aa-product-price" style='float:right;padding-right:15px;'>
+                                            &#8377;
                                             {{$p['p_price']}}</span><span class="aa-product-price"></span>
                                         <p class="aa-product-descrip"><b>Description : </b>{{$p['p_desc']}}</p><br>
                                         <h4 class=""><a
-                                                style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a></h4>
+                                                style='float:left;padding-left:15px;'><b>{{$p['c_name']}}</b></a>
+                                        </h4>
                                         <p style='float:right;padding-right:15px;'>{{$p['p_date']}}</p>
 
                                     </figcaption>
@@ -314,7 +302,8 @@ function set(str) {
                                     <a href="{{ url('product_details',$sbl->p_id) }}" class="aa-cartbox-img"><img
                                             alt="img" src='/product_images/{{$sbl->img}}'></a>
                                     <div class="aa-cartbox-info">
-                                        <h4><a href="{{ url('product_details',$sbl->p_id) }}">{{$sbl->p_name}}</a></h4>
+                                        <h4><a href="{{ url('product_details',$sbl->p_id) }}">{{$sbl->p_name}}</a>
+                                        </h4>
                                         <p>Price(&#8377;) : {{$sbl->p_price}} &#8377;</p>
                                         <p>likes : {{$sbl->total_like}} <i class='fa fa-heart' style='color:red'></i>
                                         </p>

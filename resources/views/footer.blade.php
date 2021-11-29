@@ -7,12 +7,9 @@
                 <div class="col-md-12">
                     <div class="aa-footer-top-area">
                         <div class="row">
-
-
                             <div class="col-md-3 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <h3>About</h3>
-
                                     <ul class="aa-footer-nav">
                                         <li><a href="#">Contact Us</a></li>
                                         <li><a href="#">About Us</a></li>
